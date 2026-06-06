@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cadetai.co.uk/sitemap.xml
