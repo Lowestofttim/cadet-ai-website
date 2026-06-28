@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="scroll-progress" id="scrollbar" aria-hidden="true"></div>
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="index.html"><img src="assets/app-icon.png" alt="Cadet AI"><span class="name sheen">CADET <b>AI</b></span></a>
@@ -36,6 +37,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-fx" aria-hidden="true"><div class="mesh"></div><div class="grid"></div></div>
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow">Training Intelligence System</div>
@@ -151,29 +153,32 @@
           <p class="muted">Pick which of the <strong style="color:var(--text)">20 TANGO characters</strong> represents you, then take it everywhere you train. It's like having a patient instructor in your pocket who always shows their working.</p>
         </div>
         <div style="justify-self:center;text-align:center">
-          <img class="floaty" src="assets/tango.png" alt="TANGO, the Cadet AI mascot" style="width:230px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))">
+          <div class="tango-stage"><img class="floaty" src="assets/tango.png" alt="TANGO, the Cadet AI mascot" style="width:230px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NEURAL VOICE (premium) -->
-  <section class="block alt">
+  <!-- NEURAL VOICE (premium) — animated TANGO + playable voice samples -->
+  <section class="block alt" id="voices">
     <div class="wrap">
       <div class="split flip reveal">
         <div class="split-media">
-          <div class="phone floaty"><span class="glare" aria-hidden="true"></span><img src="assets/shots/voice.png" alt="Sound &amp; voice settings: TANGO read-aloud and premium neural voice toggle" loading="lazy"></div>
+          <div class="tango-stage" data-tango><img class="floaty" src="assets/tango.png" alt="TANGO, the Cadet AI mascot" style="width:240px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
         </div>
         <div>
           <div class="eyebrow">Sound &amp; voice</div>
           <h2>Hear It. Don't Just Read It.</h2>
-          <p class="muted">Revising on the bus, in the field, or between stands? Switch on read-aloud and TANGO briefs you out loud, hands-free and eyes-up.</p>
-          <ul class="feat-list">
-            <li>Read-aloud answers on the chat screen, included for everyone.</li>
-            <li><strong style="color:var(--text)">Premium neural voice</strong>, where TANGO speaks in its character's own lifelike voice.</li>
-            <li>Celebration sounds when you earn a badge, award or rank.</li>
-            <li>A daily streak reminder so your training habit never slips.</li>
-          </ul>
+          <p class="muted">Read-aloud is free for everyone. <strong style="color:var(--text)">Premium</strong> gives each of the 20 TANGO characters its own lifelike neural voice, across British, American, Australian and Indian accents. Tap a voice to hear a real sample:</p>
+          <div class="voice-rail" data-voices>
+            <button class="voice-card" type="button" data-src="assets/audio/mentor.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Mentor</b><span>Warm, soft-spoken</span><span class="accent">British</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
+            <button class="voice-card" type="button" data-src="assets/audio/veteran.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Veteran</b><span>Gruff, gravelly</span><span class="accent">British &middot; Northern</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
+            <button class="voice-card" type="button" data-src="assets/audio/guide.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Guide</b><span>Warm, bright</span><span class="accent">Australian</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
+            <button class="voice-card" type="button" data-src="assets/audio/assistant.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Assistant</b><span>Light, bright</span><span class="accent">Indian</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
+            <button class="voice-card" type="button" data-src="assets/audio/instructor.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Drill Instructor</b><span>Hard, clipped</span><span class="accent">British</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
+            <button class="voice-card pro" type="button" data-src="assets/audio/commander.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Commander</b><span>Regal, deep RP</span><span class="accent">British</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
+          </div>
+          <p class="voice-hint">Real Chirp 3 HD neural-voice clips straight from the app &mdash; one of twenty distinct characters.</p>
         </div>
       </div>
     </div>
@@ -244,6 +249,36 @@
             <li>Priority access to new training features</li>
             <li class="muted-li">More premium perks on the way</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIPTION MANAGEMENT -->
+  <section class="block" id="subscription">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow">Premium subscription</div>
+        <h2>Manage or Cancel Anytime.</h2>
+        <p>Cadet AI Premium is billed securely through your Google Play account, so you're always in full control. Cancel in a couple of taps whenever you like, and you keep Premium until the end of the period you've already paid for.</p>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card primary reveal d1">
+          <h3 style="color:var(--gold)">Cancel your subscription</h3>
+          <p class="muted">Subscriptions are managed by Google Play, so you cancel from your Google account on any device:</p>
+          <ol class="sub-steps">
+            <li>Open the <strong style="color:var(--text)">Google Play Store</strong> app, or go to play.google.com.</li>
+            <li>Tap your profile icon, then <strong style="color:var(--text)">Payments &amp; subscriptions → Subscriptions</strong>.</li>
+            <li>Select <strong style="color:var(--text)">Cadet AI</strong>, tap <strong style="color:var(--text)">Cancel subscription</strong>, and follow the prompts.</li>
+          </ol>
+          <a class="btn btn-primary" href="https://play.google.com/store/account/subscriptions" target="_blank" rel="noopener">Open Google Play subscriptions</a>
+          <p class="sub-note">Cancelling stops future renewals. You keep Premium until your current billing period ends.</p>
+        </div>
+        <div class="sub-card reveal d2">
+          <h3>Delete your account &amp; data</h3>
+          <p class="muted">Want to remove your account entirely? You can request deletion of your Cadet AI account and its associated data at any time.</p>
+          <a class="btn btn-ghost" href="delete-account.html">Request account deletion</a>
+          <p class="sub-note"><strong style="color:var(--text)">Important:</strong> deleting your Cadet AI account does <strong style="color:var(--text)">not</strong> automatically cancel your Google Play subscription. Cancel that in Google Play first to stop billing.</p>
         </div>
       </div>
     </div>
