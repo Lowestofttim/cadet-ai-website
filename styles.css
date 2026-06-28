@@ -305,6 +305,10 @@ section.block.alt { background: var(--ink-0); }
 .plan ul li::before { content: "✓"; position: absolute; left: 0; color: var(--olive-bright); font-weight: 700; }
 .plan ul li.muted-li { color: var(--muted-2); }
 .plan ul li.muted-li::before { content: "•"; color: var(--muted-2); }
+/* Three-tier layout (Free / Plus / Pro) — collapses to one centred column on
+   narrow screens so the cards never crush. */
+.plans.three { grid-template-columns: repeat(3, minmax(0,1fr)); max-width: 1080px; align-items: start; }
+@media (max-width: 900px){ .plans.three { grid-template-columns: 1fr; max-width: 460px; } }
 
 /* ---- Trust badges row ---- */
 .trust-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 6px; }
