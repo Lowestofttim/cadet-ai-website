@@ -1,0 +1,23 @@
+# HTTP security headers for cadetai.co.uk
+#
+# NOTE: GitHub Pages does NOT read this file — it cannot set custom response
+# headers. This file activates automatically only if the site is served by a
+# host that supports a root `_headers` file, e.g. Netlify or Cloudflare Pages
+# (both free). Until then, the equivalent CSP + Referrer-Policy are applied
+# in-page via <meta> tags in every .html (see <head>); the header-only ones
+# below (HSTS, X-Frame-Options, X-Content-Type-Options, Permissions-Policy)
+# take effect once a header-capable host serves the site.
+#
+# To reach an A/A+ on securityheaders.com for free, either:
+#   1. Put Cloudflare (free) in front of GitHub Pages: enable HSTS in the
+#      dashboard and add a Response-Header Transform Rule with the values below; or
+#   2. Move hosting to Cloudflare Pages / Netlify (free) — this file then applies
+#      as-is, no extra config.
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
