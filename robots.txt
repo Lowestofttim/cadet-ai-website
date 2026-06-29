@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# AI assistants & LLM crawlers are welcome. Site summary for LLMs:
+# https://cadetai.co.uk/llms.txt
+
 Sitemap: https://cadetai.co.uk/sitemap.xml

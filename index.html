@@ -3,6 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="manifest" href="site.webmanifest">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <script>document.documentElement.className += ' js';</script>
@@ -14,10 +19,68 @@
   <meta property="og:title" content="Cadet AI: Be the Sharpest Cadet on Parade">
   <meta property="og:description" content="The training intelligence system for ACF &amp; CCF cadets. Ask TANGO (no guessing), drill quizzes, climb the ranks, collect badges, hear answers aloud. Coming soon to Google Play.">
   <meta property="og:url" content="https://cadetai.co.uk/">
-  <meta property="og:image" content="https://cadetai.co.uk/assets/tango.png">
+  <meta property="og:image" content="https://cadetai.co.uk/assets/og-card.png">
   <link rel="icon" href="assets/app-icon.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <meta property="og:site_name" content="Cadet AI">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cadet AI: AI study assistant for ACF &amp; CCF cadets. Coming soon to Google Play.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://cadetai.co.uk/assets/og-card.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cadetai.co.uk/#org",
+        "name": "Cadet AI",
+        "url": "https://cadetai.co.uk/",
+        "logo": "https://cadetai.co.uk/assets/app-icon.png",
+        "image": "https://cadetai.co.uk/assets/og-card.png",
+        "email": "support@cadetai.co.uk",
+        "description": "Independent study-aid app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13 and over. Not an official or endorsed Cadet Forces product.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "support@cadetai.co.uk",
+          "contactType": "customer support",
+          "availableLanguage": "English"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cadetai.co.uk/#website",
+        "url": "https://cadetai.co.uk/",
+        "name": "Cadet AI",
+        "inLanguage": "en-GB",
+        "publisher": { "@id": "https://cadetai.co.uk/#org" }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://cadetai.co.uk/#app",
+        "name": "Cadet AI",
+        "operatingSystem": "Android",
+        "applicationCategory": "EducationalApplication",
+        "url": "https://cadetai.co.uk/",
+        "image": "https://cadetai.co.uk/assets/og-card.png",
+        "inLanguage": "en-GB",
+        "description": "AI study-aid app for UK ACF and CCF cadets. TANGO, an AI study assistant grounded in cadet training that won't make things up, plus quizzes across 10 subjects, military ranks, 100+ badges and 35 awards.",
+        "publisher": { "@id": "https://cadetai.co.uk/#org" },
+        "audience": { "@type": "EducationalAudience", "educationalRole": "student" },
+        "offers": [
+          { "@type": "Offer", "name": "Cadet (Free)", "price": "0", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Plus monthly", "price": "3.99", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Plus yearly", "price": "29.99", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Pro monthly", "price": "9.99", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Pro yearly", "price": "74.99", "priceCurrency": "GBP" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="scroll-progress" id="scrollbar" aria-hidden="true"></div>
@@ -61,10 +124,10 @@
       <div class="hero-stage" aria-label="Cadet AI home screen on a phone">
         <div class="phone floaty">
           <span class="glare" aria-hidden="true"></span>
-          <img src="assets/shots/dashboard.png" alt="Cadet AI home screen showing rank, XP progress, daily missions and streak">
+          <img src="assets/shots/dashboard.webp" width="1080" height="2254" fetchpriority="high" alt="Cadet AI home screen showing rank, XP progress, daily missions and streak">
         </div>
         <div class="hero-proof" aria-hidden="true">
-          <div class="pf-top"><img src="assets/tango.png" alt=""><span>TANGO</span></div>
+          <div class="pf-top"><img src="assets/tango.webp" alt=""><span>TANGO</span></div>
           <p>Treat every weapon as loaded; never point it at anything you don't intend to engage; keep your finger off the trigger until you mean to fire; know your target and what's beyond it.</p>
           <small class="cite">&#10003; Grounded answers &mdash; TANGO won't make it up</small>
         </div>
@@ -100,35 +163,35 @@
 
       <div class="shots" data-gallery>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/dashboard.png" alt="Home screen with rank, XP bar, daily missions and streak" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/dashboard.webp" width="1080" height="2254" alt="Home screen with rank, XP bar, daily missions and streak" loading="lazy"></div>
           <figcaption><b>Your Base</b><span>Rank, XP &amp; daily missions</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/chat.png" alt="TANGO chat answering a cadet training question" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/chat.webp" width="1080" height="2254" alt="TANGO chat answering a cadet training question" loading="lazy"></div>
           <figcaption><b>Ask TANGO</b><span>Grounded, no guessing</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/quiz.png" alt="Quiz question with the correct answer highlighted and an explanation" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/quiz.webp" width="1080" height="2254" alt="Quiz question with the correct answer highlighted and an explanation" loading="lazy"></div>
           <figcaption><b>Drill the Quizzes</b><span>Every answer explained</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/training.png" alt="Training hub with daily quizzes, revision and the Daily TANGO Challenge" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/training.webp" width="1080" height="2254" alt="Training hub with daily quizzes, revision and the Daily TANGO Challenge" loading="lazy"></div>
           <figcaption><b>Train Your Way</b><span>Daily, revision &amp; challenge</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/syllabus.png" alt="Training syllabus across every cadet subject with progress" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/syllabus.webp" width="1080" height="2254" alt="Training syllabus across every cadet subject with progress" loading="lazy"></div>
           <figcaption><b>Follow the Syllabus</b><span>Every subject &amp; star level</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/achievements.png" alt="Badges and achievements screen" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/achievements.webp" width="1080" height="2254" alt="Badges and achievements screen" loading="lazy"></div>
           <figcaption><b>Collect the Honours</b><span>100+ badges &amp; awards</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/leaderboard.png" alt="Opt-in national and unit leaderboards" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/leaderboard.webp" width="620" height="1033" alt="Opt-in national and unit leaderboards" loading="lazy"></div>
           <figcaption><b>Climb the Board</b><span>Opt-in, off by default</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/voice.png" alt="Settings showing TANGO read-aloud and premium neural voice" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/voice.webp" width="620" height="1033" alt="Settings showing TANGO read-aloud and premium neural voice" loading="lazy"></div>
           <figcaption><b>Hear TANGO</b><span>Read-aloud &amp; neural voice</span></figcaption>
         </figure>
       </div>
@@ -155,7 +218,7 @@
           <p class="muted">Pick which of the <strong style="color:var(--text)">20 TANGO characters</strong> represents you, then take it everywhere you train. It's like having a patient instructor in your pocket who always shows their working.</p>
         </div>
         <div style="justify-self:center;text-align:center">
-          <div class="tango-stage"><img class="floaty" src="assets/tango.png" alt="TANGO, the Cadet AI mascot" style="width:230px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
+          <div class="tango-stage"><img class="floaty" src="assets/tango.webp" alt="TANGO, the Cadet AI mascot" style="width:230px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
         </div>
       </div>
     </div>
@@ -166,7 +229,7 @@
     <div class="wrap">
       <div class="split flip reveal">
         <div class="split-media">
-          <div class="tango-stage" data-tango><img class="floaty" src="assets/tango.png" alt="TANGO, the Cadet AI mascot" style="width:240px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
+          <div class="tango-stage" data-tango><img class="floaty" src="assets/tango.webp" alt="TANGO, the Cadet AI mascot" style="width:240px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
         </div>
         <div>
           <div class="eyebrow">Sound &amp; voice</div>
