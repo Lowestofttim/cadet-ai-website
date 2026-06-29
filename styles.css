@@ -1,7 +1,8 @@
 /* Cadet AI — marketing site styles. Olive/military green + gold, dark theme,
    Oswald display headings. Shared across all pages. */
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+/* Fonts are preconnected and loaded via <link> in each page's <head> for faster LCP
+   (a CSS @import here would block rendering behind an extra request chain). */
 
 :root {
   --olive: #4B5320;

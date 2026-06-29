@@ -3,6 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="manifest" href="site.webmanifest">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <script>document.documentElement.className += ' js';</script>
@@ -12,9 +17,130 @@
   <meta name="theme-color" content="#121412">
   <meta property="og:title" content="Cadet AI: FAQ">
   <meta property="og:description" content="Answers on what Cadet AI is, who it's for, free vs premium, privacy, launch, and how progression works.">
-  <meta property="og:image" content="https://cadetai.co.uk/assets/tango.png">
+  <meta property="og:image" content="https://cadetai.co.uk/assets/og-card.png">
   <link rel="icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cadetai.co.uk/faq.html">
+  <meta property="og:site_name" content="Cadet AI">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cadet AI: AI study assistant for ACF &amp; CCF cadets. Coming soon to Google Play.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://cadetai.co.uk/assets/og-card.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cadetai.co.uk/#org",
+        "name": "Cadet AI",
+        "url": "https://cadetai.co.uk/",
+        "logo": "https://cadetai.co.uk/assets/app-icon.png",
+        "image": "https://cadetai.co.uk/assets/og-card.png",
+        "email": "support@cadetai.co.uk",
+        "description": "Independent study-aid app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13 and over. Not an official or endorsed Cadet Forces product.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "support@cadetai.co.uk",
+          "contactType": "customer support",
+          "availableLanguage": "English"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cadetai.co.uk/#website",
+        "url": "https://cadetai.co.uk/",
+        "name": "Cadet AI",
+        "inLanguage": "en-GB",
+        "publisher": { "@id": "https://cadetai.co.uk/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cadetai.co.uk/faq.html#faq",
+        "url": "https://cadetai.co.uk/faq.html",
+        "inLanguage": "en-GB",
+        "isPartOf": { "@id": "https://cadetai.co.uk/#website" },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Cadet AI?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Cadet AI is a study-aid mobile app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets. It combines TANGO (an AI study assistant that's grounded in your cadet training and won't make things up) with quizzes, progression tracking, badges and awards, to help you learn the material and climb the ranks." }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is it for?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It's built for cadets aged 13 and over in the ACF and CCF who want to excel in their training. It's also useful for parents and guardians who want reassurance about safety and privacy, and for detachment and section staff supporting cadets' revision, because it encourages cadets to confirm the detail with their instructors. Under-13s cannot create an account." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this an official ACF, CCF or MOD app?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Cadet AI is an independent study aid. It is not an official MOD, Army Cadet Force, Combined Cadet Force or Cadet Forces product, and it is not endorsed by them. It simply helps cadets revise the cadet training syllabus." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I trust the answers TANGO gives?",
+            "acceptedAnswer": { "@type": "Answer", "text": "TANGO is built to stick to your cadet training and won't make things up. If it isn't sure, it tells you rather than making something up - and always confirm important facts with your instructors. It's designed to give you the real material, but it's a study aid, so always follow the guidance of your unit staff for assessments." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Cadet AI free? What are Plus and Pro?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Cadet AI is free to download and use. The free Cadet plan covers the core training for every cadet - 10 TANGO messages and 3 quizzes a day, all ten subjects, ranks, badges and awards, read-aloud answers and opt-in leaderboards. Two optional upgrades go further, billed through Google Play: Plus (£3.99/month or £29.99/year) gives 50 messages and 20 quizzes a day, lifelike neural voice and a daily timed mock assessment; Pro (£9.99/month or £74.99/year) adds 200 messages a day, unlimited quizzes, unlimited mock assessments, smart mistake review and exclusive TANGO voices and characters. There are no ads, no third-party analytics trackers, and we never sell your data. Cancel anytime in Google Play; the Plus and Pro monthly plans each include a 7-day free trial." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I hear answers read out loud?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Read-aloud is included for everyone. Switch it on and TANGO briefs you out loud on the chat screen, hands-free. Plus and Pro go further with a neural voice, where TANGO speaks in its character's own lifelike voice. You can also turn on celebration sounds for when you earn a badge, award or rank." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I choose my TANGO?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Pick which of the 20 TANGO characters represents you, and it travels with you across the app. A cosmetic store to kit out your TANGO is on the way." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data safe? What about privacy?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Privacy comes as standard. Cadet AI runs no ads and no third-party analytics trackers, and we never sell your data. Under-13s cannot create an account. National and unit leaderboards are opt-in and off by default, so you're never listed unless you choose to be. You can read the full privacy policy here on the site." }
+          },
+          {
+            "@type": "Question",
+            "name": "When does it launch, and is there an iPhone version?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Cadet AI is an Android app, coming soon to Google Play. It isn't released yet. There is no iOS (iPhone or iPad) version yet. Keep an eye on Google Play to be among the first to download it when it goes live." }
+          },
+          {
+            "@type": "Question",
+            "name": "What subjects and levels does it cover?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Quizzes span ten real cadet subjects (Drill & Turnout, Fieldcraft & Tactics, First Aid, Navigation, Shooting, Skill at Arms, Military Knowledge, Communications & IT, Keeping Active and Community Engagement) at star levels from Basic through 4-Star, across the cadet training syllabus. There's also a Quick Reference and drill practice." }
+          },
+          {
+            "@type": "Question",
+            "name": "How does progression work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "You earn XP from quizzes, climb levels and military ranks, and unlock star-level awards from Basic to 4-Star. Your progress is tracked across the cadet training syllabus. Along the way you unlock 100+ badges and 35 in-app awards inspired by real cadet honours, keep daily streaks, take the Daily TANGO Challenge, and choose from 20 TANGO characters. You can retry quizzes any time to push your score higher." }
+          },
+          {
+            "@type": "Question",
+            "name": "Are the leaderboards compulsory?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Not at all. National and unit leaderboards are completely opt-in and turned off by default. You only appear if you choose to take part, so you can rank up purely for yourself if you prefer." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get in touch?",
+            "acceptedAnswer": { "@type": "Answer", "text": "For any questions, feedback or support, email support@cadetai.co.uk. We're happy to hear from cadets, parents and staff alike." }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cadetai.co.uk/" },
+          { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://cadetai.co.uk/faq.html" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="scroll-progress" id="scrollbar" aria-hidden="true"></div>

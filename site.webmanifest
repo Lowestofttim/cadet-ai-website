@@ -1,0 +1,17 @@
+{
+  "name": "Cadet AI",
+  "short_name": "Cadet AI",
+  "description": "AI study-aid app for UK ACF & CCF cadets. Ask TANGO, drill quizzes, climb the ranks.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#121412",
+  "theme_color": "#121412",
+  "lang": "en-GB",
+  "categories": ["education"],
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
