@@ -449,7 +449,7 @@ section.block.alt { background: var(--ink-0); }
 .sub-card.primary { border-color: rgba(212,175,55,.4); box-shadow: 0 0 0 1px rgba(212,175,55,.18), 0 22px 50px rgba(0,0,0,.4); }
 .sub-card h3 { color: #fff; }
 .sub-steps { list-style: none; counter-reset: s; padding: 0; margin: 16px 0 22px; display: grid; gap: 14px; }
-.sub-steps li { position: relative; padding-left: 44px; color: var(--muted); min-height: 30px; display: flex; align-items: center; }
+.sub-steps li { position: relative; padding-left: 44px; color: var(--muted); min-height: 30px; line-height: 1.55; padding-top: 3px; }
 .sub-steps li::before {
   counter-increment: s; content: counter(s);
   position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%;
