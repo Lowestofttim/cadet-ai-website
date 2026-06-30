@@ -72,6 +72,14 @@ img { max-width: 100%; display: block; }
 .btn-ghost:hover { background: rgba(255,255,255,.08); }
 .btn[aria-disabled="true"] { opacity: .9; cursor: default; pointer-events: none; }
 
+/* ---- Disclaimer bar ---- */
+.disclaimer-bar {
+  background: #0e120c; color: var(--muted);
+  font-size: .76rem; line-height: 1.45; text-align: center;
+  padding: 7px 16px; border-bottom: 1px solid var(--line);
+}
+.disclaimer-bar b { color: var(--text); font-weight: 600; }
+
 /* ---- Header / nav ---- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
