@@ -143,6 +143,7 @@ img { max-width: 100%; display: block; }
 /* ---- Sections ---- */
 section.block { padding: 72px 0; border-bottom: 1px solid var(--line); }
 section.block.alt { background: var(--ink-0); }
+section.mascot-panel { overflow: hidden; }
 .section-head { max-width: 60ch; margin-bottom: 36px; }
 .section-head p { color: var(--muted); font-size: 1.08rem; }
 
@@ -177,9 +178,64 @@ section.block.alt { background: var(--ink-0); }
 /* ---- Badge strip ---- */
 .badge-strip { display: flex; flex-wrap: wrap; gap: 10px; }
 .chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Oswald'; text-transform: uppercase; letter-spacing: 1px; font-size: .78rem;
   padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line);
   background: rgba(255,255,255,.03); color: var(--muted);
+}
+button.chip {
+  cursor: pointer;
+  line-height: 1.2;
+}
+.subject-chip.is-active {
+  color: var(--ink-0);
+  border-color: var(--gold);
+  background: linear-gradient(135deg, var(--gold), #f2df8b);
+  box-shadow: 0 12px 26px rgba(212,175,55,.22);
+}
+.subject-preview {
+  display: grid;
+  grid-template-columns: minmax(0, .96fr) minmax(280px, .78fr);
+  gap: 18px;
+  align-items: stretch;
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid rgba(212,175,55,.28);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(212,175,55,.14), transparent 42%),
+    linear-gradient(180deg, rgba(32,39,28,.86), rgba(18,20,18,.96));
+  box-shadow: 0 22px 46px rgba(0,0,0,.28);
+}
+.subject-preview h3 { color: #fff; }
+.subject-question {
+  min-height: 190px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(0,0,0,.2);
+}
+.subject-question span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--green-light);
+  font-family: 'Oswald';
+  font-size: .72rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+.subject-question strong {
+  display: block;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+.subject-question p {
+  color: var(--muted);
+  margin: 0;
+  font-size: .93rem;
 }
 
 /* ---- CTA band ---- */
@@ -324,6 +380,249 @@ section.block.alt { background: var(--ink-0); }
 .trust { display: inline-flex; align-items: center; gap: 8px; font-family: 'Oswald'; text-transform: uppercase; letter-spacing: 1px; font-size: .78rem; color: var(--muted); padding: 9px 15px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.02); }
 .trust b { color: var(--green-light); font-weight: 600; }
 
+/* ---- TANGO progression roster ---- */
+.tango-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(240px, .82fr);
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.tango-showcase-copy { max-width: 62ch; }
+.tango-feature-card {
+  justify-self: center;
+  width: min(100%, 320px);
+  padding: 18px;
+  border: 1px solid rgba(212,175,55,.35);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(212,175,55,.18), transparent 55%),
+    linear-gradient(180deg, var(--surface), var(--ink-2));
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.tango-feature-card img {
+  width: min(100%, 220px);
+  height: auto;
+  max-height: 330px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+  filter: drop-shadow(0 18px 28px rgba(0,0,0,.42));
+}
+.tango-feature-card strong {
+  display: block;
+  font-family: 'Oswald';
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+.tango-feature-card span { display: block; color: var(--green-light); font-size: .84rem; }
+.tango-roster {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(86px, 1fr));
+  gap: 12px;
+}
+.tango-roster figure,
+.tango-roster-card {
+  margin: 0;
+  padding: 10px 8px 9px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.035);
+  text-align: center;
+  transition: transform .12s ease, border-color .2s ease, background .2s ease;
+}
+.tango-roster-card {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  min-height: 152px;
+  width: 100%;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+.tango-roster figure:hover,
+.tango-roster-card:hover,
+.tango-roster-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--olive-bright);
+  background: rgba(107,142,35,.12);
+  outline: none;
+}
+.tango-roster img {
+  width: min(100%, 96px);
+  height: auto;
+  margin: 0 auto 6px;
+  border-radius: 12px;
+}
+.tango-roster figcaption {
+  font-family: 'Oswald';
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  font-size: .75rem;
+  color: var(--text);
+}
+.tango-roster-card span {
+  font-family: 'Oswald';
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  font-size: .75rem;
+  color: var(--text);
+}
+.tango-guardrails {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.tango-guardrails span {
+  display: block;
+  min-height: 92px;
+  padding: 14px 15px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(0,0,0,.18);
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.45;
+}
+.tango-guardrails strong {
+  display: block;
+  margin-bottom: 4px;
+  font-family: 'Oswald';
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: var(--green-light);
+  font-size: .78rem;
+}
+
+body.modal-open { overflow: hidden; }
+.tango-modal[hidden] { display: none; }
+.tango-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+.tango-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4,6,4,.78);
+  backdrop-filter: blur(8px);
+}
+.tango-modal-panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(260px, .86fr) minmax(320px, 1fr);
+  gap: 24px;
+  width: min(100%, 980px);
+  max-height: min(92vh, 820px);
+  overflow: auto;
+  padding: 22px;
+  border: 1px solid rgba(212,175,55,.34);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 22% 0%, rgba(212,175,55,.18), transparent 40%),
+    linear-gradient(150deg, #1c2417 0%, #0d0f0c 100%);
+  box-shadow: 0 30px 90px rgba(0,0,0,.68);
+}
+.tango-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(0,0,0,.28);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.tango-modal-close:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.tango-modal-art {
+  display: grid;
+  place-items: center;
+  min-height: 420px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(212,175,55,.2), transparent 48%),
+    radial-gradient(circle at 50% 80%, rgba(107,142,35,.18), transparent 55%),
+    rgba(0,0,0,.22);
+}
+.tango-modal-art img {
+  width: min(100%, 360px);
+  max-height: 66vh;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 34px rgba(0,0,0,.48));
+}
+.tango-modal-copy {
+  align-self: center;
+  padding: 28px 12px 16px 0;
+}
+.tango-modal-copy h3 {
+  color: #fff;
+  font-size: clamp(2rem, 6vw, 4rem);
+  margin-bottom: 6px;
+}
+.tango-modal-level {
+  color: var(--gold);
+  font-family: 'Oswald';
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.tango-modal-controls {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  gap: 12px;
+  align-items: center;
+  margin: 20px 0 16px;
+}
+.tango-modal-controls button,
+.tango-level-rail button {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: rgba(255,255,255,.04);
+  cursor: pointer;
+  font-family: 'Oswald';
+}
+.tango-modal-controls button {
+  height: 44px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+}
+.tango-modal-controls button:disabled {
+  opacity: .35;
+  cursor: default;
+}
+.tango-modal-controls input {
+  width: 100%;
+  accent-color: var(--gold);
+}
+.tango-level-rail {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 7px;
+}
+.tango-level-rail button {
+  min-width: 0;
+  height: 34px;
+  border-radius: 10px;
+}
+.tango-level-rail button.is-active {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink-0);
+}
+
 /* ---- Wordmark sheen on the brand name (subtle, like the app login) ---- */
 .brand .name.sheen {
   background: linear-gradient(100deg, #fff 0%, #fff 40%, var(--gold) 50%, #fff 60%, #fff 100%);
@@ -342,6 +641,16 @@ section.block.alt { background: var(--ink-0); }
   .hero-stage { order: -1; }
   .hero-stage .phone { width: 250px; }
   .hero-proof { left: auto; right: -6px; bottom: 40px; width: 200px; }
+  .subject-preview { grid-template-columns: 1fr; padding: 18px; }
+  .tango-showcase { grid-template-columns: 1fr; }
+  .tango-feature-card { justify-self: center; }
+  .tango-roster { grid-template-columns: repeat(4, minmax(80px, 1fr)); }
+  .tango-guardrails { grid-template-columns: 1fr; }
+  .tango-modal { padding: 12px; align-items: end; }
+  .tango-modal-panel { grid-template-columns: 1fr; gap: 14px; padding: 18px; max-height: 94vh; border-radius: 16px 16px 0 0; }
+  .tango-modal-art { min-height: 300px; }
+  .tango-modal-art img { width: min(100%, 280px); max-height: 46vh; }
+  .tango-modal-copy { padding: 8px 0 0; }
   .grid.cols-3, .grid.cols-2, .steps, .split, .plans { grid-template-columns: 1fr; }
   .split { gap: 30px; }
   .split.flip .split-media { order: -1; }
@@ -466,11 +775,19 @@ section.block.alt { background: var(--ink-0); }
   .hero-fx .mesh, .hero-fx .grid, .hero-fx .mote { animation: none !important; }
   .hero-fx .mote { display: none; }
   .hero-stage .phone { transform: none !important; }
-  .btn:hover, .card:hover, .shot:hover .phone, .chip:hover { transform: none !important; }
+  .btn:hover, .card:hover, .shot:hover .phone, .chip:hover, .tango-roster figure:hover, .tango-roster-card:hover { transform: none !important; }
 }
 
 @media (max-width: 860px) {
   .sub-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .tango-roster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tango-level-rail { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .subject-question { min-height: 0; }
+  .badge-strip { gap: 8px; }
+  .chip { width: 100%; justify-content: center; }
 }
 
 /* ---- Animated TANGO mascot (living glow + reacts when speaking) ---- */

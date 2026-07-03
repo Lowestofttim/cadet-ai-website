@@ -12,23 +12,23 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <script>document.documentElement.className += ' js';</script>
   <title>Cadet AI: Training Intelligence System for ACF &amp; CCF Cadets</title>
-  <meta name="description" content="Cadet AI is a study-aid app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13+. Ask TANGO, an AI study assistant grounded in your cadet training that won't make things up. Drill quizzes across 10 subjects, earn ranks, badges and awards, and hear answers in TANGO's own voice. Coming soon to Google Play.">
+  <meta name="description" content="Cadet AI is a study-aid app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13+. Ask TANGO, an AI study assistant grounded in your cadet training that won't make things up. Drill quizzes across 10 subjects, earn ranks, badges and awards, unlock TANGO character upgrades, and hear answers in TANGO's own voice.">
   <link rel="canonical" href="https://cadetai.co.uk/">
   <meta name="theme-color" content="#121412">
   <meta name="msvalidate.01" content="8F186A6E57CBDC6205780886C9B952D8" />
   <meta property="og:type" content="website">
   <meta property="og:title" content="Cadet AI: Be the Sharpest Cadet on Parade">
-  <meta property="og:description" content="The training intelligence system for ACF &amp; CCF cadets. Ask TANGO (no guessing), drill quizzes, climb the ranks, collect badges, hear answers aloud. Coming soon to Google Play.">
+  <meta property="og:description" content="The training intelligence system for ACF &amp; CCF cadets. Ask TANGO, drill quizzes, climb the ranks, collect badges, unlock TANGO level upgrades, and hear answers aloud.">
   <meta property="og:url" content="https://cadetai.co.uk/">
   <meta property="og:image" content="https://cadetai.co.uk/assets/og-card.png">
   <link rel="icon" href="assets/app-icon.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260703-tango">
   <meta property="og:site_name" content="Cadet AI">
   <meta property="og:locale" content="en_GB">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Cadet AI: AI study assistant for ACF &amp; CCF cadets. Coming soon to Google Play.">
+  <meta property="og:image:alt" content="Cadet AI: AI study assistant for ACF &amp; CCF cadets.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://cadetai.co.uk/assets/og-card.png">
   <script type="application/ld+json">
@@ -112,7 +112,7 @@
         <h1>Be the Sharpest <span>Cadet</span> on Parade.</h1>
         <p class="lead">Cadet AI is built for ACF and CCF cadets who refuse to coast. Ask <strong>TANGO</strong>, your in-app AI training assistant. It sticks to your cadet training and <strong>won't make things up</strong> - if it's not sure, it says so. Drill quizzes across 10 subjects, bank XP, climb the ranks, collect 100+ badges and hold your streak. Walk into your detachment knowing your stuff cold. Built for ages 13+.</p>
         <div class="hero-cta">
-          <span class="btn btn-primary" aria-disabled="true">▶ Coming soon to Google Play</span>
+          <span class="btn btn-primary" aria-disabled="true">Google Play testing</span>
           <a class="btn btn-ghost" href="#shots">See it in action</a>
         </div>
         <div class="trust-row" style="justify-content:flex-start">
@@ -130,7 +130,7 @@
           <img src="assets/shots/dashboard.webp" width="1080" height="2254" fetchpriority="high" alt="Cadet AI home screen showing rank, XP progress, daily missions and streak">
         </div>
         <div class="hero-proof" aria-hidden="true">
-          <div class="pf-top"><img src="assets/tango.webp" alt=""><span>TANGO</span></div>
+          <div class="pf-top"><img src="assets/tango-roster/tango-rook-level-1-plain.webp" alt=""><span>TANGO</span></div>
           <p>Treat every weapon as loaded; never point it at anything you don't intend to engage; keep your finger off the trigger until you mean to fire; know your target and what's beyond it.</p>
           <small class="cite">&#10003; Grounded answers - TANGO won't make it up</small>
         </div>
@@ -211,33 +211,103 @@
   </section>
 
   <!-- MEET TANGO -->
-  <section class="block">
+  <section class="block mascot-panel">
     <div class="wrap">
       <div class="hero-grid reveal" style="padding:0">
         <div>
           <div class="eyebrow">Meet TANGO</div>
           <h2>Your Training Assistant</h2>
           <p class="muted">TANGO is the AI mentor built into Cadet AI, and your friendly mascot. Ask any training question and TANGO answers in plain English, <strong style="color:var(--text)">grounded in your cadet training</strong> and never made up. If it's not sure, it tells you rather than inventing an answer - so you can trust what you're revising.</p>
-          <p class="muted">Pick which of the <strong style="color:var(--text)">20 TANGO characters</strong> represents you, then take it everywhere you train. It's like having a patient instructor in your pocket who always shows their working.</p>
+          <p class="muted">Pick which of the <strong style="color:var(--text)">20 TANGO characters</strong> represents you, then take it everywhere you train. Each character has a curated level 1-20 upgrade path, earned through genuine TANGO chat, quiz and subject progress.</p>
         </div>
         <div style="justify-self:center;text-align:center">
-          <div class="tango-stage"><img class="floaty" src="assets/tango.webp" alt="TANGO, the Cadet AI mascot" style="width:230px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
+          <div class="tango-stage"><img class="floaty" src="assets/tango-roster/tango-rook-level-1-plain.webp" alt="Rook TANGO, the Cadet AI training assistant" style="width:230px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- TANGO PROGRESSION -->
+  <section class="block alt" id="tango-progression">
+    <div class="wrap">
+      <div class="tango-showcase reveal">
+        <div class="tango-showcase-copy">
+          <div class="eyebrow">TANGO progression</div>
+          <h2>20 TANGOs. 400 Mobile-Ready Level States.</h2>
+          <p class="muted">Choose your favourite unlocked TANGO and keep it with you across the app. As you use TANGO chat, answer questions, cover more subjects and build real learning momentum, your selected character can rank up through a clear level 1-20 visual ladder.</p>
+          <p class="muted">Locked levels stay visible with honest next-step requirements, so cadets always know what they are working towards. The aim is simple: make revision feel collectible, earned and worth coming back to.</p>
+        </div>
+        <div class="tango-feature-card">
+          <img src="assets/tango-roster/tango-rook-level-20.webp" width="512" height="683" loading="lazy" alt="Rook TANGO level 20 showcase artwork">
+          <div>
+            <strong>Rook Level 20</strong>
+            <span>Prestige mentor finish</span>
+          </div>
+        </div>
+      </div>
+      <div class="tango-roster reveal d1" aria-label="Interactive TANGO roster artwork">
+        <button class="tango-roster-card" type="button" data-tango-open="tango_1" aria-label="Open Rook TANGO level showcase"><img src="assets/tango-roster/tango-rook-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Rook TANGO level 20"><span>Rook</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_2" aria-label="Open Gravel TANGO level showcase"><img src="assets/tango-roster/tango-gravel-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Gravel TANGO level 20"><span>Gravel</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_3" aria-label="Open Taff TANGO level showcase"><img src="assets/tango-roster/tango-taff-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Taff TANGO level 20"><span>Taff</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_4" aria-label="Open Titan TANGO level showcase"><img src="assets/tango-roster/tango-titan-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Titan TANGO level 20"><span>Titan</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_5" aria-label="Open Spanner TANGO level showcase"><img src="assets/tango-roster/tango-spanner-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Spanner TANGO level 20"><span>Spanner</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_6" aria-label="Open Wraith TANGO level showcase"><img src="assets/tango-roster/tango-wraith-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Wraith TANGO level 20"><span>Wraith</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_7" aria-label="Open Pip TANGO level showcase"><img src="assets/tango-roster/tango-pip-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Pip TANGO level 20"><span>Pip</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_8" aria-label="Open Ace TANGO level showcase"><img src="assets/tango-roster/tango-ace-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Ace TANGO level 20"><span>Ace</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_9" aria-label="Open Fox TANGO level showcase"><img src="assets/tango-roster/tango-fox-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Fox TANGO level 20"><span>Fox</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_10" aria-label="Open Dawn TANGO level showcase"><img src="assets/tango-roster/tango-dawn-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Dawn TANGO level 20"><span>Dawn</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_11" aria-label="Open Major TANGO level showcase"><img src="assets/tango-roster/tango-major-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Major TANGO level 20"><span>Major</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_12" aria-label="Open Mac TANGO level showcase"><img src="assets/tango-roster/tango-mac-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Mac TANGO level 20"><span>Mac</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_13" aria-label="Open Sparks TANGO level showcase"><img src="assets/tango-roster/tango-sparks-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Sparks TANGO level 20"><span>Sparks</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_14" aria-label="Open Sarge TANGO level showcase"><img src="assets/tango-roster/tango-sarge-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Sarge TANGO level 20"><span>Sarge</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_15" aria-label="Open Forge TANGO level showcase"><img src="assets/tango-roster/tango-forge-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Forge TANGO level 20"><span>Forge</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_16" aria-label="Open Zeta TANGO level showcase"><img src="assets/tango-roster/tango-zeta-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Zeta TANGO level 20"><span>Zeta</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_17" aria-label="Open Mercy TANGO level showcase"><img src="assets/tango-roster/tango-mercy-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Mercy TANGO level 20"><span>Mercy</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_18" aria-label="Open Chief TANGO level showcase"><img src="assets/tango-roster/tango-chief-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Chief TANGO level 20"><span>Chief</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_19" aria-label="Open Regal TANGO level showcase"><img src="assets/tango-roster/tango-regal-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Regal TANGO level 20"><span>Regal</span></button>
+        <button class="tango-roster-card" type="button" data-tango-open="tango_20" aria-label="Open Ghost TANGO level showcase"><img src="assets/tango-roster/tango-ghost-level-20-thumb.webp" width="160" height="213" loading="lazy" alt="Ghost TANGO level 20"><span>Ghost</span></button>
+      </div>
+      <div class="tango-guardrails reveal d2">
+        <span><strong>Earned through study</strong> No random loot boxes or paid chance mechanics.</span>
+        <span><strong>Private by default</strong> Leaderboards and profile display stay opt-in.</span>
+        <span><strong>Independent study aid</strong> Clear that Cadet AI is not an official MOD or Cadet Forces product.</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="tango-modal" data-tango-viewer hidden role="dialog" aria-modal="true" aria-labelledby="tango-modal-title">
+    <div class="tango-modal-backdrop" data-tango-close aria-hidden="true"></div>
+    <div class="tango-modal-panel" role="document">
+      <button class="tango-modal-close" type="button" data-tango-close aria-label="Close TANGO showcase">&times;</button>
+      <div class="tango-modal-art">
+        <img data-tango-image src="assets/tango-roster/tango-rook-level-20.webp" width="512" height="683" alt="Rook TANGO level 20">
+      </div>
+      <div class="tango-modal-copy">
+        <div class="eyebrow">TANGO level ladder</div>
+        <h3 id="tango-modal-title" data-tango-name>Rook</h3>
+        <p class="tango-modal-level" data-tango-level-name>Level 20: Prestige Mentor</p>
+        <p class="muted">Every TANGO follows a curated level 1-20 upgrade path. The look changes are earned through meaningful app use: TANGO chat, quiz progress, subject breadth, streaks and rank-style milestones.</p>
+        <div class="tango-modal-controls" aria-label="TANGO level controls">
+          <button type="button" data-tango-prev aria-label="Previous TANGO level">&larr;</button>
+          <input type="range" min="1" max="20" value="20" data-tango-range aria-label="Choose TANGO level">
+          <button type="button" data-tango-next aria-label="Next TANGO level">&rarr;</button>
+        </div>
+        <div class="tango-level-rail" data-tango-levels aria-label="Choose level"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- NEURAL VOICE (premium) - animated TANGO + playable voice samples -->
   <section class="block alt" id="voices">
     <div class="wrap">
       <div class="split flip reveal">
         <div class="split-media">
-          <div class="tango-stage" data-tango><img class="floaty" src="assets/tango.webp" alt="TANGO, the Cadet AI mascot" style="width:240px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
+          <div class="tango-stage" data-tango><img class="floaty" src="assets/tango-roster/tango-rook-level-1-plain.webp" alt="Rook TANGO ready to speak" style="width:240px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))"></div>
         </div>
         <div>
           <div class="eyebrow">Sound &amp; voice</div>
           <h2>Hear It. Don't Just Read It.</h2>
-          <p class="muted">Read-aloud is free for everyone. A <strong style="color:var(--text)">Plus or Pro</strong> plan gives each of the 20 TANGO characters its own lifelike neural voice, across British, American, Australian and Indian accents - with extra voices and characters exclusive to Pro. Tap a voice to hear a real sample:</p>
+          <p class="muted">Read-aloud is free for everyone. Plus and Pro raise the voice experience with more distinctive character directions across British, American, Australian and Indian accents. These samples preview the current voice styles while the final character voices continue to be tuned for launch quality:</p>
           <div class="voice-rail" data-voices>
             <button class="voice-card" type="button" data-src="assets/audio/mentor.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Mentor</b><span>Warm, soft-spoken</span><span class="accent">British</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
             <button class="voice-card" type="button" data-src="assets/audio/veteran.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Veteran</b><span>Gruff, gravelly</span><span class="accent">British &middot; Northern</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
@@ -246,7 +316,7 @@
             <button class="voice-card" type="button" data-src="assets/audio/instructor.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Drill Instructor</b><span>Hard, clipped</span><span class="accent">British</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
             <button class="voice-card pro" type="button" data-src="assets/audio/commander.mp3"><span class="play" aria-hidden="true">&#9654;</span><span class="meta"><b>The Commander</b><span>Regal, deep RP</span><span class="accent">British</span></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
           </div>
-          <p class="voice-hint">Real Chirp 3 HD neural-voice clips straight from the app - one of twenty distinct characters.</p>
+          <p class="voice-hint">Current in-app sample clips. Final TANGO voices may be refined further before full launch.</p>
         </div>
       </div>
     </div>
@@ -278,11 +348,29 @@
     <div class="wrap">
       <div class="section-head reveal"><div class="eyebrow">Every subject you'll be tested on</div><h2>Quizzes That Grow With You.</h2>
         <p>From Basic up to 4-Star, the questions scale as you do, with a daily challenge, instant retry and timed mock exams that mark you and show what to revise. Download quizzes to train offline at camp or in the field, with a fast Quick Reference and drill practice to keep your turnout parade-ground tight.</p></div>
-      <div class="badge-strip reveal">
-        <span class="chip">Drill &amp; Turnout</span><span class="chip">Fieldcraft &amp; Tactics</span><span class="chip">First Aid</span>
-        <span class="chip">Navigation</span><span class="chip">Shooting</span><span class="chip">Skill at Arms</span>
-        <span class="chip">Military Knowledge</span><span class="chip">Communications &amp; IT</span><span class="chip">Keeping Active</span>
-        <span class="chip">Community Engagement</span>
+      <div class="badge-strip reveal" aria-label="Preview cadet quiz subjects">
+        <button class="chip subject-chip is-active" type="button" data-subject="drill">Drill &amp; Turnout</button>
+        <button class="chip subject-chip" type="button" data-subject="fieldcraft">Fieldcraft &amp; Tactics</button>
+        <button class="chip subject-chip" type="button" data-subject="first-aid">First Aid</button>
+        <button class="chip subject-chip" type="button" data-subject="navigation">Navigation</button>
+        <button class="chip subject-chip" type="button" data-subject="shooting">Shooting</button>
+        <button class="chip subject-chip" type="button" data-subject="skill-at-arms">Skill at Arms</button>
+        <button class="chip subject-chip" type="button" data-subject="military-knowledge">Military Knowledge</button>
+        <button class="chip subject-chip" type="button" data-subject="communications">Communications &amp; IT</button>
+        <button class="chip subject-chip" type="button" data-subject="keeping-active">Keeping Active</button>
+        <button class="chip subject-chip" type="button" data-subject="community">Community Engagement</button>
+      </div>
+      <div class="subject-preview reveal d1" data-subject-preview>
+        <div>
+          <div class="eyebrow" data-subject-kicker>Sample Drill &amp; Turnout</div>
+          <h3 data-subject-title>Why do cadets practise drill?</h3>
+          <p class="muted" data-subject-copy>Drill teaches teamwork, discipline, bearing and confidence. Cadet AI turns that into short revision reps, clear explanations and follow-up questions.</p>
+        </div>
+        <div class="subject-question">
+          <span>Sample question</span>
+          <strong data-subject-question>When standing at attention, why should you brace rather than lock your knees?</strong>
+          <p data-subject-answer>To stay steady and reduce the risk of feeling faint. TANGO keeps answers practical and reminds cadets to follow their instructors.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -377,7 +465,7 @@
     <div class="wrap section-head reveal">
       <div class="eyebrow">Rewards</div>
       <h2>Collect the Honours. Build Your Reputation.</h2>
-      <p>Cadet AI rewards graft. Stack up 100-plus badges, chase 35 in-app awards inspired by real cadet honours (think marksmanship, first aid and Duke of Edinburgh themes), and hold your daily streak like it's a kit inspection. Choose from 20 collectible TANGO characters to represent you, with a cosmetic store on the way. When you want to test yourself against others, opt in to national and unit leaderboards. Leaderboards are off by default, so you decide if and when you join the board.</p>
+      <p>Cadet AI rewards graft. Stack up 100-plus badges, chase 35 in-app awards inspired by real cadet honours (think marksmanship, first aid and Duke of Edinburgh themes), and hold your daily streak like it's a kit inspection. Choose from 20 collectible TANGO characters to represent you, then unlock stronger level states through meaningful training and TANGO chat usage. When you want to test yourself against others, opt in to national and unit leaderboards. Leaderboards are off by default, so you decide if and when you join the board.</p>
     </div>
   </section>
 
@@ -405,9 +493,9 @@
     <div class="wrap reveal">
       <div class="eyebrow">Get ready to deploy</div>
       <h2>Train Hard. Earn It. Lead.</h2>
-      <p class="muted" style="max-width:52ch;margin:0 auto 24px">Cadet AI is an Android app, coming soon to Google Play. Want to be first in formation when it drops? Keep an eye on Google Play, and reach out any time with questions.</p>
+      <p class="muted" style="max-width:52ch;margin:0 auto 24px">Cadet AI is an Android app now moving through Google Play testing. Want tester access or have a question before launch? Reach out any time.</p>
       <div class="hero-cta" style="justify-content:center">
-        <span class="btn btn-primary" aria-disabled="true">▶ Coming soon to Google Play</span>
+        <span class="btn btn-primary" aria-disabled="true">Google Play testing</span>
         <a class="btn btn-ghost" href="contact.html">Contact us</a>
       </div>
     </div>
@@ -428,12 +516,13 @@
           <h4>Legal &amp; contact</h4>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Use</a>
+          <a href="delete-account.html">Delete my account</a>
           <a href="mailto:support@cadetai.co.uk">support@cadetai.co.uk</a>
         </div>
       </div>
       <p class="footer-note">Independent study aid. Not an official MOD, ACF, CCF or Cadet Forces product, and not endorsed by them. &copy; 2026 Cadet AI.</p>
     </div>
   </footer>
-  <script src="site.js" defer></script>
+  <script src="site.js?v=20260703-tango" defer></script>
 </body>
 </html>

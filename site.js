@@ -170,7 +170,253 @@
     audio.addEventListener('error', reset);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  /* ---- 9. Interactive TANGO level viewer -------------------------- */
+  function tangoViewer() {
+    var modal = document.querySelector('[data-tango-viewer]');
+    var openers = document.querySelectorAll('[data-tango-open]');
+    if (!modal || !openers.length) return;
+
+    var image = modal.querySelector('[data-tango-image]');
+    var name = modal.querySelector('[data-tango-name]');
+    var levelName = modal.querySelector('[data-tango-level-name]');
+    var range = modal.querySelector('[data-tango-range]');
+    var rail = modal.querySelector('[data-tango-levels]');
+    var closeButtons = modal.querySelectorAll('[data-tango-close]');
+    var prev = modal.querySelector('[data-tango-prev]');
+    var next = modal.querySelector('[data-tango-next]');
+    var close = modal.querySelector('.tango-modal-close');
+    var dataPromise = null;
+    var characters = {};
+    var current = null;
+    var levelIndex = 19;
+    var lastFocus = null;
+
+    function requestJson(url) {
+      if (window.fetch) {
+        return fetch(url, { cache: 'force-cache' }).then(function (res) {
+          if (!res.ok) throw new Error('Could not load TANGO showcase data');
+          return res.json();
+        });
+      }
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState !== 4) return;
+          if (xhr.status >= 200 && xhr.status < 300) {
+            try { resolve(JSON.parse(xhr.responseText)); }
+            catch (error) { reject(error); }
+          } else {
+            reject(new Error('Could not load TANGO showcase data'));
+          }
+        };
+        xhr.onerror = function () { reject(new Error('Could not load TANGO showcase data')); };
+        xhr.send();
+      });
+    }
+
+    function loadData() {
+      if (!dataPromise) {
+        dataPromise = requestJson('assets/tango-roster/tango-showcase.json')
+          .then(function (data) {
+            (data.characters || []).forEach(function (character) {
+              characters[character.id] = character;
+            });
+            return characters;
+          });
+      }
+      return dataPromise;
+    }
+
+    function renderLevelRail() {
+      if (!rail || !current) return;
+      rail.textContent = '';
+      current.levels.forEach(function (level, index) {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = String(level.level);
+        button.setAttribute('aria-label', current.name + ' ' + level.name);
+        if (index === levelIndex) {
+          button.className = 'is-active';
+          button.setAttribute('aria-current', 'true');
+        }
+        button.addEventListener('click', function () {
+          levelIndex = index;
+          update();
+        });
+        rail.appendChild(button);
+      });
+    }
+
+    function update() {
+      if (!current || !current.levels[levelIndex]) return;
+      var level = current.levels[levelIndex];
+      if (image) {
+        image.src = level.image;
+        image.alt = current.name + ' TANGO ' + level.name;
+      }
+      if (name) name.textContent = current.name;
+      if (levelName) levelName.textContent = level.name;
+      if (range) range.value = String(level.level);
+      if (prev) prev.disabled = levelIndex <= 0;
+      if (next) next.disabled = levelIndex >= current.levels.length - 1;
+      renderLevelRail();
+    }
+
+    function openModal(id) {
+      lastFocus = document.activeElement;
+      loadData().then(function () {
+        current = characters[id] || characters.tango_1;
+        levelIndex = current && current.levels ? current.levels.length - 1 : 0;
+        update();
+        modal.hidden = false;
+        document.body.classList.add('modal-open');
+        if (close) close.focus();
+      }).catch(function () {
+        if (levelName) levelName.textContent = 'TANGO gallery is loading slowly. Please try again.';
+        modal.hidden = false;
+      });
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.classList.remove('modal-open');
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    function move(delta) {
+      if (!current) return;
+      levelIndex = Math.max(0, Math.min(current.levels.length - 1, levelIndex + delta));
+      update();
+    }
+
+    openers.forEach(function (button) {
+      button.addEventListener('click', function () {
+        openModal(button.getAttribute('data-tango-open'));
+      });
+    });
+    closeButtons.forEach(function (button) { button.addEventListener('click', closeModal); });
+    if (prev) prev.addEventListener('click', function () { move(-1); });
+    if (next) next.addEventListener('click', function () { move(1); });
+    if (range) range.addEventListener('input', function () {
+      levelIndex = Math.max(0, Math.min(19, parseInt(range.value, 10) - 1));
+      update();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (modal.hidden) return;
+      if (event.key === 'Escape') closeModal();
+      if (event.key === 'ArrowLeft') move(-1);
+      if (event.key === 'ArrowRight') move(1);
+    });
+  }
+
+  /* ---- 10. Subject quiz preview cards ------------------------------ */
+  function subjectPreview() {
+    var preview = document.querySelector('[data-subject-preview]');
+    var buttons = document.querySelectorAll('[data-subject]');
+    if (!preview || !buttons.length) return;
+
+    var content = {
+      'drill': {
+        kicker: 'Sample Drill & Turnout',
+        title: 'Why do cadets practise drill?',
+        copy: 'Drill teaches teamwork, discipline, bearing and confidence. Cadet AI turns that into short revision reps, clear explanations and follow-up questions.',
+        question: 'When standing at attention, why should you brace rather than lock your knees?',
+        answer: 'To stay steady and reduce the risk of feeling faint. TANGO keeps answers practical and reminds cadets to follow their instructors.'
+      },
+      'fieldcraft': {
+        kicker: 'Sample Fieldcraft & Tactics',
+        title: 'Train the habits before the exercise.',
+        copy: 'Fieldcraft revision covers observation, movement, camouflage, field signals and safe teamwork, with explanations that avoid pretending one answer fits every local instruction.',
+        question: 'What is fieldcraft really training you to do?',
+        answer: 'Move, observe, communicate and work as a team while following the direction of qualified staff.'
+      },
+      'first-aid': {
+        kicker: 'Sample First Aid',
+        title: 'Clear first-aid recall, with safety first.',
+        copy: 'First aid cards focus on priority actions, calm decision-making and knowing when to get adult or emergency help.',
+        question: 'What should you check before helping a casualty?',
+        answer: 'Check for danger first. Do not put yourself or others at risk, and get qualified help immediately when needed.'
+      },
+      'navigation': {
+        kicker: 'Sample Navigation',
+        title: 'Map skills that build confidence.',
+        copy: 'Navigation practice breaks down symbols, grid references, contours, bearings and route planning into repeatable steps.',
+        question: 'Why do cadets learn grid references?',
+        answer: 'They let you describe a position clearly and quickly, so other people can understand exactly where you mean.'
+      },
+      'shooting': {
+        kicker: 'Sample Shooting',
+        title: 'Range safety before everything.',
+        copy: 'Shooting revision stays safety-led and procedural, with reminders that range work belongs under qualified supervision.',
+        question: 'What does safe range training depend on?',
+        answer: 'Listening to commands, following instructor control, and never treating weapon handling as self-directed.'
+      },
+      'skill-at-arms': {
+        kicker: 'Sample Skill at Arms',
+        title: 'Procedure without guesswork.',
+        copy: 'Skill at Arms topics vary by equipment and local instruction, so TANGO keeps cadets pointed back to current qualified teaching.',
+        question: 'Why should TANGO avoid guessing on weapon procedures?',
+        answer: 'Because small details matter. If a procedure depends on equipment or instruction, cadets must follow qualified staff.'
+      },
+      'military-knowledge': {
+        kicker: 'Sample Military Knowledge',
+        title: 'Know the structure you are part of.',
+        copy: 'Military knowledge previews rank structure, traditions, responsibilities and cadet context without pretending to be official policy.',
+        question: 'Why learn ranks and appointments?',
+        answer: 'They help cadets understand responsibility, address people correctly and work confidently in a team.'
+      },
+      'communications': {
+        kicker: 'Sample Communications & IT',
+        title: 'Short, clear, correct.',
+        copy: 'Comms practice focuses on clarity, procedure, message structure and safe digital habits.',
+        question: 'What matters most in a radio-style message?',
+        answer: 'Make it clear, concise and correctly structured so the receiver can act on it.'
+      },
+      'keeping-active': {
+        kicker: 'Sample Keeping Active',
+        title: 'Fitness that supports training.',
+        copy: 'Keeping Active content links wellbeing, steady training habits and healthy progress without encouraging unsafe extremes.',
+        question: 'What should good fitness training help cadets do?',
+        answer: 'Build stamina, confidence and resilience while staying safe and listening to their body.'
+      },
+      'community': {
+        kicker: 'Sample Community Engagement',
+        title: 'Service, teamwork and reflection.',
+        copy: 'Community topics show how volunteering, citizenship and teamwork fit the wider cadet experience.',
+        question: 'What makes community work meaningful?',
+        answer: 'It helps others, builds responsibility, and gives cadets a chance to reflect on how they contributed.'
+      }
+    };
+
+    var kicker = preview.querySelector('[data-subject-kicker]');
+    var title = preview.querySelector('[data-subject-title]');
+    var copy = preview.querySelector('[data-subject-copy]');
+    var question = preview.querySelector('[data-subject-question]');
+    var answer = preview.querySelector('[data-subject-answer]');
+
+    function show(key) {
+      var item = content[key] || content.drill;
+      if (kicker) kicker.textContent = item.kicker;
+      if (title) title.textContent = item.title;
+      if (copy) copy.textContent = item.copy;
+      if (question) question.textContent = item.question;
+      if (answer) answer.textContent = item.answer;
+      buttons.forEach(function (button) {
+        var active = button.getAttribute('data-subject') === key;
+        button.classList.toggle('is-active', active);
+        if (active) button.setAttribute('aria-pressed', 'true');
+        else button.setAttribute('aria-pressed', 'false');
+      });
+    }
+
+    buttons.forEach(function (button) {
+      button.setAttribute('aria-pressed', button.classList.contains('is-active') ? 'true' : 'false');
+      button.addEventListener('click', function () { show(button.getAttribute('data-subject')); });
+    });
+  }
+
+  function start() {
     counters();
     reveals();
     gallery();
@@ -179,5 +425,13 @@
     tilt();
     motes();
     voices();
-  });
+    tangoViewer();
+    subjectPreview();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
 })();
