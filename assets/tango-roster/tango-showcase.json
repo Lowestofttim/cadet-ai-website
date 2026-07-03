@@ -1,0 +1,2567 @@
+{
+  "generated_from": "assets/tango/level_states/manifest.json",
+  "classification": "owner_approved_production_artwork",
+  "production_ready": true,
+  "characters": [
+    {
+      "id": "tango_1",
+      "name": "Rook",
+      "slug": "rook",
+      "thumbnail": "assets/tango-roster/tango-rook-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "recruit",
+          "name": "Level 1: Recruit",
+          "image": "assets/tango-levels/rook/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "calibrated",
+          "name": "Level 2: Calibrated",
+          "image": "assets/tango-levels/rook/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "armored",
+          "name": "Level 3: Armored",
+          "image": "assets/tango-levels/rook/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "utility-ready",
+          "name": "Level 4: Utility Ready",
+          "image": "assets/tango-levels/rook/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "field-kit",
+          "name": "Level 5: Field Kit",
+          "image": "assets/tango-levels/rook/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "beacon-guard",
+          "name": "Level 6: Beacon Guard",
+          "image": "assets/tango-levels/rook/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "thigh-utility",
+          "name": "Level 7: Thigh Utility",
+          "image": "assets/tango-levels/rook/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "collar-armor",
+          "name": "Level 8: Collar Armor",
+          "image": "assets/tango-levels/rook/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "comms-pack",
+          "name": "Level 9: Comms Pack",
+          "image": "assets/tango-levels/rook/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "headwear-comms",
+          "name": "Level 10: Headwear Comms",
+          "image": "assets/tango-levels/rook/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "reinforced-shoulders",
+          "name": "Level 11: Reinforced Shoulders",
+          "image": "assets/tango-levels/rook/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "harness-kit",
+          "name": "Level 12: Harness Kit",
+          "image": "assets/tango-levels/rook/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "warm-stage-pack",
+          "name": "Level 13: Warm Stage Pack",
+          "image": "assets/tango-levels/rook/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "heavy-rig",
+          "name": "Level 14: Heavy Rig",
+          "image": "assets/tango-levels/rook/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "load-carriage",
+          "name": "Level 15: Load Carriage",
+          "image": "assets/tango-levels/rook/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "veteran-finish",
+          "name": "Level 16: Veteran Finish",
+          "image": "assets/tango-levels/rook/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "training-mantle",
+          "name": "Level 17: Training Mantle",
+          "image": "assets/tango-levels/rook/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-cloak",
+          "name": "Level 18: Elite Cloak",
+          "image": "assets/tango-levels/rook/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "prestige-aura",
+          "name": "Level 19: Prestige Aura",
+          "image": "assets/tango-levels/rook/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "prestige-mentor",
+          "name": "Level 20: Prestige Mentor",
+          "image": "assets/tango-levels/rook/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_2",
+      "name": "Gravel",
+      "slug": "gravel",
+      "thumbnail": "assets/tango-roster/tango-gravel-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "veteran-baseline",
+          "name": "Level 1: Veteran Baseline",
+          "image": "assets/tango-levels/gravel/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "visor-calibration",
+          "name": "Level 2: Visor Calibration",
+          "image": "assets/tango-levels/gravel/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "shoulder-guards",
+          "name": "Level 3: Shoulder Guards",
+          "image": "assets/tango-levels/gravel/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "ready-boots",
+          "name": "Level 4: Ready Boots",
+          "image": "assets/tango-levels/gravel/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "field-service-belt",
+          "name": "Level 5: Field Service Belt",
+          "image": "assets/tango-levels/gravel/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "service-panels",
+          "name": "Level 6: Service Panels",
+          "image": "assets/tango-levels/gravel/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "chest-beacon",
+          "name": "Level 7: Chest Beacon",
+          "image": "assets/tango-levels/gravel/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "thigh-utility",
+          "name": "Level 8: Thigh Utility",
+          "image": "assets/tango-levels/gravel/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "shoulder-comms",
+          "name": "Level 9: Shoulder Comms",
+          "image": "assets/tango-levels/gravel/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "veteran-collar",
+          "name": "Level 10: Veteran Collar",
+          "image": "assets/tango-levels/gravel/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "heavy-shoulders",
+          "name": "Level 11: Heavy Shoulders",
+          "image": "assets/tango-levels/gravel/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "mentor-stance",
+          "name": "Level 12: Mentor Stance",
+          "image": "assets/tango-levels/gravel/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "service-lighting",
+          "name": "Level 13: Service Lighting",
+          "image": "assets/tango-levels/gravel/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "comms-glow",
+          "name": "Level 14: Comms Glow",
+          "image": "assets/tango-levels/gravel/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "load-carriage",
+          "name": "Level 15: Load Carriage",
+          "image": "assets/tango-levels/gravel/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "restored-finish",
+          "name": "Level 16: Restored Finish",
+          "image": "assets/tango-levels/gravel/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "service-mantle",
+          "name": "Level 17: Service Mantle",
+          "image": "assets/tango-levels/gravel/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-restoration",
+          "name": "Level 18: Elite Restoration",
+          "image": "assets/tango-levels/gravel/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "prestige-lighting",
+          "name": "Level 19: Prestige Lighting",
+          "image": "assets/tango-levels/gravel/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "old-guard-prestige",
+          "name": "Level 20: Old Guard Prestige",
+          "image": "assets/tango-levels/gravel/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_3",
+      "name": "Taff",
+      "slug": "taff",
+      "thumbnail": "assets/tango-roster/tango-taff-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "emerald-baseline",
+          "name": "Level 1: Emerald Baseline",
+          "image": "assets/tango-levels/taff/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "visor-attunement",
+          "name": "Level 2: Visor Attunement",
+          "image": "assets/tango-levels/taff/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "sentinel-guards",
+          "name": "Level 3: Sentinel Guards",
+          "image": "assets/tango-levels/taff/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "ready-boots",
+          "name": "Level 4: Ready Boots",
+          "image": "assets/tango-levels/taff/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "mentor-field-belt",
+          "name": "Level 5: Mentor Field Belt",
+          "image": "assets/tango-levels/taff/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "emerald-panels",
+          "name": "Level 6: Emerald Panels",
+          "image": "assets/tango-levels/taff/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "chest-beacon",
+          "name": "Level 7: Chest Beacon",
+          "image": "assets/tango-levels/taff/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "leg-utility",
+          "name": "Level 8: Leg Utility",
+          "image": "assets/tango-levels/taff/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "shoulder-sensor",
+          "name": "Level 9: Shoulder Sensor",
+          "image": "assets/tango-levels/taff/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "mentor-collar",
+          "name": "Level 10: Mentor Collar",
+          "image": "assets/tango-levels/taff/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "guardian-shoulders",
+          "name": "Level 11: Guardian Shoulders",
+          "image": "assets/tango-levels/taff/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "calm-stance",
+          "name": "Level 12: Calm Stance",
+          "image": "assets/tango-levels/taff/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "emerald-lighting",
+          "name": "Level 13: Emerald Lighting",
+          "image": "assets/tango-levels/taff/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "comms-glow",
+          "name": "Level 14: Comms Glow",
+          "image": "assets/tango-levels/taff/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "specialist-harness",
+          "name": "Level 15: Specialist Harness",
+          "image": "assets/tango-levels/taff/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "polished-finish",
+          "name": "Level 16: Polished Finish",
+          "image": "assets/tango-levels/taff/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "mentor-mantle",
+          "name": "Level 17: Mentor Mantle",
+          "image": "assets/tango-levels/taff/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-sentinel",
+          "name": "Level 18: Elite Sentinel",
+          "image": "assets/tango-levels/taff/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "prestige-lighting",
+          "name": "Level 19: Prestige Lighting",
+          "image": "assets/tango-levels/taff/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "emerald-mentor-prestige",
+          "name": "Level 20: Emerald Mentor Prestige",
+          "image": "assets/tango-levels/taff/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_4",
+      "name": "Titan",
+      "slug": "titan",
+      "thumbnail": "assets/tango-roster/tango-titan-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "rescue-baseline",
+          "name": "Level 1: Rescue Baseline",
+          "image": "assets/tango-levels/titan/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "safety-visor",
+          "name": "Level 2: Safety Visor",
+          "image": "assets/tango-levels/titan/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "forearm-guards",
+          "name": "Level 3: Forearm Guards",
+          "image": "assets/tango-levels/titan/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "rescue-boots",
+          "name": "Level 4: Rescue Boots",
+          "image": "assets/tango-levels/titan/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "rescue-belt",
+          "name": "Level 5: Rescue Belt",
+          "image": "assets/tango-levels/titan/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "shoulder-pods",
+          "name": "Level 6: Shoulder Pods",
+          "image": "assets/tango-levels/titan/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "safety-core",
+          "name": "Level 7: Safety Core",
+          "image": "assets/tango-levels/titan/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "stabilizer-legs",
+          "name": "Level 8: Stabilizer Legs",
+          "image": "assets/tango-levels/titan/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "rescue-sensors",
+          "name": "Level 9: Rescue Sensors",
+          "image": "assets/tango-levels/titan/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "guardian-collar",
+          "name": "Level 10: Guardian Collar",
+          "image": "assets/tango-levels/titan/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "shield-forearms",
+          "name": "Level 11: Shield Forearms",
+          "image": "assets/tango-levels/titan/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "guardian-stance",
+          "name": "Level 12: Guardian Stance",
+          "image": "assets/tango-levels/titan/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "support-lighting",
+          "name": "Level 13: Support Lighting",
+          "image": "assets/tango-levels/titan/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "safety-comms",
+          "name": "Level 14: Safety Comms",
+          "image": "assets/tango-levels/titan/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "rescue-harness",
+          "name": "Level 15: Rescue Harness",
+          "image": "assets/tango-levels/titan/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "elite-finish",
+          "name": "Level 16: Elite Finish",
+          "image": "assets/tango-levels/titan/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "rescue-mantle",
+          "name": "Level 17: Rescue Mantle",
+          "image": "assets/tango-levels/titan/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-exoframe",
+          "name": "Level 18: Elite Exoframe",
+          "image": "assets/tango-levels/titan/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "safety-field",
+          "name": "Level 19: Safety Field",
+          "image": "assets/tango-levels/titan/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "titan-guardian-prestige",
+          "name": "Level 20: Titan Guardian Prestige",
+          "image": "assets/tango-levels/titan/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_5",
+      "name": "Spanner",
+      "slug": "spanner",
+      "thumbnail": "assets/tango-roster/tango-spanner-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "engineer-baseline",
+          "name": "Level 1: Engineer Baseline",
+          "image": "assets/tango-levels/spanner/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "diagnostic-visor",
+          "name": "Level 2: Diagnostic Visor",
+          "image": "assets/tango-levels/spanner/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "forearm-housings",
+          "name": "Level 3: Forearm Housings",
+          "image": "assets/tango-levels/spanner/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "workshop-boots",
+          "name": "Level 4: Workshop Boots",
+          "image": "assets/tango-levels/spanner/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "utility-belt",
+          "name": "Level 5: Utility Belt",
+          "image": "assets/tango-levels/spanner/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "shoulder-service-pods",
+          "name": "Level 6: Shoulder Service Pods",
+          "image": "assets/tango-levels/spanner/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "diagnostic-core",
+          "name": "Level 7: Diagnostic Core",
+          "image": "assets/tango-levels/spanner/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "reinforced-legs",
+          "name": "Level 8: Reinforced Legs",
+          "image": "assets/tango-levels/spanner/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "sensor-pods",
+          "name": "Level 9: Sensor Pods",
+          "image": "assets/tango-levels/spanner/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "engineer-collar",
+          "name": "Level 10: Engineer Collar",
+          "image": "assets/tango-levels/spanner/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "service-forearms",
+          "name": "Level 11: Service Forearms",
+          "image": "assets/tango-levels/spanner/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "repair-stance",
+          "name": "Level 12: Repair Stance",
+          "image": "assets/tango-levels/spanner/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "workshop-lighting",
+          "name": "Level 13: Workshop Lighting",
+          "image": "assets/tango-levels/spanner/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "diagnostic-comms",
+          "name": "Level 14: Diagnostic Comms",
+          "image": "assets/tango-levels/spanner/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "repair-harness",
+          "name": "Level 15: Repair Harness",
+          "image": "assets/tango-levels/spanner/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "elite-finish",
+          "name": "Level 16: Elite Finish",
+          "image": "assets/tango-levels/spanner/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "service-mantle",
+          "name": "Level 17: Service Mantle",
+          "image": "assets/tango-levels/spanner/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-exoframe",
+          "name": "Level 18: Elite Exoframe",
+          "image": "assets/tango-levels/spanner/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "prestige-diagnostics",
+          "name": "Level 19: Prestige Diagnostics",
+          "image": "assets/tango-levels/spanner/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "master-engineer-prestige",
+          "name": "Level 20: Master Engineer Prestige",
+          "image": "assets/tango-levels/spanner/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_6",
+      "name": "Wraith",
+      "slug": "wraith",
+      "thumbnail": "assets/tango-roster/tango-wraith-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "sentinel-baseline",
+          "name": "Level 1: Sentinel Baseline",
+          "image": "assets/tango-levels/wraith/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "red-visor-core",
+          "name": "Level 2: Red Visor Core",
+          "image": "assets/tango-levels/wraith/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "shield-shoulders",
+          "name": "Level 3: Shield Shoulders",
+          "image": "assets/tango-levels/wraith/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "broad-boots",
+          "name": "Level 4: Broad Boots",
+          "image": "assets/tango-levels/wraith/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "sensor-belt",
+          "name": "Level 5: Sensor Belt",
+          "image": "assets/tango-levels/wraith/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "forearm-shields",
+          "name": "Level 6: Forearm Shields",
+          "image": "assets/tango-levels/wraith/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "warning-core",
+          "name": "Level 7: Warning Core",
+          "image": "assets/tango-levels/wraith/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "twin-pod-backpack",
+          "name": "Level 8: Twin Pod Backpack",
+          "image": "assets/tango-levels/wraith/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "shield-backplate",
+          "name": "Level 9: Shield Backplate",
+          "image": "assets/tango-levels/wraith/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "collar-stabilizers",
+          "name": "Level 10: Collar Stabilizers",
+          "image": "assets/tango-levels/wraith/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "warning-emitters",
+          "name": "Level 11: Warning Emitters",
+          "image": "assets/tango-levels/wraith/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "planted-guardian",
+          "name": "Level 12: Planted Guardian",
+          "image": "assets/tango-levels/wraith/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "guardian-harness",
+          "name": "Level 13: Guardian Harness",
+          "image": "assets/tango-levels/wraith/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "blunt-stabilizers",
+          "name": "Level 14: Blunt Stabilizers",
+          "image": "assets/tango-levels/wraith/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "thigh-side-pods",
+          "name": "Level 15: Thigh Side Pods",
+          "image": "assets/tango-levels/wraith/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "matte-stealth-finish",
+          "name": "Level 16: Matte Stealth Finish",
+          "image": "assets/tango-levels/wraith/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "guardian-mantle",
+          "name": "Level 17: Guardian Mantle",
+          "image": "assets/tango-levels/wraith/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "sentinel-backpack",
+          "name": "Level 18: Sentinel Backpack",
+          "image": "assets/tango-levels/wraith/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "sentinel-field-glow",
+          "name": "Level 19: Sentinel Field Glow",
+          "image": "assets/tango-levels/wraith/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "guardian-prestige",
+          "name": "Level 20: Guardian Prestige",
+          "image": "assets/tango-levels/wraith/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_7",
+      "name": "Pip",
+      "slug": "pip",
+      "thumbnail": "assets/tango-roster/tango-pip-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "scout-baseline",
+          "name": "Level 1: Scout Baseline",
+          "image": "assets/tango-levels/pip/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "guidance-visor",
+          "name": "Level 2: Guidance Visor",
+          "image": "assets/tango-levels/pip/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "scout-fins",
+          "name": "Level 3: Scout Fins",
+          "image": "assets/tango-levels/pip/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "light-boots",
+          "name": "Level 4: Light Boots",
+          "image": "assets/tango-levels/pip/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "scout-belt",
+          "name": "Level 5: Scout Belt",
+          "image": "assets/tango-levels/pip/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "shoulder-winglets",
+          "name": "Level 6: Shoulder Winglets",
+          "image": "assets/tango-levels/pip/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "guidance-core",
+          "name": "Level 7: Guidance Core",
+          "image": "assets/tango-levels/pip/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "agile-legs",
+          "name": "Level 8: Agile Legs",
+          "image": "assets/tango-levels/pip/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "signal-pods",
+          "name": "Level 9: Signal Pods",
+          "image": "assets/tango-levels/pip/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "scout-collar",
+          "name": "Level 10: Scout Collar",
+          "image": "assets/tango-levels/pip/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "guidance-forearms",
+          "name": "Level 11: Guidance Forearms",
+          "image": "assets/tango-levels/pip/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "helpful-stance",
+          "name": "Level 12: Helpful Stance",
+          "image": "assets/tango-levels/pip/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "guide-lighting",
+          "name": "Level 13: Guide Lighting",
+          "image": "assets/tango-levels/pip/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "guidance-comms",
+          "name": "Level 14: Guidance Comms",
+          "image": "assets/tango-levels/pip/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "scout-harness",
+          "name": "Level 15: Scout Harness",
+          "image": "assets/tango-levels/pip/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "elite-finish",
+          "name": "Level 16: Elite Finish",
+          "image": "assets/tango-levels/pip/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "helper-mantle",
+          "name": "Level 17: Helper Mantle",
+          "image": "assets/tango-levels/pip/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-scout-wings",
+          "name": "Level 18: Elite Scout Wings",
+          "image": "assets/tango-levels/pip/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "guidance-field",
+          "name": "Level 19: Guidance Field",
+          "image": "assets/tango-levels/pip/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "guide-scout-prestige",
+          "name": "Level 20: Guide Scout Prestige",
+          "image": "assets/tango-levels/pip/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_8",
+      "name": "Ace",
+      "slug": "ace",
+      "thumbnail": "assets/tango-roster/tango-ace-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "stealth-baseline",
+          "name": "Level 1: Stealth Baseline",
+          "image": "assets/tango-levels/ace/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "green-visor-core",
+          "name": "Level 2: Green Visor Core",
+          "image": "assets/tango-levels/ace/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "signal-shoulders",
+          "name": "Level 3: Signal Shoulders",
+          "image": "assets/tango-levels/ace/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "slim-boots",
+          "name": "Level 4: Slim Boots",
+          "image": "assets/tango-levels/ace/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "signal-belt",
+          "name": "Level 5: Signal Belt",
+          "image": "assets/tango-levels/ace/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "forearm-sleeves",
+          "name": "Level 6: Forearm Sleeves",
+          "image": "assets/tango-levels/ace/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "signal-core",
+          "name": "Level 7: Signal Core",
+          "image": "assets/tango-levels/ace/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "twin-signal-backpack",
+          "name": "Level 8: Twin Signal Backpack",
+          "image": "assets/tango-levels/ace/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "stealth-backplate",
+          "name": "Level 9: Stealth Backplate",
+          "image": "assets/tango-levels/ace/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "collar-signal",
+          "name": "Level 10: Collar Signal",
+          "image": "assets/tango-levels/ace/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "wrist-emitters",
+          "name": "Level 11: Wrist Emitters",
+          "image": "assets/tango-levels/ace/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "specialist-stance",
+          "name": "Level 12: Specialist Stance",
+          "image": "assets/tango-levels/ace/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "signal-harness",
+          "name": "Level 13: Signal Harness",
+          "image": "assets/tango-levels/ace/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "blunt-stabilizers",
+          "name": "Level 14: Blunt Stabilizers",
+          "image": "assets/tango-levels/ace/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "thigh-signal-pods",
+          "name": "Level 15: Thigh Signal Pods",
+          "image": "assets/tango-levels/ace/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "satin-stealth-finish",
+          "name": "Level 16: Satin Stealth Finish",
+          "image": "assets/tango-levels/ace/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "stealth-mantle",
+          "name": "Level 17: Stealth Mantle",
+          "image": "assets/tango-levels/ace/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "signal-backpack",
+          "name": "Level 18: Signal Backpack",
+          "image": "assets/tango-levels/ace/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "signal-field-glow",
+          "name": "Level 19: Signal Field Glow",
+          "image": "assets/tango-levels/ace/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "operator-prestige",
+          "name": "Level 20: Operator Prestige",
+          "image": "assets/tango-levels/ace/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_9",
+      "name": "Fox",
+      "slug": "fox",
+      "thumbnail": "assets/tango-roster/tango-fox-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "recon-baseline",
+          "name": "Level 1: Recon Baseline",
+          "image": "assets/tango-levels/fox/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "amber-sensors",
+          "name": "Level 2: Amber Sensors",
+          "image": "assets/tango-levels/fox/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "shoulder-fins",
+          "name": "Level 3: Shoulder Fins",
+          "image": "assets/tango-levels/fox/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "terrain-boots",
+          "name": "Level 4: Terrain Boots",
+          "image": "assets/tango-levels/fox/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "ranger-belt",
+          "name": "Level 5: Ranger Belt",
+          "image": "assets/tango-levels/fox/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "signal-shoulders",
+          "name": "Level 6: Signal Shoulders",
+          "image": "assets/tango-levels/fox/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "guidance-core",
+          "name": "Level 7: Guidance Core",
+          "image": "assets/tango-levels/fox/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "long-leg-armor",
+          "name": "Level 8: Long Leg Armor",
+          "image": "assets/tango-levels/fox/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "recon-pods",
+          "name": "Level 9: Recon Pods",
+          "image": "assets/tango-levels/fox/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "ranger-collar",
+          "name": "Level 10: Ranger Collar",
+          "image": "assets/tango-levels/fox/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "scan-forearms",
+          "name": "Level 11: Scan Forearms",
+          "image": "assets/tango-levels/fox/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "pathfinder-stance",
+          "name": "Level 12: Pathfinder Stance",
+          "image": "assets/tango-levels/fox/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "locator-lighting",
+          "name": "Level 13: Locator Lighting",
+          "image": "assets/tango-levels/fox/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "signal-comms",
+          "name": "Level 14: Signal Comms",
+          "image": "assets/tango-levels/fox/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "recon-harness",
+          "name": "Level 15: Recon Harness",
+          "image": "assets/tango-levels/fox/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "elite-scout-finish",
+          "name": "Level 16: Elite Scout Finish",
+          "image": "assets/tango-levels/fox/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "ranger-mantle",
+          "name": "Level 17: Ranger Mantle",
+          "image": "assets/tango-levels/fox/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-recon-frame",
+          "name": "Level 18: Elite Recon Frame",
+          "image": "assets/tango-levels/fox/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "prestige-signal",
+          "name": "Level 19: Prestige Signal",
+          "image": "assets/tango-levels/fox/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "pathfinder-prestige",
+          "name": "Level 20: Pathfinder Prestige",
+          "image": "assets/tango-levels/fox/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_10",
+      "name": "Dawn",
+      "slug": "dawn",
+      "thumbnail": "assets/tango-roster/tango-dawn-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "guide-baseline",
+          "name": "Level 1: Guide Baseline",
+          "image": "assets/tango-levels/dawn/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "cyan-visor",
+          "name": "Level 2: Cyan Visor",
+          "image": "assets/tango-levels/dawn/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "shoulder-glow",
+          "name": "Level 3: Shoulder Glow",
+          "image": "assets/tango-levels/dawn/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "guide-boots",
+          "name": "Level 4: Guide Boots",
+          "image": "assets/tango-levels/dawn/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "beacon-sash",
+          "name": "Level 5: Beacon Sash",
+          "image": "assets/tango-levels/dawn/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "sunrise-shoulders",
+          "name": "Level 6: Sunrise Shoulders",
+          "image": "assets/tango-levels/dawn/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "guidance-core",
+          "name": "Level 7: Guidance Core",
+          "image": "assets/tango-levels/dawn/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "polished-legs",
+          "name": "Level 8: Polished Legs",
+          "image": "assets/tango-levels/dawn/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "navigation-beacons",
+          "name": "Level 9: Navigation Beacons",
+          "image": "assets/tango-levels/dawn/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "guide-collar",
+          "name": "Level 10: Guide Collar",
+          "image": "assets/tango-levels/dawn/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "guidance-forearms",
+          "name": "Level 11: Guidance Forearms",
+          "image": "assets/tango-levels/dawn/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "welcoming-stance",
+          "name": "Level 12: Welcoming Stance",
+          "image": "assets/tango-levels/dawn/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "path-lighting",
+          "name": "Level 13: Path Lighting",
+          "image": "assets/tango-levels/dawn/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "signal-comms",
+          "name": "Level 14: Signal Comms",
+          "image": "assets/tango-levels/dawn/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "guide-harness",
+          "name": "Level 15: Guide Harness",
+          "image": "assets/tango-levels/dawn/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "elite-pearl-finish",
+          "name": "Level 16: Elite Pearl Finish",
+          "image": "assets/tango-levels/dawn/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "guide-mantle",
+          "name": "Level 17: Guide Mantle",
+          "image": "assets/tango-levels/dawn/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-guide-frame",
+          "name": "Level 18: Elite Guide Frame",
+          "image": "assets/tango-levels/dawn/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "prestige-sunrise",
+          "name": "Level 19: Prestige Sunrise",
+          "image": "assets/tango-levels/dawn/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "radiant-guide-prestige",
+          "name": "Level 20: Radiant Guide Prestige",
+          "image": "assets/tango-levels/dawn/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_11",
+      "name": "Major",
+      "slug": "major",
+      "thumbnail": "assets/tango-roster/tango-major-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "stage-baseline",
+          "name": "Level 1: Stage Baseline",
+          "image": "assets/tango-levels/major/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "purple-visor-core",
+          "name": "Level 2: Purple Visor Core",
+          "image": "assets/tango-levels/major/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "stage-shoulders",
+          "name": "Level 3: Stage Shoulders",
+          "image": "assets/tango-levels/major/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "poised-boots",
+          "name": "Level 4: Poised Boots",
+          "image": "assets/tango-levels/major/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "stage-signal-belt",
+          "name": "Level 5: Stage Signal Belt",
+          "image": "assets/tango-levels/major/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "forearm-light-sleeves",
+          "name": "Level 6: Forearm Light Sleeves",
+          "image": "assets/tango-levels/major/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "spotlight-core",
+          "name": "Level 7: Spotlight Core",
+          "image": "assets/tango-levels/major/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "stage-power-backpack",
+          "name": "Level 8: Stage Power Backpack",
+          "image": "assets/tango-levels/major/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "stage-backplate",
+          "name": "Level 9: Stage Backplate",
+          "image": "assets/tango-levels/major/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "purple-collar-line",
+          "name": "Level 10: Purple Collar Line",
+          "image": "assets/tango-levels/major/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "wrist-stage-emitters",
+          "name": "Level 11: Wrist Stage Emitters",
+          "image": "assets/tango-levels/major/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "dramatic-leader-stance",
+          "name": "Level 12: Dramatic Leader Stance",
+          "image": "assets/tango-levels/major/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "theatrical-harness",
+          "name": "Level 13: Theatrical Harness",
+          "image": "assets/tango-levels/major/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "blunt-stabilizers",
+          "name": "Level 14: Blunt Stabilizers",
+          "image": "assets/tango-levels/major/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "thigh-light-pods",
+          "name": "Level 15: Thigh Light Pods",
+          "image": "assets/tango-levels/major/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "crimson-satin-finish",
+          "name": "Level 16: Crimson Satin Finish",
+          "image": "assets/tango-levels/major/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "theatrical-mantle",
+          "name": "Level 17: Theatrical Mantle",
+          "image": "assets/tango-levels/major/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "stage-power-pack",
+          "name": "Level 18: Stage Power Pack",
+          "image": "assets/tango-levels/major/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "performance-field-glow",
+          "name": "Level 19: Performance Field Glow",
+          "image": "assets/tango-levels/major/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "dramatic-prestige",
+          "name": "Level 20: Dramatic Prestige",
+          "image": "assets/tango-levels/major/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_12",
+      "name": "Mac",
+      "slug": "mac",
+      "thumbnail": "assets/tango-roster/tango-mac-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "sidekick-baseline",
+          "name": "Level 1: Sidekick Baseline",
+          "image": "assets/tango-levels/mac/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "green-visor",
+          "name": "Level 2: Green Visor",
+          "image": "assets/tango-levels/mac/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "shoulder-service-bands",
+          "name": "Level 3: Shoulder Service Bands",
+          "image": "assets/tango-levels/mac/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "big-helper-boots",
+          "name": "Level 4: Big Helper Boots",
+          "image": "assets/tango-levels/mac/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "utility-belt",
+          "name": "Level 5: Utility Belt",
+          "image": "assets/tango-levels/mac/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "audio-shoulders",
+          "name": "Level 6: Audio Shoulders",
+          "image": "assets/tango-levels/mac/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "helper-core",
+          "name": "Level 7: Helper Core",
+          "image": "assets/tango-levels/mac/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "steady-boots",
+          "name": "Level 8: Steady Boots",
+          "image": "assets/tango-levels/mac/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "backpack-service",
+          "name": "Level 9: Backpack Service",
+          "image": "assets/tango-levels/mac/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "helper-collar",
+          "name": "Level 10: Helper Collar",
+          "image": "assets/tango-levels/mac/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "diagnostic-forearms",
+          "name": "Level 11: Diagnostic Forearms",
+          "image": "assets/tango-levels/mac/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "cheerful-stance",
+          "name": "Level 12: Cheerful Stance",
+          "image": "assets/tango-levels/mac/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "boot-helper-lights",
+          "name": "Level 13: Boot Helper Lights",
+          "image": "assets/tango-levels/mac/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "audio-comms",
+          "name": "Level 14: Audio Comms",
+          "image": "assets/tango-levels/mac/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "utility-pack",
+          "name": "Level 15: Utility Pack",
+          "image": "assets/tango-levels/mac/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "elite-hard-shell",
+          "name": "Level 16: Elite Hard Shell",
+          "image": "assets/tango-levels/mac/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "service-mantle",
+          "name": "Level 17: Service Mantle",
+          "image": "assets/tango-levels/mac/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-sidekick-frame",
+          "name": "Level 18: Elite Sidekick Frame",
+          "image": "assets/tango-levels/mac/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "prestige-helper-glow",
+          "name": "Level 19: Prestige Helper Glow",
+          "image": "assets/tango-levels/mac/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "loyal-sidekick-prestige",
+          "name": "Level 20: Loyal Sidekick Prestige",
+          "image": "assets/tango-levels/mac/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_13",
+      "name": "Sparks",
+      "slug": "sparks",
+      "thumbnail": "assets/tango-roster/tango-sparks-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "buddy-baseline",
+          "name": "Level 1: Buddy Baseline",
+          "image": "assets/tango-levels/sparks/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "bright-eyes",
+          "name": "Level 2: Bright Eyes",
+          "image": "assets/tango-levels/sparks/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "shoulder-spark-pads",
+          "name": "Level 3: Shoulder Spark Pads",
+          "image": "assets/tango-levels/sparks/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "bouncy-boots",
+          "name": "Level 4: Bouncy Boots",
+          "image": "assets/tango-levels/sparks/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "energy-belt",
+          "name": "Level 5: Energy Belt",
+          "image": "assets/tango-levels/sparks/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "spark-shoulders",
+          "name": "Level 6: Spark Shoulders",
+          "image": "assets/tango-levels/sparks/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "spark-core",
+          "name": "Level 7: Spark Core",
+          "image": "assets/tango-levels/sparks/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "playful-boots",
+          "name": "Level 8: Playful Boots",
+          "image": "assets/tango-levels/sparks/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "battery-pack",
+          "name": "Level 9: Battery Pack",
+          "image": "assets/tango-levels/sparks/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "buddy-collar",
+          "name": "Level 10: Buddy Collar",
+          "image": "assets/tango-levels/sparks/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "diagnostic-forearms",
+          "name": "Level 11: Diagnostic Forearms",
+          "image": "assets/tango-levels/sparks/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "bounce-stance",
+          "name": "Level 12: Bounce Stance",
+          "image": "assets/tango-levels/sparks/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "boot-spark-lights",
+          "name": "Level 13: Boot Spark Lights",
+          "image": "assets/tango-levels/sparks/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "spark-comms",
+          "name": "Level 14: Spark Comms",
+          "image": "assets/tango-levels/sparks/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "energy-pack",
+          "name": "Level 15: Energy Pack",
+          "image": "assets/tango-levels/sparks/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "elite-blue-finish",
+          "name": "Level 16: Elite Blue Finish",
+          "image": "assets/tango-levels/sparks/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "energy-mantle",
+          "name": "Level 17: Energy Mantle",
+          "image": "assets/tango-levels/sparks/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-buddy-frame",
+          "name": "Level 18: Elite Buddy Frame",
+          "image": "assets/tango-levels/sparks/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "prestige-buddy-glow",
+          "name": "Level 19: Prestige Buddy Glow",
+          "image": "assets/tango-levels/sparks/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "super-buddy-prestige",
+          "name": "Level 20: Super Buddy Prestige",
+          "image": "assets/tango-levels/sparks/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_14",
+      "name": "Sarge",
+      "slug": "sarge",
+      "thumbnail": "assets/tango-roster/tango-sarge-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "trainer-baseline",
+          "name": "Level 1: Trainer Baseline",
+          "image": "assets/tango-levels/sarge/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "sensor-visor",
+          "name": "Level 2: Sensor Visor",
+          "image": "assets/tango-levels/sarge/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "shoulder-guards",
+          "name": "Level 3: Shoulder Guards",
+          "image": "assets/tango-levels/sarge/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "training-boots",
+          "name": "Level 4: Training Boots",
+          "image": "assets/tango-levels/sarge/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "coaching-belt",
+          "name": "Level 5: Coaching Belt",
+          "image": "assets/tango-levels/sarge/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "training-shoulders",
+          "name": "Level 6: Training Shoulders",
+          "image": "assets/tango-levels/sarge/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "coaching-core",
+          "name": "Level 7: Coaching Core",
+          "image": "assets/tango-levels/sarge/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "reinforced-boots",
+          "name": "Level 8: Reinforced Boots",
+          "image": "assets/tango-levels/sarge/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "coach-backplate",
+          "name": "Level 9: Coach Backplate",
+          "image": "assets/tango-levels/sarge/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "instructor-collar",
+          "name": "Level 10: Instructor Collar",
+          "image": "assets/tango-levels/sarge/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "posture-forearms",
+          "name": "Level 11: Posture Forearms",
+          "image": "assets/tango-levels/sarge/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "coaching-stance",
+          "name": "Level 12: Coaching Stance",
+          "image": "assets/tango-levels/sarge/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "boot-coach-lights",
+          "name": "Level 13: Boot Coach Lights",
+          "image": "assets/tango-levels/sarge/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "coach-comms",
+          "name": "Level 14: Coach Comms",
+          "image": "assets/tango-levels/sarge/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "training-harness",
+          "name": "Level 15: Training Harness",
+          "image": "assets/tango-levels/sarge/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "elite-gunmetal-finish",
+          "name": "Level 16: Elite Gunmetal Finish",
+          "image": "assets/tango-levels/sarge/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "training-mantle",
+          "name": "Level 17: Training Mantle",
+          "image": "assets/tango-levels/sarge/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "elite-trainer-frame",
+          "name": "Level 18: Elite Trainer Frame",
+          "image": "assets/tango-levels/sarge/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "prestige-coach-glow",
+          "name": "Level 19: Prestige Coach Glow",
+          "image": "assets/tango-levels/sarge/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "master-coach-prestige",
+          "name": "Level 20: Master Coach Prestige",
+          "image": "assets/tango-levels/sarge/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_15",
+      "name": "Forge",
+      "slug": "forge",
+      "thumbnail": "assets/tango-roster/tango-forge-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "forge-baseline",
+          "name": "Level 1: Forge Baseline",
+          "image": "assets/tango-levels/forge/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "orange-visor-core",
+          "name": "Level 2: Orange Visor Core",
+          "image": "assets/tango-levels/forge/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "heat-shoulders",
+          "name": "Level 3: Heat Shoulders",
+          "image": "assets/tango-levels/forge/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "stomp-guards",
+          "name": "Level 4: Stomp Guards",
+          "image": "assets/tango-levels/forge/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "belly-armor-band",
+          "name": "Level 5: Belly Armor Band",
+          "image": "assets/tango-levels/forge/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "forearm-heat-sleeves",
+          "name": "Level 6: Forearm Heat Sleeves",
+          "image": "assets/tango-levels/forge/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "furnace-core",
+          "name": "Level 7: Furnace Core",
+          "image": "assets/tango-levels/forge/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "rear-power-pods",
+          "name": "Level 8: Rear Power Pods",
+          "image": "assets/tango-levels/forge/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "heavy-backplate",
+          "name": "Level 9: Heavy Backplate",
+          "image": "assets/tango-levels/forge/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "layered-shoulders",
+          "name": "Level 10: Layered Shoulders",
+          "image": "assets/tango-levels/forge/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "protective-knuckles",
+          "name": "Level 11: Protective Knuckles",
+          "image": "assets/tango-levels/forge/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "grounded-guardian",
+          "name": "Level 12: Grounded Guardian",
+          "image": "assets/tango-levels/forge/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "industrial-harness",
+          "name": "Level 13: Industrial Harness",
+          "image": "assets/tango-levels/forge/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "rear-stabilizers",
+          "name": "Level 14: Rear Stabilizers",
+          "image": "assets/tango-levels/forge/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "thigh-heat-pods",
+          "name": "Level 15: Thigh Heat Pods",
+          "image": "assets/tango-levels/forge/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "deep-olive-finish",
+          "name": "Level 16: Deep Olive Finish",
+          "image": "assets/tango-levels/forge/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "heavy-mantle-plates",
+          "name": "Level 17: Heavy Mantle Plates",
+          "image": "assets/tango-levels/forge/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "foundry-power-pods",
+          "name": "Level 18: Foundry Power Pods",
+          "image": "assets/tango-levels/forge/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "foundry-edge-glow",
+          "name": "Level 19: Foundry Edge Glow",
+          "image": "assets/tango-levels/forge/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "foundry-prestige",
+          "name": "Level 20: Foundry Prestige",
+          "image": "assets/tango-levels/forge/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_16",
+      "name": "Zeta",
+      "slug": "zeta",
+      "thumbnail": "assets/tango-roster/tango-zeta-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "zeta-baseline",
+          "name": "Level 1: Zeta Baseline",
+          "image": "assets/tango-levels/zeta/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "multi-eye-core",
+          "name": "Level 2: Multi Eye Core",
+          "image": "assets/tango-levels/zeta/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "side-sensor-pods",
+          "name": "Level 3: Side Sensor Pods",
+          "image": "assets/tango-levels/zeta/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "rounded-pincer-caps",
+          "name": "Level 4: Rounded Pincer Caps",
+          "image": "assets/tango-levels/zeta/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "underside-hover-core",
+          "name": "Level 5: Underside Hover Core",
+          "image": "assets/tango-levels/zeta/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "sensor-pod-sleeves",
+          "name": "Level 6: Sensor Pod Sleeves",
+          "image": "assets/tango-levels/zeta/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "sensor-bar-core",
+          "name": "Level 7: Sensor Bar Core",
+          "image": "assets/tango-levels/zeta/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "twin-hover-pods",
+          "name": "Level 8: Twin Hover Pods",
+          "image": "assets/tango-levels/zeta/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "layered-carapace",
+          "name": "Level 9: Layered Carapace",
+          "image": "assets/tango-levels/zeta/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "wide-side-pods",
+          "name": "Level 10: Wide Side Pods",
+          "image": "assets/tango-levels/zeta/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "forelimb-shields",
+          "name": "Level 11: Forelimb Shields",
+          "image": "assets/tango-levels/zeta/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "floating-guardian",
+          "name": "Level 12: Floating Guardian",
+          "image": "assets/tango-levels/zeta/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "alien-carapace",
+          "name": "Level 13: Alien Carapace",
+          "image": "assets/tango-levels/zeta/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "rear-hover-stabilizers",
+          "name": "Level 14: Rear Hover Stabilizers",
+          "image": "assets/tango-levels/zeta/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "limb-light-pods",
+          "name": "Level 15: Limb Light Pods",
+          "image": "assets/tango-levels/zeta/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "ceramic-drone-finish",
+          "name": "Level 16: Ceramic Drone Finish",
+          "image": "assets/tango-levels/zeta/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "side-pod-shells",
+          "name": "Level 17: Side Pod Shells",
+          "image": "assets/tango-levels/zeta/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "full-hover-pods",
+          "name": "Level 18: Full Hover Pods",
+          "image": "assets/tango-levels/zeta/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "alien-edge-glow",
+          "name": "Level 19: Alien Edge Glow",
+          "image": "assets/tango-levels/zeta/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "alien-drone-prestige",
+          "name": "Level 20: Alien Drone Prestige",
+          "image": "assets/tango-levels/zeta/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_17",
+      "name": "Mercy",
+      "slug": "mercy",
+      "thumbnail": "assets/tango-roster/tango-mercy-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "support-baseline",
+          "name": "Level 1: Support Baseline",
+          "image": "assets/tango-levels/mercy/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "mint-visor-pulse",
+          "name": "Level 2: Mint Visor Pulse",
+          "image": "assets/tango-levels/mercy/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "comfort-shoulders",
+          "name": "Level 3: Comfort Shoulders",
+          "image": "assets/tango-levels/mercy/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "support-boots",
+          "name": "Level 4: Support Boots",
+          "image": "assets/tango-levels/mercy/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "utility-belt",
+          "name": "Level 5: Utility Belt",
+          "image": "assets/tango-levels/mercy/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "forearm-sleeves",
+          "name": "Level 6: Forearm Sleeves",
+          "image": "assets/tango-levels/mercy/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "pulse-core",
+          "name": "Level 7: Pulse Core",
+          "image": "assets/tango-levels/mercy/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "twin-backpack",
+          "name": "Level 8: Twin Backpack",
+          "image": "assets/tango-levels/mercy/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "smooth-backplate",
+          "name": "Level 9: Smooth Backplate",
+          "image": "assets/tango-levels/mercy/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "collar-canisters",
+          "name": "Level 10: Collar Canisters",
+          "image": "assets/tango-levels/mercy/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "care-emitters",
+          "name": "Level 11: Care Emitters",
+          "image": "assets/tango-levels/mercy/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "open-support-stance",
+          "name": "Level 12: Open Support Stance",
+          "image": "assets/tango-levels/mercy/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "support-harness",
+          "name": "Level 13: Support Harness",
+          "image": "assets/tango-levels/mercy/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "soft-winglets",
+          "name": "Level 14: Soft Winglets",
+          "image": "assets/tango-levels/mercy/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "thigh-side-pods",
+          "name": "Level 15: Thigh Side Pods",
+          "image": "assets/tango-levels/mercy/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "pearl-ceramic-finish",
+          "name": "Level 16: Pearl Ceramic Finish",
+          "image": "assets/tango-levels/mercy/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "guardian-mantle",
+          "name": "Level 17: Guardian Mantle",
+          "image": "assets/tango-levels/mercy/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "rescue-backpack",
+          "name": "Level 18: Rescue Backpack",
+          "image": "assets/tango-levels/mercy/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "care-field-glow",
+          "name": "Level 19: Care Field Glow",
+          "image": "assets/tango-levels/mercy/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "guardian-prestige",
+          "name": "Level 20: Guardian Prestige",
+          "image": "assets/tango-levels/mercy/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_18",
+      "name": "Chief",
+      "slug": "chief",
+      "thumbnail": "assets/tango-roster/tango-chief-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "veteran-baseline",
+          "name": "Level 1: Veteran Baseline",
+          "image": "assets/tango-levels/chief/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "lantern-visor",
+          "name": "Level 2: Lantern Visor",
+          "image": "assets/tango-levels/chief/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "repair-shoulders",
+          "name": "Level 3: Repair Shoulders",
+          "image": "assets/tango-levels/chief/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "morale-boots",
+          "name": "Level 4: Morale Boots",
+          "image": "assets/tango-levels/chief/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "repair-belt",
+          "name": "Level 5: Repair Belt",
+          "image": "assets/tango-levels/chief/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "service-sleeves",
+          "name": "Level 6: Service Sleeves",
+          "image": "assets/tango-levels/chief/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "lantern-core",
+          "name": "Level 7: Lantern Core",
+          "image": "assets/tango-levels/chief/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "battery-backpack",
+          "name": "Level 8: Battery Backpack",
+          "image": "assets/tango-levels/chief/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "repair-backplate",
+          "name": "Level 9: Repair Backplate",
+          "image": "assets/tango-levels/chief/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "collar-canisters",
+          "name": "Level 10: Collar Canisters",
+          "image": "assets/tango-levels/chief/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "morale-emitters",
+          "name": "Level 11: Morale Emitters",
+          "image": "assets/tango-levels/chief/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "mentor-stance",
+          "name": "Level 12: Mentor Stance",
+          "image": "assets/tango-levels/chief/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "service-harness",
+          "name": "Level 13: Service Harness",
+          "image": "assets/tango-levels/chief/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "stabilizer-shells",
+          "name": "Level 14: Stabilizer Shells",
+          "image": "assets/tango-levels/chief/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "thigh-side-pods",
+          "name": "Level 15: Thigh Side Pods",
+          "image": "assets/tango-levels/chief/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "restored-copper-finish",
+          "name": "Level 16: Restored Copper Finish",
+          "image": "assets/tango-levels/chief/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "morale-mantle",
+          "name": "Level 17: Morale Mantle",
+          "image": "assets/tango-levels/chief/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "restoration-backpack",
+          "name": "Level 18: Restoration Backpack",
+          "image": "assets/tango-levels/chief/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "morale-field-glow",
+          "name": "Level 19: Morale Field Glow",
+          "image": "assets/tango-levels/chief/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "morale-prestige",
+          "name": "Level 20: Morale Prestige",
+          "image": "assets/tango-levels/chief/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_19",
+      "name": "Regal",
+      "slug": "regal",
+      "thumbnail": "assets/tango-roster/tango-regal-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "regal-baseline",
+          "name": "Level 1: Regal Baseline",
+          "image": "assets/tango-levels/regal/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "visor-core-glow",
+          "name": "Level 2: Visor Core Glow",
+          "image": "assets/tango-levels/regal/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "broad-shoulder-plates",
+          "name": "Level 3: Broad Shoulder Plates",
+          "image": "assets/tango-levels/regal/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "reinforced-boots",
+          "name": "Level 4: Reinforced Boots",
+          "image": "assets/tango-levels/regal/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "upper-mantle-collar",
+          "name": "Level 5: Upper Mantle Collar",
+          "image": "assets/tango-levels/regal/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "layered-shoulder-capelet",
+          "name": "Level 6: Layered Shoulder Capelet",
+          "image": "assets/tango-levels/regal/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "gold-gauntlets",
+          "name": "Level 7: Gold Gauntlets",
+          "image": "assets/tango-levels/regal/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "hip-guard-panels",
+          "name": "Level 8: Hip Guard Panels",
+          "image": "assets/tango-levels/regal/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "split-back-mantle",
+          "name": "Level 9: Split Back Mantle",
+          "image": "assets/tango-levels/regal/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "white-visor-crest",
+          "name": "Level 10: White Visor Crest",
+          "image": "assets/tango-levels/regal/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "layered-bracers",
+          "name": "Level 11: Layered Bracers",
+          "image": "assets/tango-levels/regal/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "guardian-stage-form",
+          "name": "Level 12: Guardian Stage Form",
+          "image": "assets/tango-levels/regal/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "ornate-torso-armor",
+          "name": "Level 13: Ornate Torso Armor",
+          "image": "assets/tango-levels/regal/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "high-collar-panels",
+          "name": "Level 14: High Collar Panels",
+          "image": "assets/tango-levels/regal/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "luminous-regal-channels",
+          "name": "Level 15: Luminous Regal Channels",
+          "image": "assets/tango-levels/regal/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "satin-ceramic-finish",
+          "name": "Level 16: Satin Ceramic Finish",
+          "image": "assets/tango-levels/regal/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "wide-prestige-mantle",
+          "name": "Level 17: Wide Prestige Mantle",
+          "image": "assets/tango-levels/regal/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "refined-prestige-gauntlets",
+          "name": "Level 18: Refined Prestige Gauntlets",
+          "image": "assets/tango-levels/regal/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "black-gold-aura-form",
+          "name": "Level 19: Black Gold Aura Form",
+          "image": "assets/tango-levels/regal/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "regal-prestige",
+          "name": "Level 20: Regal Prestige",
+          "image": "assets/tango-levels/regal/level-020.webp"
+        }
+      ]
+    },
+    {
+      "id": "tango_20",
+      "name": "Ghost",
+      "slug": "ghost",
+      "thumbnail": "assets/tango-roster/tango-ghost-level-20-thumb.webp",
+      "levels": [
+        {
+          "level": 1,
+          "slug": "ghost-baseline",
+          "name": "Level 1: Ghost Baseline",
+          "image": "assets/tango-levels/ghost/level-001.webp"
+        },
+        {
+          "level": 2,
+          "slug": "emerald-visor-core",
+          "name": "Level 2: Emerald Visor Core",
+          "image": "assets/tango-levels/ghost/level-002.webp"
+        },
+        {
+          "level": 3,
+          "slug": "rounded-signal-guards",
+          "name": "Level 3: Rounded Signal Guards",
+          "image": "assets/tango-levels/ghost/level-003.webp"
+        },
+        {
+          "level": 4,
+          "slug": "reinforced-stealth-boots",
+          "name": "Level 4: Reinforced Stealth Boots",
+          "image": "assets/tango-levels/ghost/level-004.webp"
+        },
+        {
+          "level": 5,
+          "slug": "cowl-collar-core",
+          "name": "Level 5: Cowl Collar Core",
+          "image": "assets/tango-levels/ghost/level-005.webp"
+        },
+        {
+          "level": 6,
+          "slug": "side-signal-pods",
+          "name": "Level 6: Side Signal Pods",
+          "image": "assets/tango-levels/ghost/level-006.webp"
+        },
+        {
+          "level": 7,
+          "slug": "forearm-signal-bracers",
+          "name": "Level 7: Forearm Signal Bracers",
+          "image": "assets/tango-levels/ghost/level-007.webp"
+        },
+        {
+          "level": 8,
+          "slug": "split-stealth-panels",
+          "name": "Level 8: Split Stealth Panels",
+          "image": "assets/tango-levels/ghost/level-008.webp"
+        },
+        {
+          "level": 9,
+          "slug": "hip-signal-armor",
+          "name": "Level 9: Hip Signal Armor",
+          "image": "assets/tango-levels/ghost/level-009.webp"
+        },
+        {
+          "level": 10,
+          "slug": "bright-signal-visor",
+          "name": "Level 10: Bright Signal Visor",
+          "image": "assets/tango-levels/ghost/level-010.webp"
+        },
+        {
+          "level": 11,
+          "slug": "side-sensor-modules",
+          "name": "Level 11: Side Sensor Modules",
+          "image": "assets/tango-levels/ghost/level-011.webp"
+        },
+        {
+          "level": 12,
+          "slug": "signal-veil-stance",
+          "name": "Level 12: Signal Veil Stance",
+          "image": "assets/tango-levels/ghost/level-012.webp"
+        },
+        {
+          "level": 13,
+          "slug": "layered-stealth-torso",
+          "name": "Level 13: Layered Stealth Torso",
+          "image": "assets/tango-levels/ghost/level-013.webp"
+        },
+        {
+          "level": 14,
+          "slug": "high-cowl-panels",
+          "name": "Level 14: High Cowl Panels",
+          "image": "assets/tango-levels/ghost/level-014.webp"
+        },
+        {
+          "level": 15,
+          "slug": "luminous-ghost-channels",
+          "name": "Level 15: Luminous Ghost Channels",
+          "image": "assets/tango-levels/ghost/level-015.webp"
+        },
+        {
+          "level": 16,
+          "slug": "satin-charcoal-finish",
+          "name": "Level 16: Satin Charcoal Finish",
+          "image": "assets/tango-levels/ghost/level-016.webp"
+        },
+        {
+          "level": 17,
+          "slug": "wide-signal-cloak",
+          "name": "Level 17: Wide Signal Cloak",
+          "image": "assets/tango-levels/ghost/level-017.webp"
+        },
+        {
+          "level": 18,
+          "slug": "refined-stealth-gauntlets",
+          "name": "Level 18: Refined Stealth Gauntlets",
+          "image": "assets/tango-levels/ghost/level-018.webp"
+        },
+        {
+          "level": 19,
+          "slug": "emerald-veil-form",
+          "name": "Level 19: Emerald Veil Form",
+          "image": "assets/tango-levels/ghost/level-019.webp"
+        },
+        {
+          "level": 20,
+          "slug": "ghost-prestige",
+          "name": "Level 20: Ghost Prestige",
+          "image": "assets/tango-levels/ghost/level-020.webp"
+        }
+      ]
+    }
+  ]
+}
