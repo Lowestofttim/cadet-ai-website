@@ -395,7 +395,7 @@
     var question = preview.querySelector('[data-subject-question]');
     var answer = preview.querySelector('[data-subject-answer]');
 
-    function show(key) {
+    function show(key, shouldFocusPreview) {
       var item = content[key] || content.drill;
       if (kicker) kicker.textContent = item.kicker;
       if (title) title.textContent = item.title;
@@ -408,11 +408,24 @@
         if (active) button.setAttribute('aria-pressed', 'true');
         else button.setAttribute('aria-pressed', 'false');
       });
+      if (
+        shouldFocusPreview &&
+        window.matchMedia &&
+        window.matchMedia('(max-width: 700px)').matches
+      ) {
+        window.setTimeout(function () {
+          var top = preview.getBoundingClientRect().top + window.pageYOffset - 92;
+          window.scrollTo({
+            top: Math.max(0, top),
+            behavior: reduce ? 'auto' : 'smooth',
+          });
+        }, 120);
+      }
     }
 
     buttons.forEach(function (button) {
       button.setAttribute('aria-pressed', button.classList.contains('is-active') ? 'true' : 'false');
-      button.addEventListener('click', function () { show(button.getAttribute('data-subject')); });
+      button.addEventListener('click', function () { show(button.getAttribute('data-subject'), true); });
     });
   }
 
