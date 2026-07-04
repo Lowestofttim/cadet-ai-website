@@ -188,7 +188,7 @@
     var dataPromise = null;
     var characters = {};
     var current = null;
-    var levelIndex = 19;
+    var levelIndex = 0;
     var lastFocus = null;
 
     function requestJson(url) {
@@ -267,7 +267,7 @@
       lastFocus = document.activeElement;
       loadData().then(function () {
         current = characters[id] || characters.tango_1;
-        levelIndex = current && current.levels ? current.levels.length - 1 : 0;
+        levelIndex = 0;
         update();
         modal.hidden = false;
         document.body.classList.add('modal-open');
