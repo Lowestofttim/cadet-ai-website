@@ -11,12 +11,15 @@ const styles = read('styles.css');
 const siteJs = read('site.js');
 
 assert.match(index, /assets\/tango-roster\/tango-rook-level-1-plain\.webp/, 'Meet TANGO should use a plain/no-background runtime TANGO image');
+assert.doesNotMatch(index, /assets\/tango\.(?:webp|png)/, 'Homepage should not use the stale generic TANGO mascot image');
 assert.match(index, /data-tango-viewer/, 'Homepage should include an accessible TANGO viewer dialog');
 assert.match(index, /data-tango-open/g, 'Roster should expose TANGO open buttons');
 assert.match(index, /data-subject-preview/, 'Subject section should include an interactive preview panel');
 assert.match(index, /site\.js\?v=/, 'Homepage should cache-bust the interaction script');
 assert.match(siteJs, /function tangoViewer\(/, 'site.js should initialise the TANGO viewer');
 assert.match(siteJs, /XMLHttpRequest/, 'TANGO viewer should have a non-fetch JSON loading fallback');
+assert.doesNotMatch(siteJs, /levelIndex\s*=\s*current\s*&&\s*current\.levels\s*\?\s*current\.levels\.length\s*-\s*1\s*:\s*0/, 'TANGO viewer should not open characters at their final level');
+assert.match(siteJs, /levelIndex\s*=\s*0;\s*update\(\);/, 'TANGO viewer should open each character at level 1 before users scroll');
 assert.match(siteJs, /function subjectPreview\(/, 'site.js should initialise the subject preview');
 assert.match(siteJs, /document\.readyState/, 'site.js should initialise even if DOMContentLoaded has already fired');
 assert.match(styles, /\.tango-modal/, 'styles.css should style the TANGO viewer modal');
@@ -32,10 +35,14 @@ for (const character of data.characters) {
   assert.ok(character.name, `${character.id} needs a name`);
   assert.ok(character.thumbnail && exists(character.thumbnail), `${character.name} thumbnail should exist`);
   assert.equal(character.levels.length, 20, `${character.name} should include 20 levels`);
-  for (const level of character.levels) {
+  character.levels.forEach((level, index) => {
+    const expectedLevel = index + 1;
+    const expectedImage = `assets/tango-levels/${character.slug}/level-${String(expectedLevel).padStart(3, '0')}.webp`;
+    assert.equal(level.level, expectedLevel, `${character.name} levels should be ordered 1-20`);
+    assert.equal(level.image, expectedImage, `${character.name} level ${expectedLevel} should point at the ordered level image`);
     assert.ok(level.name, `${character.name} level ${level.level} needs a display name`);
     assert.ok(level.image && exists(level.image), `${character.name} level ${level.level} image should exist`);
-  }
+  });
 }
 
 const subjectButtonCount = (index.match(/data-subject="/g) || []).length;

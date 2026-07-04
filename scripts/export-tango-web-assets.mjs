@@ -71,9 +71,14 @@ for (const character of manifest.characters) {
 
 const rook = manifest.characters.find((character) => character.character_id === 'tango_1');
 const rookLevelOne = rook.levels.find((level) => level.level === 1);
+const rookLevelTwenty = rook.levels.find((level) => level.level === 20);
 copyFromApp(
   rookLevelOne.plain.hero,
   path.posix.join('assets/tango-roster', 'tango-rook-level-1-plain.webp'),
+);
+copyFromApp(
+  rookLevelTwenty.showcase.hero,
+  path.posix.join('assets/tango-roster', 'tango-rook-level-20.webp'),
 );
 
 fs.writeFileSync(
