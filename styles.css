@@ -812,6 +812,13 @@ body.modal-open { overflow: hidden; }
 
 /* ---- Voice sample player ("Hear TANGO") ---- */
 .voice-rail { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 22px; }
+.voice-rail.voice-grid {
+  max-height: 620px;
+  overflow: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--olive-bright) transparent;
+}
 .voice-card {
   display: flex; align-items: center; gap: 12px; padding: 12px 14px; text-align: left;
   border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
@@ -838,7 +845,10 @@ body.modal-open { overflow: hidden; }
 @keyframes eq { 0%,100% { height: 4px; } 50% { height: 16px; } }
 .voice-hint { font-size: .82rem; color: var(--muted-2); margin: 0 0 18px; }
 
-@media (max-width: 860px) { .voice-rail { grid-template-columns: 1fr; } }
+@media (max-width: 860px) {
+  .voice-rail { grid-template-columns: 1fr; }
+  .voice-rail.voice-grid { max-height: none; overflow: visible; padding-right: 0; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .tango-stage::before, .tango-stage.speaking img, .voice-card .eq i { animation: none !important; }
