@@ -549,9 +549,13 @@ body.modal-open { overflow: hidden; }
   outline-offset: 2px;
 }
 .tango-modal-art {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   min-height: 420px;
+  padding: 18px;
   border-radius: 16px;
   background:
     radial-gradient(circle at 50% 18%, rgba(212,175,55,.2), transparent 48%),
@@ -560,7 +564,7 @@ body.modal-open { overflow: hidden; }
 }
 .tango-modal-art img {
   width: min(100%, 360px);
-  max-height: 66vh;
+  max-height: 54vh;
   object-fit: contain;
   filter: drop-shadow(0 24px 34px rgba(0,0,0,.48));
 }
@@ -577,6 +581,8 @@ body.modal-open { overflow: hidden; }
   color: var(--gold);
   font-family: 'Oswald';
   letter-spacing: 1px;
+  margin: 0;
+  text-align: center;
   text-transform: uppercase;
 }
 .tango-modal-controls {
@@ -584,7 +590,8 @@ body.modal-open { overflow: hidden; }
   grid-template-columns: 44px minmax(0, 1fr) 44px;
   gap: 12px;
   align-items: center;
-  margin: 20px 0 16px;
+  width: min(100%, 430px);
+  margin: 0;
 }
 .tango-modal-controls button,
 .tango-level-rail button {
@@ -611,6 +618,7 @@ body.modal-open { overflow: hidden; }
   display: grid;
   grid-template-columns: repeat(10, minmax(0, 1fr));
   gap: 7px;
+  width: min(100%, 450px);
 }
 .tango-level-rail button {
   min-width: 0;
@@ -648,8 +656,8 @@ body.modal-open { overflow: hidden; }
   .tango-guardrails { grid-template-columns: 1fr; }
   .tango-modal { padding: 12px; align-items: end; }
   .tango-modal-panel { grid-template-columns: 1fr; gap: 14px; padding: 18px; max-height: 94vh; border-radius: 16px 16px 0 0; }
-  .tango-modal-art { min-height: 300px; }
-  .tango-modal-art img { width: min(100%, 280px); max-height: 46vh; }
+  .tango-modal-art { min-height: 0; padding: 14px 12px; }
+  .tango-modal-art img { width: min(100%, 260px); max-height: 36vh; }
   .tango-modal-copy { padding: 8px 0 0; }
   .grid.cols-3, .grid.cols-2, .steps, .split, .plans { grid-template-columns: 1fr; }
   .split { gap: 30px; }
@@ -785,6 +793,8 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 520px) {
   .tango-roster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tango-level-rail { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .tango-modal-controls { grid-template-columns: 42px minmax(0, 1fr) 42px; gap: 10px; }
+  .tango-modal-controls button { height: 42px; }
   .subject-question { min-height: 0; }
   .badge-strip { gap: 8px; }
   .chip { width: 100%; justify-content: center; }
