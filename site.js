@@ -81,8 +81,54 @@
   function nav() {
     var toggle = document.getElementById('navtoggle');
     if (!toggle) return;
+    var navHistoryOpen = false;
+
+    function replaceMenuHistory() {
+      if (navHistoryOpen && window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', window.location.href);
+      }
+      navHistoryOpen = false;
+    }
+
+    function openMenuHistory() {
+      if (window.history && window.history.pushState && !navHistoryOpen) {
+        window.history.pushState({ mobileNavOpen: true }, '', window.location.href);
+        navHistoryOpen = true;
+      }
+    }
+
+    function closeMenu(syncHistory) {
+      var shouldSyncHistory = syncHistory !== false;
+      toggle.checked = false;
+      if (shouldSyncHistory && navHistoryOpen && window.history && window.history.back) {
+        navHistoryOpen = false;
+        window.history.back();
+      } else {
+        replaceMenuHistory();
+      }
+    }
+
+    toggle.addEventListener('change', function () {
+      if (toggle.checked) {
+        openMenuHistory();
+      } else if (navHistoryOpen) {
+        closeMenu(true);
+      }
+    });
+
     document.querySelectorAll('.nav-links a').forEach(function (a) {
-      a.addEventListener('click', function () { toggle.checked = false; });
+      a.addEventListener('click', function () { closeMenu(false); });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && toggle.checked) closeMenu(true);
+    });
+
+    window.addEventListener('popstate', function () {
+      if (toggle.checked) {
+        navHistoryOpen = false;
+        toggle.checked = false;
+      }
     });
   }
 
@@ -197,6 +243,7 @@
     var current = null;
     var levelIndex = 0;
     var lastFocus = null;
+    var modalHistoryOpen = false;
 
     function requestJson(url) {
       if (window.fetch) {
@@ -233,6 +280,13 @@
           });
       }
       return dataPromise;
+    }
+
+    function pushModalHistory() {
+      if (window.history && window.history.pushState && !modalHistoryOpen) {
+        window.history.pushState({ tangoViewerOpen: true }, '', window.location.href);
+        modalHistoryOpen = true;
+      }
     }
 
     function renderLevelRail() {
@@ -278,16 +332,26 @@
         update();
         modal.hidden = false;
         document.body.classList.add('modal-open');
+        pushModalHistory();
         if (close) close.focus();
       }).catch(function () {
         if (levelName) levelName.textContent = 'TANGO gallery is loading slowly. Please try again.';
         modal.hidden = false;
+        document.body.classList.add('modal-open');
+        pushModalHistory();
       });
     }
 
-    function closeModal() {
+    function closeModal(syncHistory) {
+      var shouldSyncHistory = syncHistory !== false;
       modal.hidden = true;
       document.body.classList.remove('modal-open');
+      if (shouldSyncHistory && modalHistoryOpen && window.history && window.history.back) {
+        modalHistoryOpen = false;
+        window.history.back();
+      } else {
+        modalHistoryOpen = false;
+      }
       if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
     }
 
@@ -314,6 +378,9 @@
       if (event.key === 'Escape') closeModal();
       if (event.key === 'ArrowLeft') move(-1);
       if (event.key === 'ArrowRight') move(1);
+    });
+    window.addEventListener('popstate', function () {
+      if (!modal.hidden) closeModal(false);
     });
   }
 
