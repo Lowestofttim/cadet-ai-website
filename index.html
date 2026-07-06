@@ -23,7 +23,7 @@
   <meta property="og:image" content="https://cadetai.co.uk/assets/og-card.png">
   <link rel="icon" href="assets/app-icon.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
-  <link rel="stylesheet" href="styles.css?v=20260706-modal-nav-close">
+  <link rel="stylesheet" href="styles.css?v=20260706-gallery-tabs">
   <meta property="og:site_name" content="Cadet AI">
   <meta property="og:locale" content="en_GB">
   <meta property="og:image:width" content="1200">
@@ -156,58 +156,87 @@
         <div class="section-head" style="margin-bottom:0">
           <div class="eyebrow">See it in action</div>
           <h2>Real Screens. Real Training.</h2>
-          <p style="margin:0">Swipe through the app: home base, TANGO chat, character progression, quizzes, syllabus, progress, leaderboards and voice.</p>
+          <p style="margin:0">Swipe through phone and tablet views: home base, TANGO chat, character progression, quizzes, syllabus and progress.</p>
         </div>
-        <div class="gallery-nav">
-          <button type="button" data-gallery-prev aria-label="Previous screenshot">&#8592;</button>
-          <button type="button" data-gallery-next aria-label="Next screenshot">&#8594;</button>
+        <div class="gallery-actions">
+          <div class="gallery-tabs" role="tablist" aria-label="Screenshot device type">
+            <button class="is-active" type="button" role="tab" aria-selected="true" data-gallery-tab="phone">Phone</button>
+            <button type="button" role="tab" aria-selected="false" data-gallery-tab="tablet">Tablet</button>
+          </div>
+          <div class="gallery-nav">
+            <button type="button" data-gallery-prev aria-label="Previous screenshot">&#8592;</button>
+            <button type="button" data-gallery-next aria-label="Next screenshot">&#8594;</button>
+          </div>
         </div>
       </div>
 
-      <div class="shots" data-gallery>
+      <div class="shots is-active" data-gallery data-gallery-panel="phone" role="tabpanel" aria-label="Phone screenshots">
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/dashboard.webp" width="1200" height="1916" alt="Home hub with selected TANGO, rank, XP bar, quick actions and streak" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/phone/home.webp" width="1080" height="2400" alt="Phone home hub with selected TANGO, rank, XP bar, quick actions and streak" loading="lazy"></div>
           <figcaption><b>Your Base</b><span>TANGO, XP &amp; quick actions</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/chat.webp" width="1200" height="1916" alt="TANGO chat with the selected character and cadet training prompt chips" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/phone/chat.webp" width="1080" height="2400" alt="Phone TANGO chat with the selected character and cadet training prompt chips" loading="lazy"></div>
           <figcaption><b>Ask TANGO</b><span>Visual coach, grounded answers</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/character.webp" width="1200" height="1916" alt="TANGO Roster screen showing unlockable TANGO characters and selected Rook artwork" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/phone/tango-roster.webp" width="1080" height="2400" alt="Phone TANGO Roster showing unlockable TANGO characters and selected Rook artwork" loading="lazy"></div>
           <figcaption><b>Pick Your TANGO</b><span>20 characters, clear unlocks</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/tango-levels.webp" width="1200" height="1916" alt="TANGO level ladder showing the next unlock requirement and level 1 to 20 progression" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/phone/tango-levels.webp" width="1080" height="2400" alt="Phone TANGO level ladder showing the next unlock requirement and level 1 to 20 progression" loading="lazy"></div>
           <figcaption><b>Earn Every Level</b><span>Visible targets from 1 to 20</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/quiz.webp" width="1080" height="2254" alt="Quiz question with the correct answer highlighted and an explanation" loading="lazy"></div>
-          <figcaption><b>Drill the Quizzes</b><span>Every answer explained</span></figcaption>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/phone/quiz.webp" width="1080" height="2400" alt="Phone quiz question with four answer choices and the correct answer explained" loading="lazy"></div>
+          <figcaption><b>Drill the Quizzes</b><span>Choices, feedback &amp; explanation</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/training.webp" width="1200" height="1916" alt="Training hub with revision quiz, Daily TANGO Challenge, mock assessment and review mistakes" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/phone/training.webp" width="1080" height="2400" alt="Phone training hub with revision quiz, Daily TANGO Challenge, mock assessment and review mistakes" loading="lazy"></div>
           <figcaption><b>Train Your Way</b><span>Daily, revision &amp; challenge</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/syllabus.webp" width="1080" height="2254" alt="Training syllabus across every cadet subject with progress" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/phone/syllabus.webp" width="1080" height="2400" alt="Phone training syllabus across every cadet subject with progress" loading="lazy"></div>
           <figcaption><b>Follow the Syllabus</b><span>Every subject &amp; star level</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/achievements.webp" width="1200" height="1916" alt="Progress screen showing selected TANGO command card, streak calendar and stats" loading="lazy"></div>
+          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/phone/progress.webp" width="1080" height="2400" alt="Phone progress screen showing selected TANGO command card, streak calendar and stats" loading="lazy"></div>
+          <figcaption><b>Track Progress</b><span>Streaks, stats &amp; TANGO goals</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="shots" data-gallery data-gallery-panel="tablet" role="tabpanel" aria-label="Tablet screenshots" hidden>
+        <figure class="shot">
+          <div class="tablet-frame"><span class="glare" aria-hidden="true"></span><img src="assets/shots/tablet/home.webp" width="1200" height="2000" alt="Tablet home hub with selected TANGO, progress and quick actions" loading="lazy"></div>
+          <figcaption><b>Your Base</b><span>TANGO, XP &amp; quick actions</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="tablet-frame"><span class="glare" aria-hidden="true"></span><img src="assets/shots/tablet/chat.webp" width="1200" height="2000" alt="Tablet TANGO chat with selected character and message area" loading="lazy"></div>
+          <figcaption><b>Ask TANGO</b><span>Visual coach, grounded answers</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="tablet-frame"><span class="glare" aria-hidden="true"></span><img src="assets/shots/tablet/training.webp" width="1200" height="2000" alt="Tablet training hub with revision quiz, challenge and assessment actions" loading="lazy"></div>
+          <figcaption><b>Train Your Way</b><span>Daily, revision &amp; challenge</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="tablet-frame"><span class="glare" aria-hidden="true"></span><img src="assets/shots/tablet/tango-roster.webp" width="1200" height="2000" alt="Tablet TANGO Roster showing characters and unlockable progression" loading="lazy"></div>
+          <figcaption><b>Pick Your TANGO</b><span>20 characters, clear unlocks</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="tablet-frame"><span class="glare" aria-hidden="true"></span><img src="assets/shots/tablet/tango-levels.webp" width="1200" height="2000" alt="Tablet TANGO level ladder with next unlock requirements" loading="lazy"></div>
+          <figcaption><b>Earn Every Level</b><span>Visible targets from 1 to 20</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="tablet-frame"><span class="glare" aria-hidden="true"></span><img src="assets/shots/tablet/progress.webp" width="1200" height="2000" alt="Tablet progress screen showing stats, TANGO and awards" loading="lazy"></div>
           <figcaption><b>Track Progress</b><span>Streaks, stats &amp; TANGO goals</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/leaderboard.webp" width="620" height="1033" alt="Opt-in national and unit leaderboards" loading="lazy"></div>
-          <figcaption><b>Climb the Board</b><span>Opt-in, off by default</span></figcaption>
+          <div class="tablet-frame"><span class="glare" aria-hidden="true"></span><img src="assets/shots/tablet/syllabus.webp" width="1200" height="2000" alt="Tablet syllabus screen covering cadet subjects and lessons" loading="lazy"></div>
+          <figcaption><b>Follow the Syllabus</b><span>Every subject &amp; star level</span></figcaption>
         </figure>
         <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/premium-tangos.webp" width="1200" height="1916" alt="Cadet AI premium screen showing Plus and Pro TANGO benefits" loading="lazy"></div>
-          <figcaption><b>Unlock More</b><span>Plus and Pro TANGO paths</span></figcaption>
-        </figure>
-        <figure class="shot">
-          <div class="phone"><span class="glare" aria-hidden="true"></span><img src="assets/shots/voice.webp" width="620" height="1033" alt="Settings showing TANGO read-aloud and premium neural voice" loading="lazy"></div>
-          <figcaption><b>Hear TANGO</b><span>Read-aloud &amp; neural voice</span></figcaption>
+          <div class="tablet-frame"><span class="glare" aria-hidden="true"></span><img src="assets/shots/tablet/settings.webp" width="1200" height="2000" alt="Tablet settings screen with account and app preferences" loading="lazy"></div>
+          <figcaption><b>Set It Up</b><span>Voice, safety &amp; preferences</span></figcaption>
         </figure>
       </div>
     </div>
@@ -549,6 +578,6 @@
       <p class="footer-note">Independent study aid. Not an official MOD, ACF, CCF or Cadet Forces product, and not endorsed by them. &copy; 2026 Cadet AI.</p>
     </div>
   </footer>
-  <script src="site.js?v=20260706-modal-nav-close" defer></script>
+  <script src="site.js?v=20260706-gallery-tabs" defer></script>
 </body>
 </html>
