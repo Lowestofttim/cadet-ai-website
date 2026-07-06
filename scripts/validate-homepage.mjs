@@ -22,8 +22,10 @@ assert.doesNotMatch(siteJs, /levelIndex\s*=\s*current\s*&&\s*current\.levels\s*\
 assert.match(siteJs, /levelIndex\s*=\s*0;\s*update\(\);/, 'TANGO viewer should open each character at level 1 before users scroll');
 assert.match(siteJs, /function subjectPreview\(/, 'site.js should initialise the subject preview');
 assert.match(siteJs, /document\.readyState/, 'site.js should initialise even if DOMContentLoaded has already fired');
+assert.match(siteJs, /audio\.playbackRate\s*=\s*rate/, 'Voice player should apply per-TANGO launch speaking-rate tuning');
 assert.match(styles, /\.tango-modal/, 'styles.css should style the TANGO viewer modal');
 assert.match(styles, /\.subject-preview/, 'styles.css should style the subject preview');
+assert.match(styles, /\.voice-card\.elite/, 'Elite Pro voice cards should have distinct premium styling');
 
 const dataPath = 'assets/tango-roster/tango-showcase.json';
 assert.ok(exists(dataPath), 'TANGO showcase JSON should exist');
@@ -47,6 +49,43 @@ for (const character of data.characters) {
 
 const subjectButtonCount = (index.match(/data-subject="/g) || []).length;
 assert.ok(subjectButtonCount >= 10, 'Subject preview should include at least 10 subject buttons');
+
+const expectedVoiceRates = new Map([
+  ['tango_1', '0.94'],
+  ['tango_2', '0.86'],
+  ['tango_3', '0.91'],
+  ['tango_4', '0.84'],
+  ['tango_5', '0.96'],
+  ['tango_6', '0.80'],
+  ['tango_7', '0.99'],
+  ['tango_8', '0.93'],
+  ['tango_9', '0.88'],
+  ['tango_10', '0.98'],
+  ['tango_11', '0.90'],
+  ['tango_12', '0.91'],
+  ['tango_13', '1.02'],
+  ['tango_14', '0.95'],
+  ['tango_15', '0.78'],
+  ['tango_16', '0.84'],
+  ['tango_17', '0.92'],
+  ['tango_18', '0.89'],
+  ['tango_19', '0.82'],
+  ['tango_20', '0.87'],
+]);
+const proVoiceIds = new Set(['tango_6', 'tango_15', 'tango_16', 'tango_19', 'tango_20']);
+const voiceCardMatches = [...index.matchAll(/<button class="voice-card([^"]*)"[^>]*data-voice="(tango_\d+)"[^>]*data-src="([^"]+)"[^>]*data-rate="([^"]+)"[^>]*data-tier="([^"]+)"/g)];
+assert.equal(voiceCardMatches.length, 20, 'Homepage should expose all 20 TANGO voice previews');
+for (const [, classes, id, src, rate, tier] of voiceCardMatches) {
+  assert.ok(expectedVoiceRates.has(id), `${id} should be a known TANGO voice`);
+  assert.equal(rate, expectedVoiceRates.get(id), `${id} should use the app launch speaking-rate tuning`);
+  assert.ok(exists(src), `${id} voice preview audio should exist`);
+  if (proVoiceIds.has(id)) {
+    assert.match(classes, /\belite\b/, `${id} should be visually marked as elite`);
+    assert.equal(tier, 'Elite Pro HD voice', `${id} should be labelled Elite Pro HD voice`);
+  } else {
+    assert.equal(tier, 'Premium HD voice', `${id} should be labelled Premium HD voice`);
+  }
+}
 
 for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.html'))) {
   const html = read(file);

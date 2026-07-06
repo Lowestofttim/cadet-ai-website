@@ -162,6 +162,13 @@
         var p = card.querySelector('.play'); if (p) p.innerHTML = '&#10074;&#10074;';
         if (tango) tango.classList.add('speaking');
         audio.src = card.getAttribute('data-src');
+        var rate = parseFloat(card.getAttribute('data-rate') || '1');
+        if (!Number.isFinite(rate) || rate <= 0) rate = 1;
+        audio.defaultPlaybackRate = rate;
+        audio.playbackRate = rate;
+        if ('preservesPitch' in audio) audio.preservesPitch = true;
+        if ('mozPreservesPitch' in audio) audio.mozPreservesPitch = true;
+        if ('webkitPreservesPitch' in audio) audio.webkitPreservesPitch = true;
         var pr = audio.play();
         if (pr && pr.catch) pr.catch(function () { stop(); });
       });

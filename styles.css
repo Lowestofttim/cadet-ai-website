@@ -833,7 +833,12 @@ body.modal-open { overflow: hidden; }
 .voice-card .meta b { display: block; font-family: 'Oswald'; text-transform: uppercase; letter-spacing: .5px; color: #fff; font-size: .92rem; }
 .voice-card .meta span { display: block; color: var(--muted); font-size: .8rem; line-height: 1.35; }
 .voice-card .accent { font-family: 'Oswald'; font-size: .64rem; letter-spacing: 1px; text-transform: uppercase; color: var(--green-light); margin-top: 2px; }
-.voice-card.pro .accent::after { content: " · Premium"; color: var(--gold); }
+.voice-card .tier { color: var(--green-light); font-weight: 700; }
+.voice-card.elite {
+  border-color: rgba(212,175,55,.5);
+  background: linear-gradient(135deg, rgba(212,175,55,.14), rgba(21,27,22,.88) 52%, rgba(46,125,50,.12));
+}
+.voice-card.elite .tier { color: var(--gold); }
 .voice-card.playing { border-color: var(--gold); box-shadow: 0 0 0 1px rgba(212,175,55,.3), 0 14px 30px rgba(0,0,0,.35); }
 .voice-card.playing .play { background: var(--gold); color: var(--ink-0); }
 .voice-card .eq { display: none; align-items: flex-end; gap: 2px; height: 16px; flex: 0 0 auto; }
