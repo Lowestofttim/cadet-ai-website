@@ -54,25 +54,60 @@
 
   /* ---- 3. Screenshot gallery: arrow controls + state --------------- */
   function gallery() {
+    var panels = document.querySelectorAll('[data-gallery-panel]');
     var track = document.querySelector('[data-gallery]');
     if (!track) return;
     var prev = document.querySelector('[data-gallery-prev]');
     var next = document.querySelector('[data-gallery-next]');
     if (!prev || !next) return;
+    var tabs = document.querySelectorAll('[data-gallery-tab]');
+
+    function activeTrack() {
+      if (!panels.length) return track;
+      for (var i = 0; i < panels.length; i++) {
+        if (!panels[i].hidden) return panels[i];
+      }
+      return panels[0];
+    }
 
     function page() {
-      var card = track.querySelector('.shot');
-      var step = card ? card.getBoundingClientRect().width + 26 : track.clientWidth * 0.8;
+      var current = activeTrack();
+      var card = current.querySelector('.shot');
+      var step = card ? card.getBoundingClientRect().width + 26 : current.clientWidth * 0.8;
       return Math.max(step, 200);
     }
     function sync() {
-      var max = track.scrollWidth - track.clientWidth - 4;
-      prev.disabled = track.scrollLeft <= 4;
-      next.disabled = track.scrollLeft >= max;
+      var current = activeTrack();
+      var max = current.scrollWidth - current.clientWidth - 4;
+      prev.disabled = current.scrollLeft <= 4;
+      next.disabled = current.scrollLeft >= max;
     }
-    prev.addEventListener('click', function () { track.scrollBy({ left: -page(), behavior: reduce ? 'auto' : 'smooth' }); });
-    next.addEventListener('click', function () { track.scrollBy({ left: page(), behavior: reduce ? 'auto' : 'smooth' }); });
-    track.addEventListener('scroll', function () { window.requestAnimationFrame(sync); }, { passive: true });
+    function setGallery(name) {
+      panels.forEach(function (panel) {
+        var active = panel.getAttribute('data-gallery-panel') === name;
+        panel.hidden = !active;
+        panel.classList.toggle('is-active', active);
+        if (active) panel.scrollLeft = 0;
+      });
+      tabs.forEach(function (tab) {
+        var active = tab.getAttribute('data-gallery-tab') === name;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      sync();
+    }
+    prev.addEventListener('click', function () { activeTrack().scrollBy({ left: -page(), behavior: reduce ? 'auto' : 'smooth' }); });
+    next.addEventListener('click', function () { activeTrack().scrollBy({ left: page(), behavior: reduce ? 'auto' : 'smooth' }); });
+    if (panels.length) {
+      panels.forEach(function (panel) {
+        panel.addEventListener('scroll', function () { window.requestAnimationFrame(sync); }, { passive: true });
+      });
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () { setGallery(tab.getAttribute('data-gallery-tab')); });
+      });
+    } else {
+      track.addEventListener('scroll', function () { window.requestAnimationFrame(sync); }, { passive: true });
+    }
     window.addEventListener('resize', sync);
     sync();
   }
