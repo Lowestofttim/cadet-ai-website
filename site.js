@@ -220,8 +220,8 @@
 
   /* ---- 8. Voice-sample player + TANGO "speaking" reaction --------- */
   function voices() {
-    var rail = document.querySelector('[data-voices]');
-    if (!rail) return;
+    var rails = document.querySelectorAll('[data-voices]');
+    if (!rails.length) return;
     var tango = document.querySelector('[data-tango]');
     var audio = new Audio();
     var current = null;
@@ -234,6 +234,7 @@
       current = null;
     }
     function stop() { try { audio.pause(); } catch (e) {} reset(); }
+    rails.forEach(function (rail) {
     rail.querySelectorAll('.voice-card').forEach(function (card) {
       card.addEventListener('click', function () {
         if (current === card) { stop(); return; }
@@ -253,6 +254,7 @@
         var pr = audio.play();
         if (pr && pr.catch) pr.catch(function () { stop(); });
       });
+    });
     });
     audio.addEventListener('ended', reset);
     audio.addEventListener('error', reset);
