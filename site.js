@@ -276,6 +276,8 @@
     var next = modal.querySelector('[data-tango-next]');
     var close = modal.querySelector('.tango-modal-close');
     var video = modal.querySelector('[data-tango-video]');
+    var videoWrap = modal.querySelector('[data-tango-video-wrap]');
+    var playOverlay = modal.querySelector('[data-tango-play]');
     var levelsToggle = modal.querySelector('[data-tango-levels-toggle]');
     var levelsToggleLabel = modal.querySelector('[data-tango-levels-toggle-label]');
     var levelsPanel = modal.querySelector('[data-tango-levels-panel]');
@@ -374,7 +376,9 @@
       if (levels0 && levels0.image) video.poster = levels0.image;
       if (src) { video.src = src; } else { video.removeAttribute('src'); }
       video.load();
+      video.controls = false;
       video.setAttribute('aria-label', current.name + ' TANGO intro film');
+      if (videoWrap) videoWrap.classList.remove('is-playing');
     }
 
     function collapseLevels() {
@@ -443,6 +447,17 @@
     });
     closeButtons.forEach(function (button) { button.addEventListener('click', closeModal); });
     if (levelsToggle) levelsToggle.addEventListener('click', toggleLevels);
+    if (playOverlay) playOverlay.addEventListener('click', function () {
+      if (!video) return;
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+    if (video) {
+      video.addEventListener('play', function () { video.controls = true; if (videoWrap) videoWrap.classList.add('is-playing'); });
+      video.addEventListener('playing', function () { video.controls = true; if (videoWrap) videoWrap.classList.add('is-playing'); });
+      video.addEventListener('pause', function () { if (videoWrap) videoWrap.classList.remove('is-playing'); });
+      video.addEventListener('ended', function () { if (videoWrap) videoWrap.classList.remove('is-playing'); });
+    }
     if (prev) prev.addEventListener('click', function () { move(-1); });
     if (next) next.addEventListener('click', function () { move(1); });
     if (range) range.addEventListener('input', function () {
