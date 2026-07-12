@@ -8,6 +8,7 @@
       "name": "Rook",
       "slug": "rook",
       "thumbnail": "assets/tango-roster/tango-rook-level-20-thumb.webp",
+      "video": "assets/tango-videos/rook.mp4",
       "levels": [
         {
           "level": 1,
@@ -136,6 +137,7 @@
       "name": "Gravel",
       "slug": "gravel",
       "thumbnail": "assets/tango-roster/tango-gravel-level-20-thumb.webp",
+      "video": "assets/tango-videos/gravel.mp4",
       "levels": [
         {
           "level": 1,
@@ -264,6 +266,7 @@
       "name": "Taff",
       "slug": "taff",
       "thumbnail": "assets/tango-roster/tango-taff-level-20-thumb.webp",
+      "video": "assets/tango-videos/taff.mp4",
       "levels": [
         {
           "level": 1,
@@ -392,6 +395,7 @@
       "name": "Titan",
       "slug": "titan",
       "thumbnail": "assets/tango-roster/tango-titan-level-20-thumb.webp",
+      "video": "assets/tango-videos/titan.mp4",
       "levels": [
         {
           "level": 1,
@@ -520,6 +524,7 @@
       "name": "Spanner",
       "slug": "spanner",
       "thumbnail": "assets/tango-roster/tango-spanner-level-20-thumb.webp",
+      "video": "assets/tango-videos/spanner.mp4",
       "levels": [
         {
           "level": 1,
@@ -648,6 +653,7 @@
       "name": "Wraith",
       "slug": "wraith",
       "thumbnail": "assets/tango-roster/tango-wraith-level-20-thumb.webp",
+      "video": "assets/tango-videos/wraith.mp4",
       "levels": [
         {
           "level": 1,
@@ -776,6 +782,7 @@
       "name": "Pip",
       "slug": "pip",
       "thumbnail": "assets/tango-roster/tango-pip-level-20-thumb.webp",
+      "video": "assets/tango-videos/pip.mp4",
       "levels": [
         {
           "level": 1,
@@ -904,6 +911,7 @@
       "name": "Ace",
       "slug": "ace",
       "thumbnail": "assets/tango-roster/tango-ace-level-20-thumb.webp",
+      "video": "assets/tango-videos/ace.mp4",
       "levels": [
         {
           "level": 1,
@@ -1032,6 +1040,7 @@
       "name": "Fox",
       "slug": "fox",
       "thumbnail": "assets/tango-roster/tango-fox-level-20-thumb.webp",
+      "video": "assets/tango-videos/fox.mp4",
       "levels": [
         {
           "level": 1,
@@ -1160,6 +1169,7 @@
       "name": "Dawn",
       "slug": "dawn",
       "thumbnail": "assets/tango-roster/tango-dawn-level-20-thumb.webp",
+      "video": "assets/tango-videos/dawn.mp4",
       "levels": [
         {
           "level": 1,
@@ -1288,6 +1298,7 @@
       "name": "Major",
       "slug": "major",
       "thumbnail": "assets/tango-roster/tango-major-level-20-thumb.webp",
+      "video": "assets/tango-videos/major.mp4",
       "levels": [
         {
           "level": 1,
@@ -1416,6 +1427,7 @@
       "name": "Mac",
       "slug": "mac",
       "thumbnail": "assets/tango-roster/tango-mac-level-20-thumb.webp",
+      "video": "assets/tango-videos/mac.mp4",
       "levels": [
         {
           "level": 1,
@@ -1544,6 +1556,7 @@
       "name": "Sparks",
       "slug": "sparks",
       "thumbnail": "assets/tango-roster/tango-sparks-level-20-thumb.webp",
+      "video": "assets/tango-videos/sparks.mp4",
       "levels": [
         {
           "level": 1,
@@ -1672,6 +1685,7 @@
       "name": "Sarge",
       "slug": "sarge",
       "thumbnail": "assets/tango-roster/tango-sarge-level-20-thumb.webp",
+      "video": "assets/tango-videos/sarge.mp4",
       "levels": [
         {
           "level": 1,
@@ -1800,6 +1814,7 @@
       "name": "Forge",
       "slug": "forge",
       "thumbnail": "assets/tango-roster/tango-forge-level-20-thumb.webp",
+      "video": "assets/tango-videos/forge.mp4",
       "levels": [
         {
           "level": 1,
@@ -1928,6 +1943,7 @@
       "name": "Zeta",
       "slug": "zeta",
       "thumbnail": "assets/tango-roster/tango-zeta-level-20-thumb.webp",
+      "video": "assets/tango-videos/zeta.mp4",
       "levels": [
         {
           "level": 1,
@@ -2056,6 +2072,7 @@
       "name": "Mercy",
       "slug": "mercy",
       "thumbnail": "assets/tango-roster/tango-mercy-level-20-thumb.webp",
+      "video": "assets/tango-videos/mercy.mp4",
       "levels": [
         {
           "level": 1,
@@ -2184,6 +2201,7 @@
       "name": "Chief",
       "slug": "chief",
       "thumbnail": "assets/tango-roster/tango-chief-level-20-thumb.webp",
+      "video": "assets/tango-videos/chief.mp4",
       "levels": [
         {
           "level": 1,
@@ -2312,6 +2330,7 @@
       "name": "Regal",
       "slug": "regal",
       "thumbnail": "assets/tango-roster/tango-regal-level-20-thumb.webp",
+      "video": "assets/tango-videos/regal.mp4",
       "levels": [
         {
           "level": 1,
@@ -2440,6 +2459,7 @@
       "name": "Ghost",
       "slug": "ghost",
       "thumbnail": "assets/tango-roster/tango-ghost-level-20-thumb.webp",
+      "video": "assets/tango-videos/ghost.mp4",
       "levels": [
         {
           "level": 1,
