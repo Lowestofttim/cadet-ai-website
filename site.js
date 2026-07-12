@@ -275,12 +275,17 @@
     var prev = modal.querySelector('[data-tango-prev]');
     var next = modal.querySelector('[data-tango-next]');
     var close = modal.querySelector('.tango-modal-close');
+    var video = modal.querySelector('[data-tango-video]');
+    var levelsToggle = modal.querySelector('[data-tango-levels-toggle]');
+    var levelsToggleLabel = modal.querySelector('[data-tango-levels-toggle-label]');
+    var levelsPanel = modal.querySelector('[data-tango-levels-panel]');
     var dataPromise = null;
     var characters = {};
     var current = null;
     var levelIndex = 0;
     var lastFocus = null;
     var modalHistoryOpen = false;
+    var levelsRendered = false;
 
     function requestJson(url) {
       if (window.fetch) {
@@ -361,12 +366,44 @@
       renderLevelRail();
     }
 
+    function setVideo() {
+      if (!video || !current) return;
+      var src = current.video || '';
+      var levels0 = current.levels && current.levels[0];
+      video.pause();
+      if (levels0 && levels0.image) video.poster = levels0.image;
+      if (src) { video.src = src; } else { video.removeAttribute('src'); }
+      video.load();
+      video.setAttribute('aria-label', current.name + ' TANGO intro film');
+    }
+
+    function collapseLevels() {
+      if (levelsPanel) levelsPanel.hidden = true;
+      if (levelsToggle) levelsToggle.setAttribute('aria-expanded', 'false');
+      if (levelsToggleLabel) levelsToggleLabel.textContent = 'Browse all 20 levels';
+    }
+
+    function expandLevels() {
+      if (!levelsRendered) { update(); levelsRendered = true; }
+      if (levelsPanel) levelsPanel.hidden = false;
+      if (levelsToggle) levelsToggle.setAttribute('aria-expanded', 'true');
+      if (levelsToggleLabel) levelsToggleLabel.textContent = 'Hide levels';
+    }
+
+    function toggleLevels() {
+      if (levelsPanel && levelsPanel.hidden) expandLevels();
+      else collapseLevels();
+    }
+
     function openModal(id) {
       lastFocus = document.activeElement;
       loadData().then(function () {
         current = characters[id] || characters.tango_1;
         levelIndex = 0;
-        update();
+        levelsRendered = false;
+        collapseLevels();
+        setVideo();
+        if (name) name.textContent = current.name;
         modal.hidden = false;
         document.body.classList.add('modal-open');
         pushModalHistory();
@@ -381,6 +418,7 @@
 
     function closeModal(syncHistory) {
       var shouldSyncHistory = syncHistory !== false;
+      if (video) video.pause();
       modal.hidden = true;
       document.body.classList.remove('modal-open');
       if (shouldSyncHistory && modalHistoryOpen && window.history && window.history.back) {
@@ -404,6 +442,7 @@
       });
     });
     closeButtons.forEach(function (button) { button.addEventListener('click', closeModal); });
+    if (levelsToggle) levelsToggle.addEventListener('click', toggleLevels);
     if (prev) prev.addEventListener('click', function () { move(-1); });
     if (next) next.addEventListener('click', function () { move(1); });
     if (range) range.addEventListener('input', function () {
@@ -413,8 +452,10 @@
     document.addEventListener('keydown', function (event) {
       if (modal.hidden) return;
       if (event.key === 'Escape') closeModal();
-      if (event.key === 'ArrowLeft') move(-1);
-      if (event.key === 'ArrowRight') move(1);
+      if (levelsPanel && !levelsPanel.hidden) {
+        if (event.key === 'ArrowLeft') move(-1);
+        if (event.key === 'ArrowRight') move(1);
+      }
     });
     window.addEventListener('popstate', function () {
       if (!modal.hidden) closeModal(false);

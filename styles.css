@@ -663,6 +663,41 @@ body.modal-open { overflow: hidden; }
   background: var(--gold);
   color: var(--ink-0);
 }
+.tango-modal-video {
+  width: min(100%, 320px);
+  aspect-ratio: 9 / 16;
+  max-height: 60vh;
+  border-radius: 16px;
+  border: 1px solid rgba(212,175,55,.34);
+  background: #000;
+  object-fit: cover;
+  box-shadow: 0 24px 48px rgba(0,0,0,.55);
+}
+.tango-levels-toggle {
+  appearance: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 18px;
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Oswald';
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  font-size: .82rem;
+}
+.tango-levels-toggle:hover { border-color: var(--gold); color: #fff; }
+.tango-levels-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.tango-levels-toggle[aria-expanded="true"] { border-color: var(--gold); color: var(--gold); }
+.tango-levels-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding-top: 4px;
+}
+.tango-levels-panel[hidden] { display: none; }
 
 /* ---- Wordmark sheen on the brand name (subtle, like the app login) ---- */
 .brand .name.sheen {
@@ -691,6 +726,7 @@ body.modal-open { overflow: hidden; }
   .tango-modal-panel { grid-template-columns: 1fr; gap: 14px; padding: 18px; max-height: 94vh; border-radius: 16px 16px 0 0; }
   .tango-modal-art { min-height: 0; padding: 14px 12px; }
   .tango-modal-art img { width: min(100%, 260px); max-height: 36vh; }
+  .tango-modal-video { width: min(100%, 240px); max-height: 52vh; }
   .tango-modal-copy { padding: 8px 0 0; }
   .gallery-head { align-items: flex-start; }
   .gallery-actions { width: 100%; justify-content: space-between; }
