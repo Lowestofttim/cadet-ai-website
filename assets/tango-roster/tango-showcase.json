@@ -9,6 +9,8 @@
       "slug": "rook",
       "thumbnail": "assets/tango-roster/tango-rook-level-20-thumb.webp",
       "video": "assets/tango-videos/rook.mp4",
+      "role": "The steady recruit",
+      "bio": "Fresh out of basic, keen and unflappable. Rook is where every cadet's story begins.",
       "levels": [
         {
           "level": 1,
@@ -138,6 +140,8 @@
       "slug": "gravel",
       "thumbnail": "assets/tango-roster/tango-gravel-level-20-thumb.webp",
       "video": "assets/tango-videos/gravel.mp4",
+      "role": "The grizzled veteran",
+      "bio": "Years in the field have worn his voice to gravel. He's seen it all and tells it to you straight.",
       "levels": [
         {
           "level": 1,
@@ -267,6 +271,8 @@
       "slug": "taff",
       "thumbnail": "assets/tango-roster/tango-taff-level-20-thumb.webp",
       "video": "assets/tango-videos/taff.mp4",
+      "role": "The Welsh mentor",
+      "bio": "Warm, patient and quietly proud. Taff explains things like he has all the time in the world for you.",
       "levels": [
         {
           "level": 1,
@@ -396,6 +402,8 @@
       "slug": "titan",
       "thumbnail": "assets/tango-roster/tango-titan-level-20-thumb.webp",
       "video": "assets/tango-videos/titan.mp4",
+      "role": "The gentle giant",
+      "bio": "Built like a tank, soft as they come. Titan brings the heavy reassurance when the pressure is on.",
       "levels": [
         {
           "level": 1,
@@ -525,6 +533,8 @@
       "slug": "spanner",
       "thumbnail": "assets/tango-roster/tango-spanner-level-20-thumb.webp",
       "video": "assets/tango-videos/spanner.mp4",
+      "role": "The field engineer",
+      "bio": "Brisk, practical and always mid-repair. Spanner would rather show you than tell you.",
       "levels": [
         {
           "level": 1,
@@ -654,6 +664,8 @@
       "slug": "wraith",
       "thumbnail": "assets/tango-roster/tango-wraith-level-20-thumb.webp",
       "video": "assets/tango-videos/wraith.mp4",
+      "role": "The menacing sentinel",
+      "bio": "Cold, watchful and elite. Wraith says little — but you will want to be sharp when he is around.",
       "levels": [
         {
           "level": 1,
@@ -783,6 +795,8 @@
       "slug": "pip",
       "thumbnail": "assets/tango-roster/tango-pip-level-20-thumb.webp",
       "video": "assets/tango-videos/pip.mp4",
+      "role": "The helpful assistant",
+      "bio": "Bright, quick and endlessly upbeat. Pip is the buddy who actually enjoys revision.",
       "levels": [
         {
           "level": 1,
@@ -912,6 +926,8 @@
       "slug": "ace",
       "thumbnail": "assets/tango-roster/tango-ace-level-20-thumb.webp",
       "video": "assets/tango-videos/ace.mp4",
+      "role": "The cool operator",
+      "bio": "Smooth, confident and never rattled. Ace makes the hard stuff look easy.",
       "levels": [
         {
           "level": 1,
@@ -1041,6 +1057,8 @@
       "slug": "fox",
       "thumbnail": "assets/tango-roster/tango-fox-level-20-thumb.webp",
       "video": "assets/tango-videos/fox.mp4",
+      "role": "The dependable scout",
+      "bio": "Weathered, sharp-eyed and calm under pressure. Fox always knows the ground.",
       "levels": [
         {
           "level": 1,
@@ -1170,6 +1188,8 @@
       "slug": "dawn",
       "thumbnail": "assets/tango-roster/tango-dawn-level-20-thumb.webp",
       "video": "assets/tango-videos/dawn.mp4",
+      "role": "The welcoming guide",
+      "bio": "Sunny and encouraging. Dawn is the one who makes a new recruit feel right at home.",
       "levels": [
         {
           "level": 1,
@@ -1299,6 +1319,8 @@
       "slug": "major",
       "thumbnail": "assets/tango-roster/tango-major-level-20-thumb.webp",
       "video": "assets/tango-videos/major.mp4",
+      "role": "The dramatic leader",
+      "bio": "All parade-ground presence and big moments. Major leads from the front — loudly.",
       "levels": [
         {
           "level": 1,
@@ -1428,6 +1450,8 @@
       "slug": "mac",
       "thumbnail": "assets/tango-roster/tango-mac-level-20-thumb.webp",
       "video": "assets/tango-videos/mac.mp4",
+      "role": "The Scottish sidekick",
+      "bio": "Loyal to the bone and always in your corner. Mac has your six, every time.",
       "levels": [
         {
           "level": 1,
@@ -1557,6 +1581,8 @@
       "slug": "sparks",
       "thumbnail": "assets/tango-roster/tango-sparks-level-20-thumb.webp",
       "video": "assets/tango-videos/sparks.mp4",
+      "role": "The excitable buddy",
+      "bio": "Fizzing with energy and hopeless at sitting still. Sparks makes revision feel like a laugh.",
       "levels": [
         {
           "level": 1,
@@ -1686,6 +1712,8 @@
       "slug": "sarge",
       "thumbnail": "assets/tango-roster/tango-sarge-level-20-thumb.webp",
       "video": "assets/tango-videos/sarge.mp4",
+      "role": "The strict drill instructor",
+      "bio": "Sharp, no-nonsense and impossible to slouch around. Sarge gets the very best out of you.",
       "levels": [
         {
           "level": 1,
@@ -1815,6 +1843,8 @@
       "slug": "forge",
       "thumbnail": "assets/tango-roster/tango-forge-level-20-thumb.webp",
       "video": "assets/tango-videos/forge.mp4",
+      "role": "The faceless mech",
+      "bio": "Heavy industrial power, no face and no fuss. Forge just gets the job done.",
       "levels": [
         {
           "level": 1,
@@ -1944,6 +1974,8 @@
       "slug": "zeta",
       "thumbnail": "assets/tango-roster/tango-zeta-level-20-thumb.webp",
       "video": "assets/tango-videos/zeta.mp4",
+      "role": "The alien drone",
+      "bio": "Strange, precise and not quite of this world. Zeta sees things differently.",
       "levels": [
         {
           "level": 1,
@@ -2073,6 +2105,8 @@
       "slug": "mercy",
       "thumbnail": "assets/tango-roster/tango-mercy-level-20-thumb.webp",
       "video": "assets/tango-videos/mercy.mp4",
+      "role": "The caring medic",
+      "bio": "Calm hands and a kind word. Mercy keeps everyone standing, whatever it takes.",
       "levels": [
         {
           "level": 1,
@@ -2202,6 +2236,8 @@
       "slug": "chief",
       "thumbnail": "assets/tango-roster/tango-chief-level-20-thumb.webp",
       "video": "assets/tango-videos/chief.mp4",
+      "role": "The Yorkshire morale-booster",
+      "bio": "Blunt, warm and full of northern charm. Chief will have you grinning through the graft.",
       "levels": [
         {
           "level": 1,
@@ -2331,6 +2367,8 @@
       "slug": "regal",
       "thumbnail": "assets/tango-roster/tango-regal-level-20-thumb.webp",
       "video": "assets/tango-videos/regal.mp4",
+      "role": "The commander",
+      "bio": "Composed, authoritative and every inch the leader. Regal expects your best and earns it.",
       "levels": [
         {
           "level": 1,
@@ -2460,6 +2498,8 @@
       "slug": "ghost",
       "thumbnail": "assets/tango-roster/tango-ghost-level-20-thumb.webp",
       "video": "assets/tango-videos/ghost.mp4",
+      "role": "The silent specialist",
+      "bio": "Rarely seen, never heard coming. Ghost is the one who has already done the job.",
       "levels": [
         {
           "level": 1,
