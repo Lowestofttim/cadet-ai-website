@@ -23,7 +23,7 @@
   <meta property="og:image" content="https://cadetai.co.uk/assets/og-card.png">
   <link rel="icon" href="assets/app-icon.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
-  <link rel="stylesheet" href="styles.css?v=20260712-tap-play">
+  <link rel="stylesheet" href="styles.css?v=20260713-autoplay">
   <meta property="og:site_name" content="Cadet AI">
   <meta property="og:locale" content="en_GB">
   <meta property="og:image:width" content="1200">
@@ -322,8 +322,8 @@
       <button class="tango-modal-close" type="button" data-tango-close aria-label="Close TANGO showcase">&times;</button>
       <div class="tango-modal-art">
         <div class="tango-video-wrap" data-tango-video-wrap>
-          <video class="tango-modal-video" data-tango-video playsinline webkit-playsinline preload="metadata" width="720" height="1280" poster="assets/tango-levels/rook/level-001.webp"></video>
-          <button class="tango-video-play" type="button" data-tango-play aria-label="Play intro film"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+          <video class="tango-modal-video" data-tango-video playsinline webkit-playsinline muted preload="auto" width="480" height="854" poster="assets/tango-levels/rook/level-001.webp"></video>
+          <button class="tango-video-play" type="button" data-tango-play aria-label="Play intro film with sound"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span class="tango-play-label">Tap for sound</span></button>
         </div>
         <button class="tango-levels-toggle" type="button" data-tango-levels-toggle aria-expanded="false" aria-controls="tango-levels-panel"><span data-tango-levels-toggle-label>Browse all 20 levels</span></button>
         <div class="tango-levels-panel" id="tango-levels-panel" data-tango-levels-panel hidden>
@@ -606,6 +606,6 @@
       <p class="footer-note">Independent study aid. Not an official MOD, ACF, CCF or Cadet Forces product, and not endorsed by them. &copy; 2026 Cadet AI.</p>
     </div>
   </footer>
-  <script src="site.js?v=20260712-tap-play" defer></script>
+  <script src="site.js?v=20260713-autoplay" defer></script>
 </body>
 </html>

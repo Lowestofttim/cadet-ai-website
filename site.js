@@ -368,17 +368,39 @@
       renderLevelRail();
     }
 
+    function playMuted() {
+      if (!video) return;
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {
+        var once = function () {
+          video.removeEventListener('canplay', once);
+          var q = video.play();
+          if (q && q.catch) q.catch(function () {});
+        };
+        video.addEventListener('canplay', once);
+      });
+    }
+
     function setVideo() {
       if (!video || !current) return;
       var src = current.video || '';
       var levels0 = current.levels && current.levels[0];
       video.pause();
       if (levels0 && levels0.image) video.poster = levels0.image;
-      if (src) { video.src = src; } else { video.removeAttribute('src'); }
-      video.load();
+      video.muted = true;
+      video.setAttribute('muted', '');
+      video.preload = 'auto';
       video.controls = false;
-      video.setAttribute('aria-label', current.name + ' TANGO intro film');
-      if (videoWrap) videoWrap.classList.remove('is-playing');
+      video.setAttribute('aria-label', current.name + ' TANGO intro film — tap for sound');
+      if (videoWrap) videoWrap.classList.remove('has-sound');
+      if (src) {
+        video.src = src;
+        video.load();
+        playMuted();
+      } else {
+        video.removeAttribute('src');
+        video.load();
+      }
     }
 
     function collapseLevels() {
@@ -449,14 +471,25 @@
     if (levelsToggle) levelsToggle.addEventListener('click', toggleLevels);
     if (playOverlay) playOverlay.addEventListener('click', function () {
       if (!video) return;
+      var firstUnmute = video.muted;
+      video.muted = false;
+      video.removeAttribute('muted');
+      video.controls = true;
+      if (firstUnmute || video.ended) { try { video.currentTime = 0; } catch (e) {} }
       var p = video.play();
       if (p && p.catch) p.catch(function () {});
     });
     if (video) {
-      video.addEventListener('play', function () { video.controls = true; if (videoWrap) videoWrap.classList.add('is-playing'); });
-      video.addEventListener('playing', function () { video.controls = true; if (videoWrap) videoWrap.classList.add('is-playing'); });
-      video.addEventListener('pause', function () { if (videoWrap) videoWrap.classList.remove('is-playing'); });
-      video.addEventListener('ended', function () { if (videoWrap) videoWrap.classList.remove('is-playing'); });
+      var syncSound = function () {
+        if (!videoWrap) return;
+        if (!video.muted && !video.paused) videoWrap.classList.add('has-sound');
+        else videoWrap.classList.remove('has-sound');
+      };
+      video.addEventListener('play', syncSound);
+      video.addEventListener('playing', syncSound);
+      video.addEventListener('volumechange', syncSound);
+      video.addEventListener('pause', function () { if (videoWrap) videoWrap.classList.remove('has-sound'); });
+      video.addEventListener('ended', function () { if (videoWrap) videoWrap.classList.remove('has-sound'); });
     }
     if (prev) prev.addEventListener('click', function () { move(-1); });
     if (next) next.addEventListener('click', function () { move(1); });

@@ -685,27 +685,40 @@ body.modal-open { overflow: hidden; }
   inset: 0;
   z-index: 2;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   border: 0;
   border-radius: 16px;
   cursor: pointer;
   color: #fff;
-  background: radial-gradient(circle at 50% 45%, rgba(0,0,0,.18), rgba(0,0,0,.5));
+  background: radial-gradient(circle at 50% 45%, rgba(0,0,0,.12), rgba(0,0,0,.34));
   -webkit-tap-highlight-color: transparent;
 }
 .tango-video-play > svg {
   box-sizing: content-box;
-  width: 34px;
-  height: 34px;
-  padding: 16px 16px 16px 19px;
+  width: 26px;
+  height: 26px;
+  padding: 15px 15px 15px 18px;
   border-radius: 50%;
-  background: rgba(13,15,12,.72);
-  border: 1px solid rgba(212,175,55,.55);
+  background: rgba(13,15,12,.74);
+  border: 1px solid rgba(212,175,55,.6);
   box-shadow: 0 10px 30px rgba(0,0,0,.55);
 }
+.tango-play-label {
+  font-family: 'Oswald';
+  font-weight: 600;
+  font-size: .8rem;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  background: rgba(13,15,12,.74);
+  border: 1px solid rgba(212,175,55,.4);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
 .tango-video-play:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.tango-video-wrap.is-playing .tango-video-play { display: none; }
+.tango-video-wrap.has-sound .tango-video-play { display: none; }
 .tango-levels-toggle {
   appearance: none;
   border: 1px solid var(--line);
