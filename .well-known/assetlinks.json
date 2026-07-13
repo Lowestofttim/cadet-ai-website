@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.cadetai.app",
+      "sha256_cert_fingerprints": [
+        "16:D7:E4:98:7B:79:A0:8D:C3:66:75:F3:A3:75:D9:D1:E5:BB:88:0B:B5:17:32:44:D0:11:FD:BF:02:E7:AE:23"
+      ]
+    }
+  }
+]
