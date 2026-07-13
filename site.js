@@ -268,6 +268,8 @@
 
     var image = modal.querySelector('[data-tango-image]');
     var name = modal.querySelector('[data-tango-name]');
+    var role = modal.querySelector('[data-tango-role]');
+    var bio = modal.querySelector('[data-tango-bio]');
     var levelName = modal.querySelector('[data-tango-level-name]');
     var range = modal.querySelector('[data-tango-range]');
     var rail = modal.querySelector('[data-tango-levels]');
@@ -291,7 +293,7 @@
 
     function requestJson(url) {
       if (window.fetch) {
-        return fetch(url, { cache: 'force-cache' }).then(function (res) {
+        return fetch(url, { cache: 'no-cache' }).then(function (res) {
           if (!res.ok) throw new Error('Could not load TANGO showcase data');
           return res.json();
         });
@@ -430,6 +432,8 @@
         collapseLevels();
         setVideo();
         if (name) name.textContent = current.name;
+        if (role) role.textContent = current.role || '';
+        if (bio) bio.textContent = current.bio || '';
         modal.hidden = false;
         document.body.classList.add('modal-open');
         pushModalHistory();
