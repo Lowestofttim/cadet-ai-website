@@ -225,6 +225,11 @@
     var tango = document.querySelector('[data-tango]');
     var audio = new Audio();
     var current = null;
+    var voiceSampleVersion = '20260715-premium-voices';
+    function versionedAudioSrc(src) {
+      if (!src || src.indexOf('assets/audio/tango-voices/') === -1) return src;
+      return src + (src.indexOf('?') === -1 ? '?' : '&') + 'v=' + voiceSampleVersion;
+    }
     function reset() {
       if (current) {
         current.classList.remove('playing');
@@ -243,7 +248,7 @@
         card.classList.add('playing');
         var p = card.querySelector('.play'); if (p) p.innerHTML = '&#10074;&#10074;';
         if (tango) tango.classList.add('speaking');
-        audio.src = card.getAttribute('data-src');
+        audio.src = versionedAudioSrc(card.getAttribute('data-src'));
         var rate = parseFloat(card.getAttribute('data-rate') || '1');
         if (!Number.isFinite(rate) || rate <= 0) rate = 1;
         audio.defaultPlaybackRate = rate;
@@ -429,6 +434,7 @@
         current = characters[id] || characters.tango_1;
         levelIndex = 0;
         levelsRendered = false;
+        update();
         collapseLevels();
         setVideo();
         if (name) name.textContent = current.name;
