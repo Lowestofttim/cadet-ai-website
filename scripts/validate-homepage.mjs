@@ -4,7 +4,8 @@ import path from 'node:path';
 
 const root = process.cwd();
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
-const exists = (file) => fs.existsSync(path.join(root, file));
+const assetPath = (file) => file.split(/[?#]/)[0];
+const exists = (file) => fs.existsSync(path.join(root, assetPath(file)));
 
 const index = read('index.html');
 const styles = read('styles.css');
@@ -19,10 +20,12 @@ assert.match(index, /site\.js\?v=/, 'Homepage should cache-bust the interaction 
 assert.match(siteJs, /function tangoViewer\(/, 'site.js should initialise the TANGO viewer');
 assert.match(siteJs, /XMLHttpRequest/, 'TANGO viewer should have a non-fetch JSON loading fallback');
 assert.doesNotMatch(siteJs, /levelIndex\s*=\s*current\s*&&\s*current\.levels\s*\?\s*current\.levels\.length\s*-\s*1\s*:\s*0/, 'TANGO viewer should not open characters at their final level');
-assert.match(siteJs, /levelIndex\s*=\s*0;\s*update\(\);/, 'TANGO viewer should open each character at level 1 before users scroll');
+assert.match(siteJs, /levelIndex\s*=\s*0;\s*levelsRendered\s*=\s*false;\s*update\(\);/, 'TANGO viewer should open each character at level 1 before users scroll');
 assert.match(siteJs, /function subjectPreview\(/, 'site.js should initialise the subject preview');
 assert.match(siteJs, /document\.readyState/, 'site.js should initialise even if DOMContentLoaded has already fired');
 assert.match(siteJs, /audio\.playbackRate\s*=\s*rate/, 'Voice player should apply per-TANGO launch speaking-rate tuning');
+assert.match(siteJs, /voiceSampleVersion\s*=\s*'20260715-premium-voices'/, 'Voice player should cache-bust the latest premium voice samples');
+assert.match(siteJs, /versionedAudioSrc\(card\.getAttribute\('data-src'\)\)/, 'Voice player should version TANGO voice sample URLs');
 assert.match(styles, /\.tango-modal/, 'styles.css should style the TANGO viewer modal');
 assert.match(styles, /\.subject-preview/, 'styles.css should style the subject preview');
 assert.match(styles, /\.voice-card\.elite/, 'Elite Pro voice cards should have distinct premium styling');
@@ -89,6 +92,7 @@ for (const [, classes, id, src, rate, tier] of voiceCardMatches) {
 
 for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.html'))) {
   const html = read(file);
+  assert.doesNotMatch(html, /Fish Audio/i, `${file} should use provider-neutral premium voice wording`);
   assert.doesNotMatch(html, /Coming soon to Google Play/i, `${file} should not use stale Google Play coming-soon wording`);
   assert.doesNotMatch(html, /Coming soon\./i, `${file} should not use stale generic coming-soon CTA copy`);
   assert.match(html, /privacy\.html/, `${file} should link to Privacy Policy`);
