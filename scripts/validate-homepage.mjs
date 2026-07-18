@@ -10,14 +10,14 @@ const exists = (file) => fs.existsSync(path.join(root, assetPath(file)));
 const index = read('index.html');
 const styles = read('styles.css');
 const siteJs = read('site.js');
-const voiceSampleVersion = '20260718-premium-voice-speed-3';
+const voiceSampleVersion = '20260718-premium-voice-speed-4';
 
 assert.match(index, /assets\/tango-roster\/tango-rook-level-1-plain\.webp/, 'Meet TANGO should use a plain/no-background runtime TANGO image');
 assert.doesNotMatch(index, /assets\/tango\.(?:webp|png)/, 'Homepage should not use the stale generic TANGO mascot image');
 assert.match(index, /data-tango-viewer/, 'Homepage should include an accessible TANGO viewer dialog');
 assert.match(index, /data-tango-open/g, 'Roster should expose TANGO open buttons');
 assert.match(index, /data-subject-preview/, 'Subject section should include an interactive preview panel');
-assert.match(index, /site\.js\?v=20260718-premium-voice-speed-3/, 'Homepage should cache-bust the latest interaction script');
+assert.match(index, /site\.js\?v=20260718-premium-voice-speed-4/, 'Homepage should cache-bust the latest interaction script');
 assert.match(siteJs, /function tangoViewer\(/, 'site.js should initialise the TANGO viewer');
 assert.match(siteJs, /XMLHttpRequest/, 'TANGO viewer should have a non-fetch JSON loading fallback');
 assert.doesNotMatch(siteJs, /levelIndex\s*=\s*current\s*&&\s*current\.levels\s*\?\s*current\.levels\.length\s*-\s*1\s*:\s*0/, 'TANGO viewer should not open characters at their final level');
@@ -55,26 +55,26 @@ const subjectButtonCount = (index.match(/data-subject="/g) || []).length;
 assert.ok(subjectButtonCount >= 10, 'Subject preview should include at least 10 subject buttons');
 
 const expectedVoiceRates = new Map([
-  ['tango_1', '1.34'],
-  ['tango_2', '1.31'],
-  ['tango_3', '1.35'],
-  ['tango_4', '1.30'],
-  ['tango_5', '1.36'],
-  ['tango_6', '1.31'],
-  ['tango_7', '1.38'],
-  ['tango_8', '1.34'],
-  ['tango_9', '1.31'],
-  ['tango_10', '1.37'],
-  ['tango_11', '1.33'],
-  ['tango_12', '1.34'],
-  ['tango_13', '1.38'],
-  ['tango_14', '1.36'],
-  ['tango_15', '1.30'],
-  ['tango_16', '1.33'],
-  ['tango_17', '1.34'],
-  ['tango_18', '1.31'],
-  ['tango_19', '1.30'],
-  ['tango_20', '1.33'],
+  ['tango_1', '1.46'],
+  ['tango_2', '1.43'],
+  ['tango_3', '1.47'],
+  ['tango_4', '1.42'],
+  ['tango_5', '1.48'],
+  ['tango_6', '1.43'],
+  ['tango_7', '1.50'],
+  ['tango_8', '1.46'],
+  ['tango_9', '1.43'],
+  ['tango_10', '1.49'],
+  ['tango_11', '1.45'],
+  ['tango_12', '1.46'],
+  ['tango_13', '1.50'],
+  ['tango_14', '1.48'],
+  ['tango_15', '1.42'],
+  ['tango_16', '1.45'],
+  ['tango_17', '1.46'],
+  ['tango_18', '1.43'],
+  ['tango_19', '1.42'],
+  ['tango_20', '1.45'],
 ]);
 const proVoiceIds = new Set(['tango_6', 'tango_15', 'tango_16', 'tango_19', 'tango_20']);
 for (const voicePage of ['index.html', 'plans.html']) {
@@ -85,7 +85,7 @@ for (const voicePage of ['index.html', 'plans.html']) {
   for (const [, classes, id, src, rate, tier] of voiceCardMatches) {
     assert.ok(expectedVoiceRates.has(id), `${voicePage} ${id} should be a known TANGO voice`);
     assert.equal(rate, expectedVoiceRates.get(id), `${voicePage} ${id} should use the faster app launch speaking-rate tuning`);
-    assert.ok(Number(rate) >= 1.30 && Number(rate) <= 1.38, `${voicePage} ${id} should sound conversationally brisk`);
+    assert.ok(Number(rate) >= 1.42 && Number(rate) <= 1.50, `${voicePage} ${id} should sound launch-brisk`);
     assert.ok(exists(src), `${voicePage} ${id} voice preview audio should exist`);
     if (proVoiceIds.has(id)) {
       assert.match(classes, /\belite\b/, `${voicePage} ${id} should be visually marked as elite`);
