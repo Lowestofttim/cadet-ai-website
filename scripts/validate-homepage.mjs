@@ -24,7 +24,7 @@ assert.match(siteJs, /levelIndex\s*=\s*0;\s*levelsRendered\s*=\s*false;\s*update
 assert.match(siteJs, /function subjectPreview\(/, 'site.js should initialise the subject preview');
 assert.match(siteJs, /document\.readyState/, 'site.js should initialise even if DOMContentLoaded has already fired');
 assert.match(siteJs, /audio\.playbackRate\s*=\s*rate/, 'Voice player should apply per-TANGO launch speaking-rate tuning');
-assert.match(siteJs, /voiceSampleVersion\s*=\s*'20260715-premium-voices'/, 'Voice player should cache-bust the latest premium voice samples');
+assert.match(siteJs, /voiceSampleVersion\s*=\s*'20260718-premium-voice-speed'/, 'Voice player should cache-bust the faster premium voice tuning');
 assert.match(siteJs, /versionedAudioSrc\(card\.getAttribute\('data-src'\)\)/, 'Voice player should version TANGO voice sample URLs');
 assert.match(styles, /\.tango-modal/, 'styles.css should style the TANGO viewer modal');
 assert.match(styles, /\.subject-preview/, 'styles.css should style the subject preview');
@@ -54,39 +54,43 @@ const subjectButtonCount = (index.match(/data-subject="/g) || []).length;
 assert.ok(subjectButtonCount >= 10, 'Subject preview should include at least 10 subject buttons');
 
 const expectedVoiceRates = new Map([
-  ['tango_1', '0.94'],
-  ['tango_2', '0.86'],
-  ['tango_3', '0.91'],
-  ['tango_4', '0.84'],
-  ['tango_5', '0.96'],
-  ['tango_6', '0.80'],
-  ['tango_7', '0.99'],
-  ['tango_8', '0.93'],
-  ['tango_9', '0.88'],
-  ['tango_10', '0.98'],
-  ['tango_11', '0.90'],
-  ['tango_12', '0.91'],
-  ['tango_13', '1.02'],
-  ['tango_14', '0.95'],
-  ['tango_15', '0.78'],
-  ['tango_16', '0.84'],
-  ['tango_17', '0.92'],
-  ['tango_18', '0.89'],
-  ['tango_19', '0.82'],
-  ['tango_20', '0.87'],
+  ['tango_1', '1.06'],
+  ['tango_2', '1.03'],
+  ['tango_3', '1.06'],
+  ['tango_4', '1.02'],
+  ['tango_5', '1.08'],
+  ['tango_6', '1.03'],
+  ['tango_7', '1.10'],
+  ['tango_8', '1.06'],
+  ['tango_9', '1.03'],
+  ['tango_10', '1.09'],
+  ['tango_11', '1.05'],
+  ['tango_12', '1.06'],
+  ['tango_13', '1.12'],
+  ['tango_14', '1.08'],
+  ['tango_15', '1.02'],
+  ['tango_16', '1.03'],
+  ['tango_17', '1.06'],
+  ['tango_18', '1.04'],
+  ['tango_19', '1.02'],
+  ['tango_20', '1.04'],
 ]);
 const proVoiceIds = new Set(['tango_6', 'tango_15', 'tango_16', 'tango_19', 'tango_20']);
-const voiceCardMatches = [...index.matchAll(/<button class="voice-card([^"]*)"[^>]*data-voice="(tango_\d+)"[^>]*data-src="([^"]+)"[^>]*data-rate="([^"]+)"[^>]*data-tier="([^"]+)"/g)];
-assert.equal(voiceCardMatches.length, 20, 'Homepage should expose all 20 TANGO voice previews');
-for (const [, classes, id, src, rate, tier] of voiceCardMatches) {
-  assert.ok(expectedVoiceRates.has(id), `${id} should be a known TANGO voice`);
-  assert.equal(rate, expectedVoiceRates.get(id), `${id} should use the app launch speaking-rate tuning`);
-  assert.ok(exists(src), `${id} voice preview audio should exist`);
-  if (proVoiceIds.has(id)) {
-    assert.match(classes, /\belite\b/, `${id} should be visually marked as elite`);
-    assert.equal(tier, 'Elite Pro HD voice', `${id} should be labelled Elite Pro HD voice`);
-  } else {
-    assert.equal(tier, 'Premium HD voice', `${id} should be labelled Premium HD voice`);
+for (const voicePage of ['index.html', 'plans.html']) {
+  const html = read(voicePage);
+  const voiceCardMatches = [...html.matchAll(/<button class="voice-card([^"]*)"[^>]*data-voice="(tango_\d+)"[^>]*data-src="([^"]+)"[^>]*data-rate="([^"]+)"[^>]*data-tier="([^"]+)"/g)];
+  assert.equal(voiceCardMatches.length, 20, `${voicePage} should expose all 20 TANGO voice previews`);
+  for (const [, classes, id, src, rate, tier] of voiceCardMatches) {
+    assert.ok(expectedVoiceRates.has(id), `${voicePage} ${id} should be a known TANGO voice`);
+    assert.equal(rate, expectedVoiceRates.get(id), `${voicePage} ${id} should use the faster app launch speaking-rate tuning`);
+    assert.ok(Number(rate) >= 1 && Number(rate) <= 1.12, `${voicePage} ${id} should not sound deliberately slow`);
+    assert.ok(exists(src), `${voicePage} ${id} voice preview audio should exist`);
+    if (proVoiceIds.has(id)) {
+      assert.match(classes, /\belite\b/, `${voicePage} ${id} should be visually marked as elite`);
+      assert.equal(tier, 'Elite Pro HD voice', `${voicePage} ${id} should be labelled Elite Pro HD voice`);
+    } else {
+      assert.equal(tier, 'Premium HD voice', `${voicePage} ${id} should be labelled Premium HD voice`);
+    }
   }
 }
 
