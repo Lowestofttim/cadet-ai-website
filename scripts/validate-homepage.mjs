@@ -93,6 +93,7 @@ for (const [, classes, id, src, rate, tier] of voiceCardMatches) {
 for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.html'))) {
   const html = read(file);
   assert.doesNotMatch(html, /Fish Audio/i, `${file} should use provider-neutral premium voice wording`);
+  assert.doesNotMatch(html, /chirp/i, `${file} should not mention legacy voice provider wording`);
   assert.doesNotMatch(html, /Coming soon to Google Play/i, `${file} should not use stale Google Play coming-soon wording`);
   assert.doesNotMatch(html, /Coming soon\./i, `${file} should not use stale generic coming-soon CTA copy`);
   assert.match(html, /privacy\.html/, `${file} should link to Privacy Policy`);
