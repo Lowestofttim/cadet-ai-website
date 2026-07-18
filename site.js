@@ -1,4 +1,4 @@
-/* Cadet AI — marketing site behaviour. Progressive enhancement only:
+/* Cadet AI - marketing site behaviour. Progressive enhancement only:
    every animation has a no-JS / reduced-motion fallback that simply shows
    the final state. No third-party scripts, no trackers. */
 (function () {
@@ -225,7 +225,7 @@
     var tango = document.querySelector('[data-tango]');
     var audio = new Audio();
     var current = null;
-    var voiceSampleVersion = '20260718-premium-voice-speed-4';
+    var voiceSampleVersion = '20260718-premium-voice-speed-5';
     function versionedAudioSrc(src) {
       if (!src || src.indexOf('assets/audio/tango-voices/') === -1) return src;
       return src + (src.indexOf('?') === -1 ? '?' : '&') + 'v=' + voiceSampleVersion;
@@ -398,7 +398,7 @@
       video.setAttribute('muted', '');
       video.preload = 'auto';
       video.controls = false;
-      video.setAttribute('aria-label', current.name + ' TANGO intro film — tap for sound');
+      video.setAttribute('aria-label', current.name + ' TANGO intro film - tap for sound');
       if (videoWrap) videoWrap.classList.remove('has-sound');
       if (src) {
         video.src = src;
