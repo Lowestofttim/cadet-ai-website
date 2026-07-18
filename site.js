@@ -225,7 +225,7 @@
     var tango = document.querySelector('[data-tango]');
     var audio = new Audio();
     var current = null;
-    var voiceSampleVersion = '20260718-premium-voice-speed-5';
+    var voiceSampleVersion = '20260718-premium-voice-speed-6';
     function versionedAudioSrc(src) {
       if (!src || src.indexOf('assets/audio/tango-voices/') === -1) return src;
       return src + (src.indexOf('?') === -1 ? '?' : '&') + 'v=' + voiceSampleVersion;
