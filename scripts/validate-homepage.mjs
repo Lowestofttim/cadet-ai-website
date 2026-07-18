@@ -10,7 +10,7 @@ const exists = (file) => fs.existsSync(path.join(root, assetPath(file)));
 const index = read('index.html');
 const styles = read('styles.css');
 const siteJs = read('site.js');
-const voiceSampleVersion = '20260718-premium-voice-speed-6';
+const voiceSampleVersion = '20260718-matched-voice-speed-6';
 
 assert.doesNotMatch(siteJs, /\u00e2|\uFFFD|\uFEFF/, 'site.js should not contain mojibake or a byte-order mark');
 assert.match(index, /assets\/tango-roster\/tango-rook-level-1-plain\.webp/, 'Meet TANGO should use a plain/no-background runtime TANGO image');
@@ -18,7 +18,7 @@ assert.doesNotMatch(index, /assets\/tango\.(?:webp|png)/, 'Homepage should not u
 assert.match(index, /data-tango-viewer/, 'Homepage should include an accessible TANGO viewer dialog');
 assert.match(index, /data-tango-open/g, 'Roster should expose TANGO open buttons');
 assert.match(index, /data-subject-preview/, 'Subject section should include an interactive preview panel');
-assert.match(index, /site\.js\?v=20260718-premium-voice-speed-6/, 'Homepage should cache-bust the latest interaction script');
+assert.match(index, /site\.js\?v=20260718-matched-voice-speed-6/, 'Homepage should cache-bust the latest interaction script');
 assert.match(siteJs, /function tangoViewer\(/, 'site.js should initialise the TANGO viewer');
 assert.match(siteJs, /XMLHttpRequest/, 'TANGO viewer should have a non-fetch JSON loading fallback');
 assert.doesNotMatch(siteJs, /levelIndex\s*=\s*current\s*&&\s*current\.levels\s*\?\s*current\.levels\.length\s*-\s*1\s*:\s*0/, 'TANGO viewer should not open characters at their final level');
@@ -26,11 +26,11 @@ assert.match(siteJs, /levelIndex\s*=\s*0;\s*levelsRendered\s*=\s*false;\s*update
 assert.match(siteJs, /function subjectPreview\(/, 'site.js should initialise the subject preview');
 assert.match(siteJs, /document\.readyState/, 'site.js should initialise even if DOMContentLoaded has already fired');
 assert.match(siteJs, /audio\.playbackRate\s*=\s*rate/, 'Voice player should apply per-TANGO launch speaking-rate tuning');
-assert.match(siteJs, new RegExp(`voiceSampleVersion\\s*=\\s*'${voiceSampleVersion}'`), 'Voice player should cache-bust the moderated premium voice tuning');
+assert.match(siteJs, new RegExp(`voiceSampleVersion\\s*=\\s*'${voiceSampleVersion}'`), 'Voice player should cache-bust the moderated matched voice tuning');
 assert.match(siteJs, /versionedAudioSrc\(card\.getAttribute\('data-src'\)\)/, 'Voice player should version TANGO voice sample URLs');
 assert.match(styles, /\.tango-modal/, 'styles.css should style the TANGO viewer modal');
 assert.match(styles, /\.subject-preview/, 'styles.css should style the subject preview');
-assert.match(styles, /\.voice-card\.elite/, 'Elite Pro voice cards should have distinct premium styling');
+assert.match(styles, /\.voice-card\.elite/, 'Pro voice cards should have distinct matched voice styling');
 
 const dataPath = 'assets/tango-roster/tango-showcase.json';
 assert.ok(exists(dataPath), 'TANGO showcase JSON should exist');
@@ -93,16 +93,16 @@ for (const voicePage of ['index.html', 'plans.html']) {
     assert.equal(visibleTier[1], tier, `${voicePage} ${id} visible voice-tier copy should match data-tier`);
     if (proVoiceIds.has(id)) {
       assert.match(classes, /\belite\b/, `${voicePage} ${id} should be visually marked as elite`);
-      assert.equal(tier, 'Elite Pro HD voice', `${voicePage} ${id} should be labelled Elite Pro HD voice`);
+      assert.equal(tier, 'Pro matched HD voice', `${voicePage} ${id} should be labelled Pro matched HD voice`);
     } else {
-      assert.equal(tier, 'Premium HD voice', `${voicePage} ${id} should be labelled Premium HD voice`);
+      assert.equal(tier, 'Matched HD voice', `${voicePage} ${id} should be labelled Matched HD voice`);
     }
   }
 }
 
 for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.html'))) {
   const html = read(file);
-  assert.doesNotMatch(html, /Fish Audio/i, `${file} should use provider-neutral premium voice wording`);
+  assert.doesNotMatch(html, /Fish Audio/i, `${file} should use provider-neutral matched voice wording`);
   assert.doesNotMatch(html, /chirp/i, `${file} should not mention legacy voice provider wording`);
   assert.doesNotMatch(html, /Coming soon to Google Play/i, `${file} should not use stale Google Play coming-soon wording`);
   assert.doesNotMatch(html, /Coming soon\./i, `${file} should not use stale generic coming-soon CTA copy`);
