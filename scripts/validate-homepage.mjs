@@ -10,7 +10,7 @@ const exists = (file) => fs.existsSync(path.join(root, assetPath(file)));
 const index = read('index.html');
 const styles = read('styles.css');
 const siteJs = read('site.js');
-const voiceSampleVersion = '20260718-matched-voice-speed-6';
+const voiceSampleVersion = '20260719-launch-copy-1';
 
 assert.doesNotMatch(siteJs, /\u00e2|\uFFFD|\uFEFF/, 'site.js should not contain mojibake or a byte-order mark');
 assert.match(index, /assets\/tango-roster\/tango-rook-level-1-plain\.webp/, 'Meet TANGO should use a plain/no-background runtime TANGO image');
@@ -18,7 +18,7 @@ assert.doesNotMatch(index, /assets\/tango\.(?:webp|png)/, 'Homepage should not u
 assert.match(index, /data-tango-viewer/, 'Homepage should include an accessible TANGO viewer dialog');
 assert.match(index, /data-tango-open/g, 'Roster should expose TANGO open buttons');
 assert.match(index, /data-subject-preview/, 'Subject section should include an interactive preview panel');
-assert.match(index, /site\.js\?v=20260718-matched-voice-speed-6/, 'Homepage should cache-bust the latest interaction script');
+assert.match(index, /site\.js\?v=20260719-launch-copy-1/, 'Homepage should cache-bust the latest interaction script');
 assert.match(siteJs, /function tangoViewer\(/, 'site.js should initialise the TANGO viewer');
 assert.match(siteJs, /XMLHttpRequest/, 'TANGO viewer should have a non-fetch JSON loading fallback');
 assert.doesNotMatch(siteJs, /levelIndex\s*=\s*current\s*&&\s*current\.levels\s*\?\s*current\.levels\.length\s*-\s*1\s*:\s*0/, 'TANGO viewer should not open characters at their final level');
@@ -111,5 +111,22 @@ for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.html'))
   assert.match(html, /delete-account\.html/, `${file} should link to account deletion`);
   assert.match(html, /support@cadetai\.co\.uk/, `${file} should expose support contact`);
 }
+
+const llms = read('llms.txt');
+assert.doesNotMatch(llms, /Coming soon to Google Play/i, 'llms.txt should not use stale Google Play coming-soon wording');
+assert.doesNotMatch(llms, /not yet released/i, 'llms.txt should not describe the app as unreleased');
+assert.doesNotMatch(llms, /Fish Audio/i, 'llms.txt should use provider-neutral matched voice wording');
+
+const terms = read('terms.html');
+assert.doesNotMatch(
+  terms,
+  /under 13,\s*you need a parent or guardian to set things up/i,
+  'Terms should match the hard 13+ account gate, not imply parent-assisted under-13 signup',
+);
+assert.match(
+  terms,
+  /under-13s cannot create an account/i,
+  'Terms should explicitly say under-13s cannot create an account',
+);
 
 console.log('Homepage validation passed');

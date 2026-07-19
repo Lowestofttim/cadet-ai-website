@@ -1,13 +1,13 @@
 # Cadet AI
 
-> Cadet AI is an independent study-aid Android app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13 and over. Its built-in AI assistant, TANGO, answers training questions grounded in the cadet syllabus and is designed not to make things up (it says when it is unsure). The app adds quizzes across 10 subjects from Basic to 4-Star, XP, military ranks, 100+ badges, 35 awards, opt-in leaderboards, and read-aloud / neural voice. It is not an official MOD, ACF, CCF or Cadet Forces product and is not endorsed by them. Coming soon to Google Play.
+> Cadet AI is an independent study-aid Android app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13 and over. Its built-in AI assistant, TANGO, answers training questions grounded in the cadet syllabus and is designed not to make things up (it says when it is unsure). The app adds quizzes across 12 subjects from Basic to 4-Star, XP, military ranks, 100+ badges, 35 awards, opt-in leaderboards, and read-aloud / matched character voices. It is not an official MOD, ACF, CCF or Cadet Forces product and is not endorsed by them. Now in open testing on Google Play.
 
 ## Key facts
-- Platform: Android only (no iOS/iPhone version yet). Coming soon to Google Play; not yet released.
+- Platform: Android only (no iOS/iPhone version yet). Now in open testing on Google Play; general release to follow.
 - Audience: cadets aged 13+; under-13s cannot create an account. Also useful to parents/guardians and unit staff.
 - Pricing: Free "Cadet" plan with 5 TANGO messages and 3 quizzes a day; Plus (£4.99/month or £44.99/year); Pro (£9.99/month or £89.99/year). Monthly Plus and Pro each include a 7-day free trial. No ads, no third-party analytics trackers, data never sold.
-- Subjects covered: Drill & Turnout, Fieldcraft & Tactics, First Aid, Navigation, Shooting, Skill at Arms, Military Knowledge, Communications & IT, Keeping Active, Community Engagement.
-- TANGO: a grounded AI study assistant that sticks to cadet training and won't make things up; 20 selectable characters; optional lifelike neural voices in British, American, Australian and Indian accents (Plus/Pro).
+- Subjects covered: Drill & Turnout, Fieldcraft & Tactics, First Aid, Navigation, Shooting, Skill at Arms, Military Knowledge, Communications & IT, Expedition & Adventurous Training, Keeping Active, Community Engagement, JCIC / CFIT.
+- TANGO: a grounded AI study assistant that sticks to cadet training and won't make things up; 20 characters (the Free plan includes 5, Plus unlocks 15, Pro unlocks all 20); on Plus and Pro each character speaks with its own matched premium voice.
 - Privacy: national and unit leaderboards are opt-in and off by default.
 
 ## Pages
