@@ -225,7 +225,7 @@
     var tango = document.querySelector('[data-tango]');
     var audio = new Audio();
     var current = null;
-    var voiceSampleVersion = '20260718-matched-voice-speed-6';
+    var voiceSampleVersion = '20260719-launch-copy-1';
     function versionedAudioSrc(src) {
       if (!src || src.indexOf('assets/audio/tango-voices/') === -1) return src;
       return src + (src.indexOf('?') === -1 ? '?' : '&') + 'v=' + voiceSampleVersion;
@@ -596,6 +596,20 @@
         copy: 'Community topics show how volunteering, citizenship and teamwork fit the wider cadet experience.',
         question: 'What makes community work meaningful?',
         answer: 'It helps others, builds responsibility, and gives cadets a chance to reflect on how they contributed.'
+      },
+      'expedition': {
+        kicker: 'Sample Expedition & Adventurous Training',
+        title: 'Plan well, then get outdoors.',
+        copy: 'Expedition revision covers planning, kit, camp craft and safe teamwork outdoors, with the practical skills learned in the field under your instructors.',
+        question: 'Why does an expedition start with a plan?',
+        answer: 'Good planning - route, kit, weather and safety - keeps the team safe and lets everyone focus on the challenge.'
+      },
+      'jcic-cfit': {
+        kicker: 'Sample JCIC / CFIT',
+        title: 'Learn it well enough to teach it.',
+        copy: 'Instructor topics cover how a good lesson is structured and delivered, for senior cadets learning to teach junior cadets under unit staff guidance.',
+        question: 'What makes a lesson land?',
+        answer: 'Clear structure, confident delivery and checking your cadets have understood - then confirming the current standards with your staff.'
       }
     };
 
