@@ -151,6 +151,7 @@ section.mascot-panel { overflow: hidden; }
 .grid { display: grid; gap: 18px; }
 .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
 .card {
   background: linear-gradient(180deg, var(--surface), var(--ink-2));
   border: 1px solid var(--line); border-radius: var(--radius); padding: 24px;
@@ -781,6 +782,7 @@ body.modal-open { overflow: hidden; }
   .shot .phone { width: min(72vw, 250px); }
   .tablet-frame { width: min(82vw, 360px); }
   .grid.cols-3, .grid.cols-2, .steps, .split, .plans { grid-template-columns: 1fr; }
+  .grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
   .split { gap: 30px; }
   .split.flip .split-media { order: -1; }
   .nav-burger { display: block; cursor: pointer; background: none; border: 0; color: #fff; font-size: 1.6rem; }

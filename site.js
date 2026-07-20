@@ -12,7 +12,7 @@
     if (!nums.length) return;
     if (reduce || !('IntersectionObserver' in window)) {
       nums.forEach(function (el) {
-        el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
+        el.textContent = parseInt(el.getAttribute('data-count'), 10).toLocaleString() + (el.getAttribute('data-suffix') || '');
       });
       return;
     }
@@ -26,8 +26,8 @@
         function step(ts) {
           if (!start) start = ts;
           var p = Math.min((ts - start) / dur, 1);
-          el.textContent = Math.floor(p * to) + suf;
-          if (p < 1) requestAnimationFrame(step); else el.textContent = to + suf;
+          el.textContent = Math.floor(p * to).toLocaleString() + suf;
+          if (p < 1) requestAnimationFrame(step); else el.textContent = to.toLocaleString() + suf;
         }
         requestAnimationFrame(step);
         io.unobserve(el);
