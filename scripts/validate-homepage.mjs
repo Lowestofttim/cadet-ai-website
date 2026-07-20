@@ -56,26 +56,26 @@ const subjectButtonCount = (index.match(/data-subject="/g) || []).length;
 assert.ok(subjectButtonCount >= 10, 'Subject preview should include at least 10 subject buttons');
 
 const expectedVoiceRates = new Map([
-  ['tango_1', '1.56'],
-  ['tango_2', '1.53'],
-  ['tango_3', '1.57'],
-  ['tango_4', '1.52'],
-  ['tango_5', '1.58'],
-  ['tango_6', '1.53'],
-  ['tango_7', '1.60'],
-  ['tango_8', '1.56'],
-  ['tango_9', '1.53'],
-  ['tango_10', '1.59'],
-  ['tango_11', '1.55'],
-  ['tango_12', '1.56'],
-  ['tango_13', '1.60'],
-  ['tango_14', '1.58'],
-  ['tango_15', '1.52'],
-  ['tango_16', '1.55'],
-  ['tango_17', '1.56'],
-  ['tango_18', '1.53'],
-  ['tango_19', '1.52'],
-  ['tango_20', '1.55'],
+  ['tango_1', '1.11'],
+  ['tango_2', '1.09'],
+  ['tango_3', '1.12'],
+  ['tango_4', '1.08'],
+  ['tango_5', '1.13'],
+  ['tango_6', '1.09'],
+  ['tango_7', '1.15'],
+  ['tango_8', '1.11'],
+  ['tango_9', '1.09'],
+  ['tango_10', '1.14'],
+  ['tango_11', '1.10'],
+  ['tango_12', '1.11'],
+  ['tango_13', '1.15'],
+  ['tango_14', '1.13'],
+  ['tango_15', '1.08'],
+  ['tango_16', '1.10'],
+  ['tango_17', '1.11'],
+  ['tango_18', '1.09'],
+  ['tango_19', '1.08'],
+  ['tango_20', '1.10'],
 ]);
 const proVoiceIds = new Set(['tango_16', 'tango_17', 'tango_18', 'tango_19', 'tango_20']);
 for (const voicePage of ['index.html', 'plans.html']) {
@@ -87,15 +87,17 @@ for (const voicePage of ['index.html', 'plans.html']) {
     const visibleTier = html.match(new RegExp(`data-voice="${id}"[\\s\\S]*?<span class="tier">([^<]+)<\\/span>`));
     assert.ok(expectedVoiceRates.has(id), `${voicePage} ${id} should be a known TANGO voice`);
     assert.equal(rate, expectedVoiceRates.get(id), `${voicePage} ${id} should use the moderated app launch speaking-rate tuning`);
-    assert.ok(Number(rate) >= 1.52 && Number(rate) <= 1.60, `${voicePage} ${id} should sound comfortably paced`);
+    assert.ok(Number(rate) >= 1.05 && Number(rate) <= 1.20, `${voicePage} ${id} should sound naturally paced, not sped up`);
     assert.ok(exists(src), `${voicePage} ${id} voice preview audio should exist`);
     assert.ok(visibleTier, `${voicePage} ${id} should expose visible voice-tier copy`);
     assert.equal(visibleTier[1], tier, `${voicePage} ${id} visible voice-tier copy should match data-tier`);
+    // Voices are locked per character: the badge shows the CHARACTER's plan
+    // (Free 1-5, Plus 6-15, Pro 16-20), not a separate voice tier.
+    const num = Number(id.replace('tango_', ''));
+    const expectedTier = num <= 5 ? 'Free character' : num <= 15 ? 'Plus character' : 'Pro character';
+    assert.equal(tier, expectedTier, `${voicePage} ${id} should be badged with its character's plan`);
     if (proVoiceIds.has(id)) {
       assert.match(classes, /\belite\b/, `${voicePage} ${id} should be visually marked as elite`);
-      assert.equal(tier, 'Pro matched HD voice', `${voicePage} ${id} should be labelled Pro matched HD voice`);
-    } else {
-      assert.equal(tier, 'Matched HD voice', `${voicePage} ${id} should be labelled Matched HD voice`);
     }
   }
 }

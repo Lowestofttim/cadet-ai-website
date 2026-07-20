@@ -962,7 +962,7 @@ body.modal-open { overflow: hidden; }
 }
 .voice-card .meta { min-width: 0; flex: 1; }
 .voice-card .meta b { display: block; font-family: 'Oswald'; text-transform: uppercase; letter-spacing: .5px; color: #fff; font-size: .92rem; }
-.voice-card .meta span { display: block; color: var(--muted); font-size: .8rem; line-height: 1.35; }
+.voice-card .meta span { display: block; color: var(--muted); font-size: .85rem; line-height: 1.35; }
 .voice-card .accent { font-family: 'Oswald'; font-size: .64rem; letter-spacing: 1px; text-transform: uppercase; color: var(--green-light); margin-top: 2px; }
 .voice-card .tier { color: var(--green-light); font-weight: 700; }
 .voice-card.elite {
@@ -990,3 +990,7 @@ body.modal-open { overflow: hidden; }
   .tango-stage::before, .tango-stage.speaking img, .voice-card .eq i { animation: none !important; }
   .tango-stage.speaking img { transform: none !important; }
 }
+
+/* Long URLs in prose (e.g. play.google.com/store/account/subscriptions) must
+   wrap on narrow phones instead of forcing horizontal overflow. */
+p a, li a { overflow-wrap: anywhere; }
