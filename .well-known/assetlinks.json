@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.cadetai.app",
       "sha256_cert_fingerprints": [
-        "16:D7:E4:98:7B:79:A0:8D:C3:66:75:F3:A3:75:D9:D1:E5:BB:88:0B:B5:17:32:44:D0:11:FD:BF:02:E7:AE:23"
+        "16:D7:E4:98:7B:79:A0:8D:C3:66:75:F3:A3:75:D9:D1:E5:BB:88:0B:B5:17:32:44:D0:11:FD:BF:02:E7:AE:23",
+        "4C:95:E6:3B:66:10:D5:8C:95:76:B6:89:77:10:EE:90:5D:FC:D2:01:3B:23:4B:04:09:B4:A2:23:BE:64:1B:9F"
       ]
     }
   }
