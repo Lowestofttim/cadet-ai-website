@@ -10,6 +10,8 @@ const exists = (file) => fs.existsSync(path.join(root, assetPath(file)));
 const index = read('index.html');
 const styles = read('styles.css');
 const siteJs = read('site.js');
+const siteScriptVersion = '20260723-nav-a11y-1';
+const siteStyleVersion = '20260723-nav-a11y-1';
 const voiceSampleVersion = '20260719-launch-copy-1';
 
 assert.doesNotMatch(siteJs, /\u00e2|\uFFFD|\uFEFF/, 'site.js should not contain mojibake or a byte-order mark');
@@ -18,13 +20,16 @@ assert.doesNotMatch(index, /assets\/tango\.(?:webp|png)/, 'Homepage should not u
 assert.match(index, /data-tango-viewer/, 'Homepage should include an accessible TANGO viewer dialog');
 assert.match(index, /data-tango-open/g, 'Roster should expose TANGO open buttons');
 assert.match(index, /data-subject-preview/, 'Subject section should include an interactive preview panel');
-assert.match(index, /site\.js\?v=20260719-launch-copy-1/, 'Homepage should cache-bust the latest interaction script');
+assert.match(index, new RegExp(`site\\.js\\?v=${siteScriptVersion}`), 'Homepage should cache-bust the latest interaction script');
+assert.match(index, new RegExp(`styles\\.css\\?v=${siteStyleVersion}`), 'Homepage should cache-bust the latest shared styles');
 assert.match(siteJs, /function tangoViewer\(/, 'site.js should initialise the TANGO viewer');
 assert.match(siteJs, /XMLHttpRequest/, 'TANGO viewer should have a non-fetch JSON loading fallback');
 assert.doesNotMatch(siteJs, /levelIndex\s*=\s*current\s*&&\s*current\.levels\s*\?\s*current\.levels\.length\s*-\s*1\s*:\s*0/, 'TANGO viewer should not open characters at their final level');
 assert.match(siteJs, /levelIndex\s*=\s*0;\s*levelsRendered\s*=\s*false;\s*update\(\);/, 'TANGO viewer should open each character at level 1 before users scroll');
 assert.match(siteJs, /function subjectPreview\(/, 'site.js should initialise the subject preview');
 assert.match(siteJs, /document\.readyState/, 'site.js should initialise even if DOMContentLoaded has already fired');
+assert.match(siteJs, /aria-expanded/, 'Mobile navigation should expose its open state');
+assert.match(siteJs, /event\.key !== 'Enter' && event\.key !== ' '/, 'Mobile navigation should support keyboard activation');
 assert.match(siteJs, /audio\.playbackRate\s*=\s*rate/, 'Voice player should apply per-TANGO launch speaking-rate tuning');
 assert.match(siteJs, new RegExp(`voiceSampleVersion\\s*=\\s*'${voiceSampleVersion}'`), 'Voice player should cache-bust the moderated matched voice tuning');
 assert.match(siteJs, /versionedAudioSrc\(card\.getAttribute\('data-src'\)\)/, 'Voice player should version TANGO voice sample URLs');
@@ -80,7 +85,7 @@ const expectedVoiceRates = new Map([
 const proVoiceIds = new Set(['tango_16', 'tango_17', 'tango_18', 'tango_19', 'tango_20']);
 for (const voicePage of ['index.html', 'plans.html']) {
   const html = read(voicePage);
-  assert.ok(html.includes(`site.js?v=${voiceSampleVersion}`), `${voicePage} should request the latest voice player script`);
+  assert.ok(html.includes(`site.js?v=${siteScriptVersion}`), `${voicePage} should request the latest interaction script`);
   const voiceCardMatches = [...html.matchAll(/<button class="voice-card([^"]*)"[^>]*data-voice="(tango_\d+)"[^>]*data-src="([^"]+)"[^>]*data-rate="([^"]+)"[^>]*data-tier="([^"]+)"/g)];
   assert.equal(voiceCardMatches.length, 20, `${voicePage} should expose all 20 TANGO voice previews`);
   for (const [, classes, id, src, rate, tier] of voiceCardMatches) {
@@ -118,6 +123,65 @@ const llms = read('llms.txt');
 assert.doesNotMatch(llms, /Coming soon to Google Play/i, 'llms.txt should not use stale Google Play coming-soon wording');
 assert.doesNotMatch(llms, /not yet released/i, 'llms.txt should not describe the app as unreleased');
 assert.doesNotMatch(llms, /Fish Audio/i, 'llms.txt should use provider-neutral matched voice wording');
+
+const publicCopyFiles = [
+  ...fs.readdirSync(root).filter((name) => name.endsWith('.html')),
+  ...fs.readdirSync(path.join(root, 'guides'))
+    .filter((name) => name.endsWith('.html'))
+    .map((name) => `guides/${name}`),
+  'llms.txt',
+];
+for (const file of publicCopyFiles) {
+  const copy = read(file);
+  assert.doesNotMatch(
+    copy,
+    /\b(?:all\s+)?(?:12|twelve)\s+(?:cadet\s+)?subjects?\b/i,
+    `${file} should describe the current 13-subject catalogue`,
+  );
+  assert.doesNotMatch(
+    copy,
+    /\bneural voice(?:s)?\b/i,
+    `${file} should use provider-neutral matched character voice wording`,
+  );
+}
+
+const plans = read('plans.html');
+assert.match(plans, /5 TANGO characters/, 'Free plan should disclose its five-character roster');
+assert.match(plans, /5,000 text characters a day/, 'Plus should disclose its matched voice fair-use cap');
+assert.match(plans, /8,000 text characters a day/, 'Pro should disclose its matched voice fair-use cap');
+assert.match(
+  plans,
+  /Plus and Pro unlock matched answer playback/,
+  'Plans should reserve matched answer playback for paid tiers',
+);
+assert.doesNotMatch(
+  plans,
+  /standard read-aloud stays free|Read-aloud answers/,
+  'Plans should not promise free full-answer voice playback',
+);
+
+const faq = read('faq.html');
+assert.doesNotMatch(
+  faq,
+  /read-aloud answers/i,
+  'FAQ should not promise free full-answer voice playback',
+);
+assert.match(
+  faq,
+  /short TANGO voice reactions/,
+  'FAQ should describe the bundled voice reactions available on Free',
+);
+
+const assetLinks = JSON.parse(read('.well-known/assetlinks.json'));
+const fingerprints = assetLinks[0]?.target?.sha256_cert_fingerprints ?? [];
+assert.ok(
+  fingerprints.includes('16:D7:E4:98:7B:79:A0:8D:C3:66:75:F3:A3:75:D9:D1:E5:BB:88:0B:B5:17:32:44:D0:11:FD:BF:02:E7:AE:23'),
+  'Digital Asset Links should retain the upload certificate',
+);
+assert.ok(
+  fingerprints.includes('4C:95:E6:3B:66:10:D5:8C:95:76:B6:89:77:10:EE:90:5D:FC:D2:01:3B:23:4B:04:09:B4:A2:23:BE:64:1B:9F'),
+  'Digital Asset Links should include the Play app-signing certificate',
+);
 
 const terms = read('terms.html');
 assert.doesNotMatch(

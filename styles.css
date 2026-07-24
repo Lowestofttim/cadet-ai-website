@@ -96,6 +96,11 @@ img { max-width: 100%; display: block; }
 .nav-links a:hover, .nav-links a.active { color: #fff; text-decoration: none; }
 .nav-toggle { display: none; }
 .nav-burger { display: none; }
+.nav-burger:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
 
 /* ---- Hero ---- */
 .hero {
