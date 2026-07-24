@@ -1,6 +1,6 @@
 # Cadet AI
 
-> Cadet AI is an independent study-aid Android app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13 and over. Its built-in AI assistant, TANGO, answers training questions grounded in the cadet syllabus and is designed not to make things up (it says when it is unsure). The app adds quizzes across 12 subjects from Basic to 4-Star, XP, military ranks, 100+ badges, 35 awards, opt-in leaderboards, and read-aloud / matched character voices. It is not an official MOD, ACF, CCF or Cadet Forces product and is not endorsed by them. Launching imminently on Google Play.
+> Cadet AI is an independent study-aid Android app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13 and over. Its built-in AI assistant, TANGO, answers training questions grounded in the cadet syllabus and is designed not to make things up (it says when it is unsure). The app adds quizzes across 13 subjects from Basic to 4-Star, XP, military ranks, 100+ badges, 35 awards, opt-in leaderboards, and read-aloud / matched character voices. It is not an official MOD, ACF, CCF or Cadet Forces product and is not endorsed by them. Launching imminently on Google Play.
 
 ## Key facts
 - Platform: Android only (no iOS/iPhone version yet). Launching imminently on Google Play.
