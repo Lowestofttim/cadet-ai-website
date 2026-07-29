@@ -107,7 +107,11 @@ for (const voicePage of ['index.html', 'plans.html']) {
   }
 }
 
-for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.html'))) {
+const rootPublicHtml = fs
+  .readdirSync(root)
+  .filter((name) => name.endsWith('.html') && !/^google[a-z0-9]+\.html$/i.test(name));
+
+for (const file of rootPublicHtml) {
   const html = read(file);
   assert.doesNotMatch(html, /Fish Audio/i, `${file} should use provider-neutral matched voice wording`);
   assert.doesNotMatch(html, /chirp/i, `${file} should not mention legacy voice provider wording`);
@@ -125,7 +129,7 @@ assert.doesNotMatch(llms, /not yet released/i, 'llms.txt should not describe the
 assert.doesNotMatch(llms, /Fish Audio/i, 'llms.txt should use provider-neutral matched voice wording');
 
 const publicCopyFiles = [
-  ...fs.readdirSync(root).filter((name) => name.endsWith('.html')),
+  ...rootPublicHtml,
   ...fs.readdirSync(path.join(root, 'guides'))
     .filter((name) => name.endsWith('.html'))
     .map((name) => `guides/${name}`),

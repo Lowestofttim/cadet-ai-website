@@ -9,6 +9,14 @@
   "theme_color": "#121412",
   "lang": "en-GB",
   "categories": ["education"],
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.cadetai.app",
+      "url": "https://play.google.com/store/apps/details?id=com.cadetai.app"
+    }
+  ],
   "icons": [
     { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },

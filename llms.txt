@@ -1,9 +1,9 @@
 # Cadet AI
 
-> Cadet AI is an independent study-aid Android app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13 and over. Its built-in AI assistant, TANGO, answers training questions grounded in the cadet syllabus and is designed not to make things up (it says when it is unsure). The app adds quizzes across 13 subjects from Basic to 4-Star, XP, military ranks, 229 badges, 35 awards, opt-in leaderboards, and read-aloud / matched character voices. It is not an official MOD, ACF, CCF or Cadet Forces product and is not endorsed by them. Launching imminently on Google Play.
+> Cadet AI is an independent study-aid Android app for UK Army Cadet Force (ACF) and Combined Cadet Force (CCF) cadets aged 13 and over. Its built-in AI assistant, TANGO, answers training questions grounded in the cadet syllabus and is designed not to make things up (it says when it is unsure). The app adds quizzes across 13 subjects from Basic to 4-Star, XP, military ranks, 229 badges, 35 awards, opt-in leaderboards, and read-aloud / matched character voices. It is not an official MOD, ACF, CCF or Cadet Forces product and is not endorsed by them. Available on Google Play: https://play.google.com/store/apps/details?id=com.cadetai.app
 
 ## Key facts
-- Platform: Android only (no iOS/iPhone version yet). Launching imminently on Google Play.
+- Platform: Android only (no iOS/iPhone version yet). Available on Google Play: https://play.google.com/store/apps/details?id=com.cadetai.app
 - Audience: cadets aged 13+; under-13s cannot create an account. Also useful to parents/guardians and unit staff.
 - Pricing: Free "Cadet" plan with 5 TANGO messages and 3 quizzes a day; Plus (£4.99/month or £44.99/year); Pro (£9.99/month or £89.99/year). Monthly Plus and Pro each include a 7-day free trial. No ads, no third-party analytics trackers, data never sold.
 - Subjects covered: Drill & Turnout, Fieldcraft & Tactics, First Aid, Navigation, Shooting, Skill at Arms, Military Knowledge, Communications & IT, Expedition & Adventurous Training, Keeping Active, Community Engagement, JCIC / CFIT.
