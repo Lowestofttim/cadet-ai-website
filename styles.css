@@ -1,4 +1,4 @@
-/* Cadet AI — marketing site styles. Olive/military green + gold, dark theme,
+/* Cadet AI - marketing site styles. Olive/military green + gold, dark theme,
    Oswald display headings. Shared across all pages. */
 
 /* Fonts are preconnected and loaded via <link> in each page's <head> for faster LCP
@@ -271,13 +271,34 @@ button.chip {
 
 /* ---- Footer ---- */
 .site-footer { background: var(--ink-0); padding: 44px 0 30px; color: var(--muted-2); font-size: .9rem; }
-.footer-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; align-items: flex-start; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.2fr) repeat(3, minmax(130px, auto));
+  gap: 30px;
+  align-items: flex-start;
+}
 .footer-grid .col h4 { font-family: 'Oswald'; text-transform: uppercase; letter-spacing: 1px; color: var(--text); font-size: .9rem; margin: 0 0 10px; }
 .footer-grid .col a { display: block; color: var(--muted); margin-bottom: 7px; }
+.footer-social-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  min-width: 230px;
+}
+.footer-social-links a.social-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 6px 0;
+  color: var(--muted);
+}
+.footer-social-links a.social-icon:hover { color: #fff; text-decoration: none; }
+.footer-social-links .social-mark { width: 28px; height: 28px; font-size: .66rem; }
 .footer-note { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); font-size: .82rem; line-height: 1.6; }
 
 /* =====================================================================
-   v2 upgrade — real device screenshots, gallery, scroll animations,
+   v2 upgrade - real device screenshots, gallery, scroll animations,
    free/premium plans, neural-voice highlight. Tasteful + accessible.
    ===================================================================== */
 
@@ -388,7 +409,7 @@ button.chip {
 .feat-list { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 12px; }
 .feat-list li { position: relative; padding-left: 30px; color: var(--muted); }
 .feat-list li::before {
-  content: "✓"; position: absolute; left: 0; top: 0; color: var(--ink-0);
+  content: "\2713"; position: absolute; left: 0; top: 0; color: var(--ink-0);
   background: var(--olive-bright); width: 20px; height: 20px; border-radius: 50%;
   display: grid; place-items: center; font-size: .72rem; font-weight: 700;
 }
@@ -404,10 +425,10 @@ button.chip {
 .plan .price { color: var(--muted); font-size: .92rem; margin: 4px 0 16px; }
 .plan ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 11px; }
 .plan ul li { position: relative; padding-left: 28px; color: var(--text); font-size: .94rem; }
-.plan ul li::before { content: "✓"; position: absolute; left: 0; color: var(--olive-bright); font-weight: 700; }
+.plan ul li::before { content: "\2713"; position: absolute; left: 0; color: var(--olive-bright); font-weight: 700; }
 .plan ul li.muted-li { color: var(--muted-2); }
-.plan ul li.muted-li::before { content: "•"; color: var(--muted-2); }
-/* Three-tier layout (Free / Plus / Pro) — collapses to one centred column on
+.plan ul li.muted-li::before { content: "\2022"; color: var(--muted-2); }
+/* Three-tier layout (Free / Plus / Pro) - collapses to one centred column on
    narrow screens so the cards never crush. */
 .plans.three { grid-template-columns: repeat(3, minmax(0,1fr)); max-width: 1080px; align-items: start; }
 @media (max-width: 900px){ .plans.three { grid-template-columns: 1fr; max-width: 460px; } }
@@ -416,6 +437,95 @@ button.chip {
 .trust-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 6px; }
 .trust { display: inline-flex; align-items: center; gap: 8px; font-family: 'Oswald'; text-transform: uppercase; letter-spacing: 1px; font-size: .78rem; color: var(--muted); padding: 9px 15px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.02); }
 .trust b { color: var(--green-light); font-weight: 600; }
+
+/* ---- Latest TikTok / social links ---- */
+.social-block {
+  background:
+    radial-gradient(720px 300px at 18% 0%, rgba(212,175,55,.12), transparent 58%),
+    var(--ink-1);
+}
+.social-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(260px, .72fr);
+  gap: 24px;
+  align-items: start;
+}
+.latest-tiktok-card,
+.follow-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(32,39,28,.92), rgba(18,20,18,.96));
+  box-shadow: 0 22px 48px rgba(0,0,0,.32);
+  padding: 24px;
+}
+.latest-tiktok-card .section-head { margin-bottom: 18px; }
+.latest-tiktok-card .section-head p,
+.follow-panel p { color: var(--muted); }
+.tiktok-embed {
+  width: 100%;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 430px;
+  margin: 0 !important;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  background: var(--ink-0);
+}
+.latest-tiktok-card iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  border-radius: 14px;
+}
+.social-links {
+  display: grid;
+  gap: 11px;
+  margin-top: 18px;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.035);
+  color: var(--text);
+  font-family: 'Oswald';
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  font-size: .84rem;
+  transition: border-color .2s, background .2s, transform .12s;
+}
+.social-link:hover {
+  border-color: var(--olive-bright);
+  background: rgba(107,142,35,.12);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.social-mark {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-size: .78rem;
+  line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+}
+.social-mark::before { content: attr(data-mark); }
+.social-link--tiktok .social-mark { background: #111; }
+.social-link--instagram .social-mark { background: linear-gradient(135deg, #feda75, #d62976 48%, #4f5bd5); }
+.social-link--threads .social-mark { background: #202020; }
+.social-link--youtube .social-mark { background: #ff0033; }
+.social-link--x .social-mark { background: #000; }
+.social-link--facebook .social-mark { background: #1877f2; }
 
 /* ---- TANGO progression roster ---- */
 .tango-showcase {
@@ -769,6 +879,10 @@ body.modal-open { overflow: hidden; }
   .hero-stage { order: -1; }
   .hero-stage .phone { width: 250px; }
   .hero-proof { left: auto; right: -6px; bottom: 40px; width: 200px; }
+  .social-feature { grid-template-columns: 1fr; gap: 18px; }
+  .latest-tiktok-card,
+  .follow-panel { padding: 18px; }
+  .tiktok-embed { min-height: 360px; }
   .subject-preview { grid-template-columns: 1fr; padding: 18px; }
   .tango-showcase { grid-template-columns: 1fr; }
   .tango-feature-card { justify-self: center; }
@@ -797,10 +911,13 @@ body.modal-open { overflow: hidden; }
   }
   .nav-links a { padding: 14px 22px; width: 100%; }
   .nav-toggle:checked ~ .nav-links { display: flex; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; justify-items: start; }
+  .footer-grid .col { width: 100%; }
+  .footer-social-links { min-width: 0; width: 100%; max-width: 360px; }
 }
 
 /* =====================================================================
-   v3 PREMIUM — moving hero backdrop, scroll-progress, tilt, glow & polish.
+   v3 PREMIUM - moving hero backdrop, scroll-progress, tilt, glow & polish.
    Layered on top of v2. All motion respects prefers-reduced-motion below.
    ===================================================================== */
 

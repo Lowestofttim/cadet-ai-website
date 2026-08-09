@@ -15,6 +15,25 @@ const siteStyleVersion = '20260723-nav-a11y-1';
 const voiceSampleVersion = '20260719-launch-copy-1';
 
 assert.doesNotMatch(siteJs, /\u00e2|\uFFFD|\uFEFF/, 'site.js should not contain mojibake or a byte-order mark');
+assert.doesNotMatch(index, /\u00e2|\uFFFD|\uFEFF/, 'Homepage should not contain mojibake or a byte-order mark');
+assert.doesNotMatch(styles, /\u00e2|\uFFFD|\uFEFF/, 'styles.css should not contain mojibake or a byte-order mark');
+assert.match(index, /id="latest-tiktok"/, 'Homepage should include a Latest TikTok section near the top');
+assert.match(index, /class="tiktok-embed"[\s\S]*data-embed-type="creator"/, 'Latest TikTok should embed a TikTok creator feed');
+assert.match(index, /class="tiktok-embed"[\s\S]*data-unique-id="cadet\.ai"/, 'Latest TikTok should embed the Cadet AI creator feed');
+assert.match(index, /https:\/\/www\.tiktok\.com\/embed\.js/, 'Homepage should load the official TikTok embed script');
+assert.match(index, /id="follow-cadet-ai"/, 'Homepage should include a follow-us social panel');
+
+const expectedSocialLinks = [
+  'https://www.tiktok.com/@cadet.ai',
+  'https://www.instagram.com/cadet.ai.uk/',
+  'https://www.threads.com/@cadet.ai.uk',
+  'https://www.youtube.com/channel/UCXoPFul6l53mZeoD3Crftbw/shorts',
+  'https://x.com/CadetAIUK',
+  'https://www.facebook.com/profile.php?id=61592097923509',
+];
+for (const href of expectedSocialLinks) {
+  assert.match(index, new RegExp(href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `Homepage should link to ${href}`);
+}
 assert.match(index, /assets\/tango-roster\/tango-rook-level-1-plain\.webp/, 'Meet TANGO should use a plain/no-background runtime TANGO image');
 assert.doesNotMatch(index, /assets\/tango\.(?:webp|png)/, 'Homepage should not use the stale generic TANGO mascot image');
 assert.match(index, /data-tango-viewer/, 'Homepage should include an accessible TANGO viewer dialog');
