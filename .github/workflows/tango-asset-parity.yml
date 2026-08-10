@@ -1,0 +1,76 @@
+# Cross-repo TANGO asset parity — deliberately NOT part of the PR gate.
+#
+# scripts/validate-tango-web-assets-from-app.mjs sha256-compares every TANGO
+# image on this site against the app repo's runtime export
+# (assets/tango/level_states/manifest.json in Lowestofttim/Cadet-AI). It needs a
+# checkout of that repo, which pr-validate.yml deliberately does not have.
+#
+# WHY IT IS NOT IN THE PR GATE
+#
+# It compares against ANOTHER repository's `main`. Re-exporting the app's TANGO
+# artwork would turn every open website PR red — including PRs that only touch,
+# say, the FAQ wording. A required check that fails for reasons the PR author
+# cannot see, cannot reproduce and cannot fix is a check people learn to bypass,
+# and a bypassed gate protects nothing. Worse, it would make pr-validate.yml —
+# the only thing standing between a typo and production — feel optional.
+#
+# The alternative (skip the check when the sibling checkout is missing) is worse
+# still: it would make the PR job report success while having verified nothing,
+# which is exactly the "green but not actually checked" trap this audit finding
+# is about.
+#
+# So the drift is still caught, just on its own signal and its own schedule.
+# Nothing here gates a deploy; a red run here means "the website artwork and the
+# app artwork have diverged — re-run scripts/export-tango-web-assets.mjs and open
+# a PR", which is a content task, not a merge blocker.
+#
+# Run it on demand from the Actions tab (Run workflow) before any release where
+# the TANGO artwork matters, and after any app-side re-export.
+#
+# No secrets: Lowestofttim/Cadet-AI is public, so the automatic GITHUB_TOKEN can
+# read it. Nothing needs to be configured for this to work.
+
+name: TANGO asset parity (cross-repo)
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Mondays 07:00 UTC — early enough in the week to fix before a weekend release.
+    - cron: '0 7 * * 1'
+
+concurrency:
+  group: tango-asset-parity
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  parity:
+    name: Website artwork matches the app export
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      # Sparse + shallow: the validator only ever reads assets/tango, and the app
+      # repo is large. Pulling the whole thing would cost minutes for nothing.
+      - name: Check out the app's TANGO assets
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          repository: Lowestofttim/Cadet-AI
+          ref: main
+          path: cadet-app
+          sparse-checkout: assets/tango
+          sparse-checkout-cone-mode: true
+
+      - name: Node version
+        run: node --version
+
+      - name: Compare website artwork against the app export
+        env:
+          # The validator defaults to a sibling "../Cadet training docs" folder,
+          # which is the maintainer's local layout, not this runner's.
+          CADET_APP_ROOT: ${{ github.workspace }}/cadet-app
+        run: node scripts/validate-tango-web-assets-from-app.mjs

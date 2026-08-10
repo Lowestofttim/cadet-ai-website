@@ -13,7 +13,23 @@ const sha256 = (filePath) => crypto.createHash('sha256').update(fs.readFileSync(
 const slugify = (value) =>
   value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
-assert.ok(fs.existsSync(appManifestPath), `App TANGO manifest missing: ${appManifestPath}`);
+// NOTE: this validator needs a checkout of the APP repo as well as this one, so
+// it deliberately is NOT part of the pull-request gate — see
+// .github/workflows/tango-asset-parity.yml for the reasoning, and run it there
+// (or locally, as below) instead.
+//
+// It fails rather than skips when the app checkout is missing, on purpose: a
+// validator that exits 0 because it could not find anything to check is worse
+// than no validator, because it reports success having verified nothing.
+assert.ok(
+  fs.existsSync(appManifestPath),
+  `App TANGO manifest missing: ${appManifestPath}\n` +
+    'This check compares this site against the app repo\'s runtime export, so it\n' +
+    'needs a checkout of Lowestofttim/Cadet-AI. Either clone it next to this repo\n' +
+    'as "Cadet training docs", or point CADET_APP_ROOT at it:\n' +
+    '  CADET_APP_ROOT=/path/to/Cadet-AI node scripts/validate-tango-web-assets-from-app.mjs\n' +
+    'In CI it runs from .github/workflows/tango-asset-parity.yml (Actions -> Run workflow).',
+);
 assert.ok(fs.existsSync(siteManifestPath), `Website TANGO showcase data missing: ${siteManifestPath}`);
 
 const appManifest = readJson(appManifestPath);
