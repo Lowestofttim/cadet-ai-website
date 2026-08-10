@@ -1,0 +1,71 @@
+# Pre-deploy validation gate.
+#
+# ⚠️ READ THIS BEFORE CHANGING ANYTHING HERE ⚠️
+#
+# This repository has NO build step and NO staging environment. GitHub Pages
+# publishes whatever lands on `main`, the moment it lands. There is no review
+# app, no smoke test after deploy, and no rollback other than another push.
+#
+# That makes THIS WORKFLOW THE ONLY CHECK THAT RUNS BEFORE PRODUCTION.
+# The committed validators already catch missing assets, stale copy, terms
+# regressions and page-structure problems — they just were not required to pass
+# before Pages published (audit P3). They are now.
+#
+# So: do not delete a step to make a PR go green, and do not add
+# `continue-on-error` here. If a check is wrong, fix the check.
+#
+# Deliberately hermetic:
+#   * no secrets — nothing here reads a token or a credential;
+#   * no npm install, no lockfile, no package.json — the validators use Node
+#     builtins only, so there is nothing to audit and nothing to go stale;
+#   * no network — every assertion reads files from this checkout, so the gate
+#     cannot go red because a third-party host is having a bad day.
+#
+# The cross-repo TANGO asset check is NOT here on purpose — see
+# tango-asset-parity.yml for why.
+
+name: Validate site
+
+on:
+  pull_request:
+    branches: [main]
+  # `main` is the deploy branch. A push run cannot prevent that deploy (Pages has
+  # already started), but it makes a direct-to-main push that skipped the PR gate
+  # visible instead of silent.
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: validate-site-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validators
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      # No setup-node step: the validators import only `node:` builtins, so the
+      # runner's preinstalled Node is enough. Logged so a runner-image change
+      # that breaks something is obvious from the run alone.
+      - name: Node version
+        run: node --version
+
+      # Links, asset references, anchors, page structure, the in-page CSP and
+      # referrer <meta> tags (GitHub Pages cannot send them as headers, so losing
+      # one silently drops the only enforcement a browser will honour), alt text,
+      # target="_blank" safety, canonical hosts and the sitemap.
+      - name: Links, structure and accessibility basics
+        run: node scripts/validate-links.mjs
+
+      # Homepage contract: TANGO artwork and showcase JSON, cache-busting
+      # versions, social links, the TikTok embed, plans/FAQ voice-tier wording,
+      # the Digital Asset Links fingerprints and the 13+ terms wording.
+      - name: Homepage contract
+        run: node scripts/validate-homepage.mjs
