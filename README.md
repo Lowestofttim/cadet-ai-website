@@ -27,7 +27,9 @@ deploy it triggered):
 | Check | What it catches |
 |---|---|
 | `node scripts/validate-links.mjs` | broken internal links and asset references, dead `#anchors`, missing/duplicate `<title>` or `<h1>`, missing `lang` / viewport / description, a dropped in-page CSP or referrer `<meta>`, `<img>` without `alt`, `target="_blank"` without `rel="noopener"`, wrong canonical host, encoding damage, and a `sitemap.xml` advertising a page that no longer exists |
-| `node scripts/validate-homepage.mjs` | missing TANGO artwork and showcase JSON, stale cache-busting versions, changed social links, the TikTok embed, plans/FAQ voice-tier wording, the Digital Asset Links fingerprints, and the 13+ terms wording |
+| `node scripts/validate-homepage.mjs` | missing TANGO artwork and showcase JSON, stale cache-busting versions, changed social links, the Latest TikTok section's link-only form, plans/FAQ voice-tier wording, the Digital Asset Links fingerprints, and the 13+ terms wording |
+| `node --test scripts/no-third-party-runtime.test.mjs` | any third-party host the browser would contact on page load — a widget script, a webfont stylesheet or font file, a preconnect — plus any in-page CSP that still *permits* one |
+| `node --test scripts/export-tango-web-assets.test.mjs` | the TANGO exporter reading or writing outside its allowed directories when the app repo's manifest asks it to (`../` traversal, a path-shaped level number, a symlink that resolves elsewhere) |
 
 Both are dependency-free (Node builtins only — no `package.json`, no install
 step, no lockfile), need no secrets and make no network calls, so the gate cannot
@@ -36,6 +38,8 @@ go red because a third party is down. Run them locally before pushing:
 ```bash
 node scripts/validate-links.mjs
 node scripts/validate-homepage.mjs
+node --test scripts/no-third-party-runtime.test.mjs
+node --test scripts/export-tango-web-assets.test.mjs
 ```
 
 **If a check fails, fix the site — not the check.** Do not add
@@ -69,16 +73,27 @@ a browser will actually honour here are the two that work as `<meta>` tags.
 
 - **Content-Security-Policy** — `<meta http-equiv="Content-Security-Policy">`.
   Baseline is `default-src 'none'` with every fetch directive named
-  explicitly: scripts and images and media and XHR are same-origin only,
-  `object-src`/`worker-src`/`frame-src`/`base-uri`/`form-action` are `'none'`,
-  fonts come only from `fonts.gstatic.com`, stylesheets only from `'self'` +
-  `fonts.googleapis.com`. No `'unsafe-inline'` or `'unsafe-eval'` in
+  explicitly, and **every directive is now same-origin or `'none'` on every
+  page** — no host is named anywhere. Scripts, styles, images, media and XHR
+  are `'self'`; `object-src`/`worker-src`/`frame-src`/`font-src`/`base-uri`/
+  `form-action` are `'none'`. No `'unsafe-inline'` or `'unsafe-eval'` in
   `script-src` on any page; the one inline script (the `js` class flag) is
   allowed by sha256 hash. `'unsafe-inline'` survives in `style-src` only
   because the markup uses inline `style="…"` attributes — modern browsers
   confine that to `style-src-attr`, while `style-src-elem` stays locked, so an
-  injected `<style>` block is still blocked. `index.html` additionally allows
-  the TikTok creator embed (`www.tiktok.com`, `*.ttwstatic.com`).
+  injected `<style>` block is still blocked.
+
+  This site is read by children aged 13+, so the rule behind that policy is
+  **nothing loads at runtime that is not committed here** (audit finding M-11).
+  Until 2026-08 the pages fetched Oswald and Inter from Google's webfont CDN and
+  the home page ran TikTok's creator-embed widget, which handed each young
+  visitor's IP address, User-Agent and Referer to Google and TikTok on page load
+  with no consent step. Headings and body text now use system font stacks
+  (`--font-display` / `--font-body` in `styles.css`) and the *Latest TikTok*
+  section is a committed poster image plus an ordinary outbound link.
+  `scripts/no-third-party-runtime.test.mjs` fails the build if any of that comes
+  back — including a CSP that merely *permits* a remote host. If a webfont is
+  ever genuinely needed, self-host the files under `assets/`.
 - **Referrer-Policy** — `<meta name="referrer" content="strict-origin-when-cross-origin">`.
 
 **Not enforceable on GitHub Pages** (header-only; there is no working `<meta>`

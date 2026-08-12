@@ -65,7 +65,33 @@ jobs:
         run: node scripts/validate-links.mjs
 
       # Homepage contract: TANGO artwork and showcase JSON, cache-busting
-      # versions, social links, the TikTok embed, plans/FAQ voice-tier wording,
-      # the Digital Asset Links fingerprints and the 13+ terms wording.
+      # versions, social links, the Latest TikTok section's safe (link-only)
+      # form, plans/FAQ voice-tier wording, the Digital Asset Links fingerprints
+      # and the 13+ terms wording.
       - name: Homepage contract
         run: node scripts/validate-homepage.mjs
+
+      # Privacy policy contract (audit finding M-10). privacy.html is now the ONE
+      # canonical Cadet AI privacy policy: the legacy GitHub Pages copy is a
+      # redirect, and the app repo's copies point here. That makes this page the
+      # normative text for a children's app, and this repo deploys straight to
+      # production — so the check that the published policy still matches the
+      # controls we actually run has to be a merge gate, not a habit.
+      - name: Privacy policy contract
+        run: node scripts/validate-policy-contract.mjs
+
+      # No third-party runtime code (audit finding M-11). This site's visitors
+      # are children aged 13+; a widget script or a webfont fetch would disclose
+      # each one's IP, User-Agent and Referer to a third party on page load, with
+      # no consent step. Everything the browser loads must be committed here.
+      - name: No third-party runtime code
+        run: node --test scripts/no-third-party-runtime.test.mjs
+
+      # Path containment in the TANGO asset exporter (audit finding M-12). Every
+      # path that script handles comes out of a manifest in ANOTHER repository,
+      # and whatever it writes gets committed and deployed. This test drives the
+      # real script against throwaway temp directories only — no app checkout, no
+      # network — so it belongs in the gate even though the cross-repo artwork
+      # comparison (tango-asset-parity.yml) deliberately does not.
+      - name: TANGO exporter path containment
+        run: node --test scripts/export-tango-web-assets.test.mjs
