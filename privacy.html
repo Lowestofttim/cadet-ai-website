@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; style-src-elem 'self'; style-src-attr 'unsafe-inline'; font-src 'none'; img-src 'self'; media-src 'self'; connect-src 'self'; form-action 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Privacy Policy: Cadet AI</title>
-  <meta name="description" content="Cadet AI privacy policy: what data we collect, how we protect it, our 13+ age requirement and parental-consent handling, third parties, your UK GDPR rights, and how to delete your data.">
+  <meta name="description" content="Cadet AI privacy policy: what data we collect, how we protect it, our hard 13+ age requirement, how long we keep things, third parties, your UK GDPR rights, and how to delete or download your data.">
   <link rel="canonical" href="https://cadetai.co.uk/privacy.html">
   <meta name="theme-color" content="#121412">
   <meta property="og:title" content="Cadet AI: Privacy Policy">
@@ -105,7 +105,7 @@
     <div class="wrap" style="padding:54px 22px 40px">
       <div class="eyebrow">Data protection</div>
       <h1>Privacy <span>Policy</span></h1>
-      <p class="lead" style="max-width:60ch">Last updated: 11 August 2026. We take the privacy of young people seriously. Here's exactly what we collect and why, in plain terms.</p>
+      <p class="lead" style="max-width:60ch">Last updated: 12 August 2026. We take the privacy of young people seriously. Here's exactly what we collect and why, in plain terms.</p>
       <p class="muted" style="max-width:60ch">Cadet AI is run by <strong>MONKEYZOO LTD</strong>, which is the &ldquo;data controller&rdquo; for the information described below &mdash; we decide how and why it is used, and we are who you contact about it. You can reach us at <a href="mailto:support@cadetai.co.uk">support@cadetai.co.uk</a>.</p>
     </div>
   </section>
@@ -116,9 +116,19 @@
       <p class="muted"><strong>Operator / data controller:</strong> MONKEYZOO LTD (Cadet AI) &nbsp;&middot;&nbsp; <strong>Privacy contact:</strong> <a href="mailto:support@cadetai.co.uk">support@cadetai.co.uk</a></p>
 
       <h2>1. Who this app is for (aged 13+)</h2>
-      <p class="muted">Cadet AI is for cadets <strong>aged 13 and over</strong>. You must be at least 13 to create an account: when you sign up we ask your date of birth, and if you are under 13 we do <strong>not</strong> create an account for you. There is no way around this &mdash; an account cannot be created or used until your 13th birthday, <strong>even with permission from a parent or guardian</strong>. If a date of birth was entered by mistake, you can try again with the correct date after 24 hours. We do not knowingly collect personal data from children under 13; if we learn we have, we will delete it. Parents and guardians can contact us at any time to see, correct, or delete their cadet&rsquo;s data.</p>
+      <p class="muted">Cadet AI is for cadets <strong>aged 13 and over</strong>. <strong>Under-13s cannot create an account.</strong> When you sign up we ask your date of birth, and if you are under 13 we do <strong>not</strong> create an account for you. There is no way around this &mdash; an account cannot be created or used until your 13th birthday, <strong>even with permission from a parent or guardian</strong>. If a date of birth was entered by mistake, you can try again with the correct date after 24 hours. We do not knowingly collect personal data from children under 13; if we learn we have, we will delete it. Parents and guardians can contact us at any time to see, correct, or delete their cadet&rsquo;s data.</p>
 
-      <p class="muted"><strong>Adults using the app.</strong> Cadet AI can also be used by adult volunteers (Cadet Force Adult Volunteers, or CFAVs) aged 18 and over. Under-18 cadets and adults never interact through the app &mdash; see &ldquo;No contact between users&rdquo; below.</p>
+      <!--
+        ADULT (CFAV) ACCOUNTS - PUBLICATION ORDER MATTERS.
+        The operator-verification wording below describes the approval path that
+        replaces self-service conversion. Do NOT publish this paragraph ahead of
+        that control: while a self-declared date of birth still converts an
+        account on its own, this sentence would be untrue of the live product,
+        which is the exact failure mode finding M-10 is about.
+        scripts/validate-policy-contract.mjs pins the wording; the control it
+        describes is the one that must ship alongside it.
+      -->
+      <p class="muted"><strong>Adults using the app.</strong> Cadet AI can also be used by adult volunteers (Cadet Force Adult Volunteers, or CFAVs) aged 18 and over. An adult account is not something you can give yourself: telling us a date of birth <strong>on its own is not enough</strong>, and an account only becomes an adult (CFAV) account once that change has been <strong>operator-verified</strong> by us against a record we hold and you cannot reach. We keep no copy of any document you show us and no date of birth. This is not paperwork for its own sake &mdash; the cadet/adult split is what keeps under-18s and adults apart everywhere in the app. Under-18 cadets and adults never interact through the app &mdash; see &ldquo;No contact between users&rdquo; below.</p>
 
       <h2>2. What we collect</h2>
       <p class="muted">Only what the app needs to work:</p>
@@ -129,6 +139,7 @@
         <li><strong>Your progress</strong>: quiz results, scores, XP, badges, awards, streaks, and rank.</li>
         <li><strong>Messages to TANGO</strong>: what you type to the in-app AI assistant and its replies, plus your chat history.</li>
         <li><strong>App settings</strong>: your preferences (theme, reminders, leaderboard opt-in).</li>
+        <li><strong>Diagnostics</strong>: if the app hits a fault, it sends a fault code from a fixed list, the platform, the app version, whether the app had to stop, and a trimmed list of code locations (function name, code file and line number). The app does <strong>not</strong> send the error message itself &mdash; see &ldquo;Diagnostics &amp; crash reports&rdquo; below.</li>
         <li><strong>Subscription</strong>: if you buy Cadet AI Plus or Pro, we record that you have an active subscription and when it renews or expires (your &ldquo;entitlement&rdquo;), so the app can unlock paid features. The payment itself is handled by Google Play, so we do <strong>not</strong> receive or store your card or bank details.</li>
       </ul>
       <p class="muted">We do <strong>not</strong> collect your location, contacts, or photos. There are <strong>no advertising SDKs and no third-party analytics trackers</strong>, and we do <strong>not</strong> sell your data.</p>
@@ -136,35 +147,48 @@
       <h2>3. Microphone</h2>
       <p class="muted">If you use TANGO&rsquo;s optional voice feature, the app uses your device microphone to turn your speech into text. Depending on your device, this speech-to-text may be handled by your device&rsquo;s operating system or its built-in (for example, Google) speech service rather than by us. You are asked for permission first and can decline or revoke it; the rest of the app still works.</p>
 
-      <h2>4. How we use your data</h2>
+      <h2>4. Diagnostics &amp; crash reports</h2>
+      <p class="muted">If the app has a fault, it sends us a short report so we can fix it. Every report is built from a <strong>fixed list</strong> of things and nothing else: a fault code chosen from a list we maintain (or &ldquo;unhandled exception&rdquo; for a fault we have not listed), the platform, the app version, whether the app had to stop, and a trimmed list of code locations rebuilt from their parts &mdash; function name, code file and line number.</p>
+      <p class="muted">The app does <strong>not</strong> send the error message text. Because the report is assembled from that fixed list rather than copied out of the fault, anything you typed, any quiz answer, any file name on your device and any web address cannot travel with it. Reports are access-controlled, length-limited, de-duplicated, capped per app session, and <strong>deleted after 90 days</strong>. Reports are skipped altogether if you are signed out, offline, or using a test build, and you can object to this processing by emailing <a href="mailto:support@cadetai.co.uk">support@cadetai.co.uk</a>.</p>
+
+      <h2>5. How we use your data</h2>
       <p class="muted">To create and secure your account; to save and show your training progress, badges, awards and rank; to answer your questions in TANGO; to show leaderboards <strong>only if you opt in</strong>; and to send optional reminders if you turn them on.</p>
       <p class="muted"><strong>Reminders.</strong> Parade reminders and the daily streak nudge <strong>start switched off</strong> and only ever run if you turn them on yourself; your device will also ask your permission to show notifications. You can turn any of them off at any time in Settings or in your device&rsquo;s notification settings, and signing out stops reminders on that device.</p>
       <p class="muted"><strong>Legal basis (UK GDPR):</strong> our <em>legitimate interests</em> in providing the study service you chose to use, weighed against your interests as a young person (Article 6(1)(f)); and your <em>consent</em> for optional features such as leaderboards and reminders (Article 6(1)(a)), which you can withdraw at any time in Settings. In the UK, 13 is the minimum age at which a young person can agree to use an online service like this without a parent.</p>
 
-      <h2>5. Who we share it with</h2>
+      <h2>6. Who we share it with</h2>
       <p class="muted">We use a few trusted providers who process data on our behalf: <strong>Supabase</strong> (secure hosting, database, sign-in, and TANGO chat history); <strong>Google</strong> (only if you choose &ldquo;Continue with Google&rdquo;, to sign you in); and <strong>OpenAI</strong> (your TANGO messages are sent to OpenAI&rsquo;s API to generate a reply and saved as your chat history; messages sent through the API are <strong>not</strong> used to train OpenAI&rsquo;s models, so please don&rsquo;t type sensitive personal information into TANGO). When you use matched character voice playback, TANGO sends its reply text to our voice synthesis provider to generate the spoken audio. When you use voice input to dictate a question, your speech is transcribed by your device&rsquo;s built-in speech service, which (depending on your device) may send the audio to Google to convert it to text; we do not store the audio. If you buy Cadet AI Plus or Pro, <strong>Google Play</strong> processes the payment and confirms to us only whether your subscription is active. Google handles your card details, and we never see or store them. We never share your data with anyone else, and we never sell it.</p>
       <p class="muted"><strong>YouTube API Services.</strong> Cadet AI may use YouTube API Services only for operator-controlled uploads and scheduling of Cadet AI-owned videos to the official Cadet AI YouTube channel. This does not collect cadet YouTube account data, does not manage cadet YouTube accounts, and does not sell or share YouTube API data. You can read Google&rsquo;s Privacy Policy at <a href="https://policies.google.com/privacy" rel="noopener">policies.google.com/privacy</a>. YouTube upload credentials are stored only for the Cadet AI operator account and can be revoked in Google Account security settings.</p>
       <p class="muted"><strong>International transfers.</strong> Some providers process data outside the UK (for example, OpenAI in the US). Where data leaves the UK we rely on the UK International Data Transfer Addendum to the EU Standard Contractual Clauses (or an equivalent safeguard, or transfer to a country the UK recognises as adequate) so your information keeps an equivalent level of protection.</p>
 
-      <h2>6. Leaderboards</h2>
+      <h2>7. Leaderboards</h2>
       <p class="muted">Leaderboards are <strong>off by default</strong>. If you turn on &ldquo;Appear on leaderboards&rdquo; in Settings, the <strong>nickname you choose</strong> (not your real name), your unit or school, and your XP can be shown to other cadets. Your real name is <strong>never</strong> shown on a leaderboard. Boards are <strong>separated by account type</strong>: cadets are only ever ranked against other cadets, and adult volunteers (CFAVs) only against other adult volunteers, so an under-18 cadet and an adult never appear on the same board. You can turn this off at any time and we will stop including you.</p>
 
-      <h2>7. No contact between users</h2>
+      <h2>8. No contact between users</h2>
       <p class="muted">Cadet AI has <strong>no</strong> social or messaging features between users. Cadets and adult volunteers (CFAVs) cannot message, contact, follow, add, see, or interact with one another through the app &mdash; there are no user-to-user chats, direct messages, comments, friend lists, photo sharing, or shared spaces. Every TANGO conversation is private, between one person and the AI assistant. The only shared feature, the optional leaderboard, shows a self-chosen nickname (never a real name) and is <strong>separated by account type</strong>, so adults and under-18 cadets never appear on the same board. In short, adults using the app do not come into contact with under-18 users.</p>
 
-      <h2>8. How long we keep it</h2>
-      <p class="muted">We keep your account and progress data while your account exists. Your TANGO chat history is kept on a rolling <strong>12-month</strong> basis &mdash; both the copy on our servers and the copy cached on your device, which the app deletes as it ages out &mdash; and sooner if you delete it or delete your account. If you ask us to delete your account, we delete your personal data (we may keep minimal records where the law requires).</p>
+      <h2>9. How long we keep it</h2>
+      <p class="muted">We keep your account and progress data while your account exists. Everything with a fixed period below is cleared automatically by a job that runs once a day, so nothing older than its period is kept:</p>
+      <ul class="muted">
+        <li><strong>TANGO chat history</strong> &mdash; <strong>365 days</strong> (a rolling 12 months). This covers both the copy on our servers and the copy cached on your device, which the app deletes as it ages out.</li>
+        <li><strong>The copy of a question and answer we save when you rate a TANGO answer</strong> &mdash; <strong>365 days</strong>. Rating an answer saves a second copy of that exchange, so it gets the same life as the chat itself.</li>
+        <li><strong>The copy of a question and answer we save when you report a TANGO answer to us</strong> &mdash; <strong>365 days</strong>.</li>
+        <li><strong>Diagnostics and crash reports</strong> &mdash; <strong>90 days</strong>.</li>
+        <li><strong>Quiz results and progress records</strong> &mdash; while your account exists, so your XP, badges, streaks and rank keep working.</li>
+        <li><strong>Leaderboard snapshots</strong> &mdash; only as long as needed to run the weekly board and check for abuse.</li>
+      </ul>
+      <p class="muted">You can also clear your chat history or delete your account at any time, which removes the data sooner. If you ask us to delete your account, we delete your personal data (we may keep minimal records where the law requires).</p>
 
-      <h2>9. Your rights &amp; deleting your data</h2>
-      <p class="muted">Under UK GDPR you can ask us to access, correct, <strong>delete your account and all its data</strong>, restrict, object to, or export your data, including via the in-app &ldquo;Delete my account&rdquo; option, or by emailing us; see <a href="delete-account.html">how to delete your account</a>. We will respond within <strong>one month</strong>. A parent or guardian can make a request on a cadet&rsquo;s behalf. You can also complain to the UK Information Commissioner&rsquo;s Office (ICO) at <a href="https://ico.org.uk" rel="noopener">ico.org.uk</a>.</p>
+      <h2>10. Your rights &amp; deleting your data</h2>
+      <p class="muted">Under UK GDPR you can ask us to access, correct, <strong>delete your account and all its data</strong>, restrict, object to, or export your data. You do not have to ask us to do the two big ones: in the app, <strong>Settings &rarr; Delete my account</strong> deletes your account and its data, and <strong>Settings &rarr; Download my data</strong> gives you a copy of it to keep. You can also make any of these requests by emailing us; see <a href="delete-account.html">how to delete your account</a> for both routes. We will respond within <strong>one month</strong>. A parent or guardian can make a request on a cadet&rsquo;s behalf. You can also complain to the UK Information Commissioner&rsquo;s Office (ICO) at <a href="https://ico.org.uk" rel="noopener">ico.org.uk</a>.</p>
 
-      <h2>10. Security</h2>
+      <h2>11. Security</h2>
       <p class="muted">Your data is sent over encrypted connections (HTTPS) and stored by our hosting provider (Supabase), which encrypts data at rest, with access controls limiting who can see it. No system is perfectly secure, but we take reasonable steps to protect your information and will act promptly if we become aware of a personal-data breach.</p>
 
-      <h2>11. Changes to this policy</h2>
+      <h2>12. Changes to this policy</h2>
       <p class="muted">If we change this policy we will update the date above and, for significant changes, notify you in the app.</p>
 
-      <h2>12. Contact</h2>
+      <h2>13. Contact</h2>
       <p class="muted">Questions, requests, or concerns: <a href="mailto:support@cadetai.co.uk">support@cadetai.co.uk</a>. The data controller is <strong>MONKEYZOO LTD</strong>.</p>
     </div>
   </section>

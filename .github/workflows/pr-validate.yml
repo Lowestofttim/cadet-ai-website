@@ -71,6 +71,15 @@ jobs:
       - name: Homepage contract
         run: node scripts/validate-homepage.mjs
 
+      # Privacy policy contract (audit finding M-10). privacy.html is now the ONE
+      # canonical Cadet AI privacy policy: the legacy GitHub Pages copy is a
+      # redirect, and the app repo's copies point here. That makes this page the
+      # normative text for a children's app, and this repo deploys straight to
+      # production — so the check that the published policy still matches the
+      # controls we actually run has to be a merge gate, not a habit.
+      - name: Privacy policy contract
+        run: node scripts/validate-policy-contract.mjs
+
       # No third-party runtime code (audit finding M-11). This site's visitors
       # are children aged 13+; a widget script or a webfont fetch would disclose
       # each one's IP, User-Agent and Referer to a third party on page load, with
