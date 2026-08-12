@@ -124,6 +124,68 @@ const copyFromApp = (relativeSource, relativeTarget) => {
   fs.copyFileSync(source, target);
 };
 
+// ── Hand-maintained character copy ───────────────────────────────────────────
+//
+// `video`, `role` and `bio` are NOT in the app manifest -- verified: the string
+// "video", "role" and "bio" do not appear as keys anywhere in
+// assets/tango/level_states/manifest.json. They are written and maintained HERE,
+// in this repository, and site.js reads all three to drive the homepage TANGO
+// viewer modal (video playback plus the role/bio text).
+//
+// This export used to rebuild tango-showcase.json with only id/name/slug/
+// thumbnail/levels, so following the documented workflow -- README says a red
+// "TANGO asset parity" run means re-run this script and open a PR -- silently
+// stripped all 60 values and degraded the viewer. The images reproduced
+// byte-for-byte, which made the loss easy to miss in review.
+//
+// So carry them forward from the committed file, keyed on character id, and
+// refuse to write a lossy export. If you need to CHANGE this copy, edit
+// tango-showcase.json directly and re-run: the values round-trip.
+const showcasePath = path.join(rosterDir, 'tango-showcase.json');
+const carriedCopyFields = ['video', 'role', 'bio'];
+
+const readCarriedCopy = () => {
+  if (!fs.existsSync(showcasePath)) {
+    refuse(
+      `cannot carry forward hand-maintained character copy: ${showcasePath} is missing.\n` +
+        `  ${carriedCopyFields.join('/')} live only in this file -- they are not in the app manifest.\n` +
+        '  Restore it from git before re-running, or this export would silently drop them.',
+    );
+  }
+  const previous = JSON.parse(fs.readFileSync(showcasePath, 'utf8'));
+  const byId = new Map();
+  for (const character of previous.characters ?? []) {
+    byId.set(character.id, character);
+  }
+  return byId;
+};
+
+const carriedCopy = readCarriedCopy();
+
+// Fail closed rather than emitting a character the homepage viewer cannot render.
+const carryCopyForward = (characterId, characterName) => {
+  const previous = carriedCopy.get(characterId);
+  if (!previous) {
+    refuse(
+      `no existing entry for ${characterId} (${characterName}) in tango-showcase.json.\n` +
+        `  A new character needs its ${carriedCopyFields.join('/')} written by hand first --\n` +
+        '  they cannot be derived from the app manifest, and this script must not invent them.',
+    );
+  }
+  const carried = {};
+  for (const field of carriedCopyFields) {
+    const value = previous[field];
+    if (typeof value !== 'string' || value.trim() === '') {
+      refuse(
+        `${characterId} (${characterName}) has no usable "${field}" in tango-showcase.json.\n` +
+          '  site.js reads it for the homepage TANGO viewer; refusing to write a lossy export.',
+      );
+    }
+    carried[field] = value;
+  }
+  return carried;
+};
+
 const webData = {
   generated_from: 'assets/tango/level_states/manifest.json',
   classification: manifest.classification,
@@ -142,11 +204,14 @@ for (const character of manifest.characters) {
 
   copyFromApp(levelTwenty.showcase.thumbnail, thumbTarget);
 
+  // Key order matters: it must match the committed file so a no-op export
+  // produces a clean `git status` rather than a whole-file reorder diff.
   const webCharacter = {
     id: character.character_id,
     name: character.character_name,
     slug: characterSlug,
     thumbnail: thumbTarget,
+    ...carryCopyForward(character.character_id, character.character_name),
     levels: [],
   };
 
@@ -176,10 +241,7 @@ copyFromApp(
   path.posix.join('assets/tango-roster', 'tango-rook-level-20.webp'),
 );
 
-fs.writeFileSync(
-  path.join(rosterDir, 'tango-showcase.json'),
-  `${JSON.stringify(webData, null, 2)}\n`,
-);
+fs.writeFileSync(showcasePath, `${JSON.stringify(webData, null, 2)}\n`);
 
 console.log(
   `Exported ${webData.characters.length} TANGOs and ${webData.characters.length * 20} level images`,

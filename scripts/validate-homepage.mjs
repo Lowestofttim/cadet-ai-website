@@ -84,6 +84,31 @@ for (const character of data.characters) {
   assert.ok(character.id, 'Each TANGO needs an id');
   assert.ok(character.name, `${character.id} needs a name`);
   assert.ok(character.thumbnail && exists(character.thumbnail), `${character.name} thumbnail should exist`);
+
+  // video/role/bio are hand-maintained in this repo -- they are NOT in the app
+  // manifest -- and site.js reads all three to drive the TANGO viewer modal.
+  // scripts/export-tango-web-assets.mjs used to rebuild this file without them,
+  // so following the documented "re-run the exporter" workflow silently stripped
+  // all 60 values while every image still reproduced byte-for-byte, which made
+  // the loss almost invisible in review. These assertions turn a future lossy
+  // export into a failed PR gate instead of a degraded homepage.
+  assert.ok(
+    typeof character.role === 'string' && character.role.trim() !== '',
+    `${character.name} needs a non-empty role (the TANGO viewer renders it; a lossy export drops it)`,
+  );
+  assert.ok(
+    typeof character.bio === 'string' && character.bio.trim() !== '',
+    `${character.name} needs a non-empty bio (the TANGO viewer renders it; a lossy export drops it)`,
+  );
+  assert.ok(
+    typeof character.video === 'string' && character.video.trim() !== '',
+    `${character.name} needs a non-empty video path (the TANGO viewer plays it; a lossy export drops it)`,
+  );
+  assert.ok(
+    exists(character.video),
+    `${character.name} video ${character.video} should be committed to this repo`,
+  );
+
   assert.equal(character.levels.length, 20, `${character.name} should include 20 levels`);
   character.levels.forEach((level, index) => {
     const expectedLevel = index + 1;

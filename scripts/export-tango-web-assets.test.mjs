@@ -64,6 +64,38 @@ const SOURCE_DIR = 'assets/tango/level_states/tango_1';
 //   <sandbox>/…       anything a malicious manifest tries to reach or create
 //
 // so "did it escape?" is just "did anything appear outside <sandbox>/site?".
+// The exporter carries `video`, `role` and `bio` forward from the committed
+// tango-showcase.json, because those are hand-maintained here and do not exist
+// in the app manifest, and it REFUSES rather than emit them empty.
+//
+// That refusal has to be seeded into every sandbox, not just the happy path.
+// assertRefused() below only checks that stderr says "refusing", so a site root
+// with no showcase file makes the containment cases refuse for the WRONG reason
+// and pass without ever reaching the traversal logic they exist to test — the
+// exact vacuous-pass failure this file's header warns about. Observed: all four
+// containment tests "passed" that way before this seed was added.
+const SHOWCASE_REL = 'assets/tango-roster/tango-showcase.json';
+
+const seedShowcase = (siteRoot) => {
+  writeFile(
+    path.join(siteRoot, SHOWCASE_REL),
+    JSON.stringify({
+      characters: [
+        {
+          id: 'tango_1',
+          name: 'Rook',
+          slug: 'rook',
+          thumbnail: 'assets/tango-roster/tango-rook-level-20-thumb.webp',
+          video: 'assets/tango-videos/rook.mp4',
+          role: 'Fixture role',
+          bio: 'Fixture bio.',
+          levels: [],
+        },
+      ],
+    }),
+  );
+};
+
 function sandbox(t) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'tango-export-test-'));
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
@@ -71,6 +103,7 @@ function sandbox(t) {
   const siteRoot = path.join(dir, 'site');
   fs.mkdirSync(appRoot, { recursive: true });
   fs.mkdirSync(siteRoot, { recursive: true });
+  seedShowcase(siteRoot);
   return { dir, appRoot, siteRoot };
 }
 
@@ -147,6 +180,21 @@ function assertRefused(result, what) {
   );
 }
 
+// A refusal is only evidence for the case that asked for it. The carry-forward
+// guard also refuses, and it fires EARLY — before any path is resolved — so an
+// unseeded sandbox made every containment case below refuse for that reason and
+// pass without exercising containment at all. Use this for path cases so the
+// wrong refusal can never be mistaken for the right one again.
+function assertRefusedForContainment(result, what) {
+  assertRefused(result, what);
+  assert.doesNotMatch(
+    result.stderr,
+    /carry forward|hand-maintained/i,
+    `exporter refused ${what}, but for the carry-forward guard rather than containment — ` +
+      `the fixture is incomplete and this case proved nothing:\n${result.stderr}`,
+  );
+}
+
 // ── The exporter must keep working ─────────────────────────────────────────
 
 test('copies a normal .webp from the allowlisted source directory', (t) => {
@@ -172,6 +220,60 @@ test('copies a normal .webp from the allowlisted source directory', (t) => {
   assert.equal(showcase.characters[0].levels[0].image, 'assets/tango-levels/rook/level-001.webp');
 });
 
+// ── …and must not silently drop the hand-maintained character copy ─────────
+//
+// site.js reads video/role/bio to drive the homepage TANGO viewer. They are
+// written by hand in this repo and are NOT in the app manifest, so an export
+// that rebuilds the file from the manifest alone loses them. It did: every one
+// of the 20 characters came back with all three fields gone (60 values), while
+// the 400 level images and 22 roster images still reproduced byte-for-byte —
+// which is why the loss survived review. README tells contributors to re-run
+// this exporter whenever the parity check goes red, so the documented workflow
+// was the thing that degraded the homepage.
+
+test('carries hand-maintained video/role/bio forward instead of dropping them', (t) => {
+  const { appRoot, siteRoot } = sandbox(t);
+  buildApp(appRoot);
+
+  const result = runExport(appRoot, siteRoot);
+
+  assert.equal(result.status, 0, `exporter failed on a legitimate manifest:\n${result.stderr}`);
+  const showcase = JSON.parse(fs.readFileSync(path.join(siteRoot, SHOWCASE_REL), 'utf8'));
+  const rook = showcase.characters[0];
+  assert.equal(rook.video, 'assets/tango-videos/rook.mp4', 'video must survive a re-export');
+  assert.equal(rook.role, 'Fixture role', 'role must survive a re-export');
+  assert.equal(rook.bio, 'Fixture bio.', 'bio must survive a re-export');
+  // Key order is part of the contract: a reordered file is a whole-file diff
+  // that buries the real change in review.
+  assert.deepEqual(
+    Object.keys(rook),
+    ['id', 'name', 'slug', 'thumbnail', 'video', 'role', 'bio', 'levels'],
+    'exported key order should match the committed file',
+  );
+});
+
+test('refuses to write a lossy export when the hand-maintained copy is missing', (t) => {
+  const { appRoot, siteRoot } = sandbox(t);
+  buildApp(appRoot);
+  fs.rmSync(path.join(siteRoot, SHOWCASE_REL));
+
+  const result = runExport(appRoot, siteRoot);
+
+  assertRefused(result, 'an export with no existing hand-maintained copy to carry forward');
+});
+
+test('refuses to write a lossy export when a character has an empty bio', (t) => {
+  const { appRoot, siteRoot } = sandbox(t);
+  buildApp(appRoot);
+  const showcase = JSON.parse(fs.readFileSync(path.join(siteRoot, SHOWCASE_REL), 'utf8'));
+  showcase.characters[0].bio = '   ';
+  writeFile(path.join(siteRoot, SHOWCASE_REL), JSON.stringify(showcase));
+
+  const result = runExport(appRoot, siteRoot);
+
+  assertRefused(result, 'a character whose bio is blank');
+});
+
 // ── …and must refuse everything that leaves its two sandboxes ──────────────
 
 test('refuses a ../ traversal in a manifest source path', (t) => {
@@ -186,7 +288,7 @@ test('refuses a ../ traversal in a manifest source path', (t) => {
 
   const result = runExport(appRoot, siteRoot);
 
-  assertRefused(result, 'a source path outside the app assets directory');
+  assertRefusedForContainment(result, 'a source path outside the app assets directory');
   assert.deepEqual(
     filesCarryingPayload(siteRoot),
     [],
@@ -207,7 +309,7 @@ test('refuses a level value that walks the destination out of the site', (t) => 
 
   const result = runExport(appRoot, siteRoot);
 
-  assertRefused(result, 'a level value that escapes the output directory');
+  assertRefusedForContainment(result, 'a level value that escapes the output directory');
   assert.deepEqual(
     filesUnder(dir).filter((file) => !file.startsWith('site/') && !file.startsWith('app/')),
     [],
@@ -227,7 +329,7 @@ test('refuses a level value that writes into the website root', (t) => {
 
   const result = runExport(appRoot, siteRoot);
 
-  assertRefused(result, 'a level value that writes into the website root');
+  assertRefusedForContainment(result, 'a level value that writes into the website root');
   assert.deepEqual(
     filesUnder(siteRoot).filter((file) => !file.includes('/')),
     [],
@@ -254,7 +356,7 @@ test('refuses a symlink whose real path leaves the allowlisted source directory'
 
   const result = runExport(appRoot, siteRoot);
 
-  assertRefused(result, 'a symlink pointing outside the app assets directory');
+  assertRefusedForContainment(result, 'a symlink pointing outside the app assets directory');
   assert.deepEqual(
     filesCarryingPayload(siteRoot),
     [],
