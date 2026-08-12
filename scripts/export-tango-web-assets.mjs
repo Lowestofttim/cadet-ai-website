@@ -1,3 +1,23 @@
+// Copies the app's exported TANGO artwork into this repo.
+//
+// ⚠️ EVERY PATH THIS SCRIPT HANDLES IS UNTRUSTED INPUT (audit finding M-12).
+//
+// The hero/thumbnail/plain paths and the level numbers all come out of
+// assets/tango/level_states/manifest.json in the APP repository, and they used
+// to be concatenated onto appRoot/siteRoot and handed straight to
+// fs.copyFileSync. Nothing checked where the result landed, so a manifest could
+// read a file from outside the app checkout, and — because `level.level` is
+// interpolated into the destination FILE NAME — write one anywhere the operator
+// could write, including this website's root directory. Whatever this script
+// produces gets committed and pushed, and `main` deploys to production with no
+// build step, so that was a route to publishing someone else's file on a public
+// youth-facing site.
+//
+// So: every source is confined to <appRoot>/assets/tango, every destination is
+// confined to the two output directories below, both are checked LEXICALLY and
+// again after fs.realpathSync (a symlink is lexically innocent), and only image
+// extensions are accepted. scripts/export-tango-web-assets.test.mjs holds this
+// down — run it after any change here.
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -11,6 +31,80 @@ const levelsDir = path.join(siteRoot, 'assets', 'tango-levels');
 fs.mkdirSync(rosterDir, { recursive: true });
 fs.mkdirSync(levelsDir, { recursive: true });
 
+// The only directory a manifest may read from, and the only two it may write to.
+const sourceRoot = path.join(appRoot, 'assets', 'tango');
+const outputRoots = [rosterDir, levelsDir];
+const allowedExtensions = new Set(['.webp', '.png', '.jpg', '.jpeg']);
+
+const refuse = (message) => {
+  throw new Error(`Refusing to copy — ${message}`);
+};
+
+// path.relative is the containment test. Reject '' (the candidate IS the root),
+// anything that climbs out with '..', and anything absolute (a different drive
+// or UNC share, where "relative to" is meaningless).
+const isInside = (root, candidate) => {
+  const rel = path.relative(root, candidate);
+  return rel !== '' && rel !== '..' && !rel.startsWith(`..${path.sep}`) && !path.isAbsolute(rel);
+};
+
+// Lexical containment alone cannot see a symlink, so both ends are re-checked
+// against real paths. A destination usually does not exist yet, so resolve the
+// deepest parent that does and re-attach the missing tail: that still follows a
+// symlinked parent directory, which is the part an attacker controls.
+const realpathOrNearest = (target) => {
+  let current = path.resolve(target);
+  const missing = [];
+  for (;;) {
+    try {
+      return path.join(fs.realpathSync(current), ...missing.reverse());
+    } catch (error) {
+      if (error.code !== 'ENOENT' && error.code !== 'ENOTDIR') throw error;
+      const parent = path.dirname(current);
+      if (parent === current) return path.resolve(target);
+      missing.push(path.basename(current));
+      current = parent;
+    }
+  }
+};
+
+const containedPath = (base, segment, roots, description) => {
+  if (typeof segment !== 'string' || segment.trim() === '') {
+    refuse(`${description} is not a usable path: ${JSON.stringify(segment)}`);
+  }
+  // path.join (not path.resolve) on purpose: it keeps the existing behaviour
+  // where an absolute, drive-letter or UNC string is glued harmlessly onto the
+  // base rather than replacing it. The checks below are what stop escapes.
+  const lexical = path.resolve(path.join(base, segment));
+  const real = realpathOrNearest(lexical);
+
+  if (!allowedExtensions.has(path.extname(lexical).toLowerCase())) {
+    refuse(`${description} is not an image file this exporter handles: ${segment}`);
+  }
+  const contained = roots.some(
+    (root) => isInside(path.resolve(root), lexical) && isInside(realpathOrNearest(root), real),
+  );
+  if (!contained) {
+    refuse(
+      `${description} escapes its allowed directory.\n` +
+        `  manifest value: ${segment}\n` +
+        `  resolves to:    ${lexical}\n` +
+        `  real path:      ${real}\n` +
+        `  allowed:        ${roots.join(', ')}`,
+    );
+  }
+  return lexical;
+};
+
+// `level.level` is interpolated into the destination file name, so it has to be
+// an actual level number before it goes anywhere near a path.
+const levelNumber = (value) => {
+  if (!Number.isInteger(value) || value < 1 || value > 999) {
+    refuse(`manifest level is not a level number: ${JSON.stringify(value)}`);
+  }
+  return String(value).padStart(3, '0');
+};
+
 const slugify = (value) =>
   value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
@@ -22,8 +116,10 @@ const titleCase = (value) =>
     .join(' ');
 
 const copyFromApp = (relativeSource, relativeTarget) => {
-  const source = path.join(appRoot, relativeSource);
-  const target = path.join(siteRoot, relativeTarget);
+  const source = containedPath(appRoot, relativeSource, [sourceRoot], 'manifest source path');
+  const target = containedPath(siteRoot, relativeTarget, outputRoots, 'export destination');
+  // Only after both ends are known-contained — otherwise this would happily
+  // create directories outside the site to hold an escaping write.
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.copyFileSync(source, target);
 };
@@ -55,8 +151,7 @@ for (const character of manifest.characters) {
   };
 
   for (const level of character.levels) {
-    const levelNumber = String(level.level).padStart(3, '0');
-    const imageTarget = path.posix.join(webCharacterDir, `level-${levelNumber}.webp`);
+    const imageTarget = path.posix.join(webCharacterDir, `level-${levelNumber(level.level)}.webp`);
     copyFromApp(level.showcase.hero, imageTarget);
     webCharacter.levels.push({
       level: level.level,

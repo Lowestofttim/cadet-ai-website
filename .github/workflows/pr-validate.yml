@@ -77,3 +77,12 @@ jobs:
       # no consent step. Everything the browser loads must be committed here.
       - name: No third-party runtime code
         run: node --test scripts/no-third-party-runtime.test.mjs
+
+      # Path containment in the TANGO asset exporter (audit finding M-12). Every
+      # path that script handles comes out of a manifest in ANOTHER repository,
+      # and whatever it writes gets committed and deployed. This test drives the
+      # real script against throwaway temp directories only — no app checkout, no
+      # network — so it belongs in the gate even though the cross-repo artwork
+      # comparison (tango-asset-parity.yml) deliberately does not.
+      - name: TANGO exporter path containment
+        run: node --test scripts/export-tango-web-assets.test.mjs

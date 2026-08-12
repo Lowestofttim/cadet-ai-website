@@ -29,6 +29,7 @@ deploy it triggered):
 | `node scripts/validate-links.mjs` | broken internal links and asset references, dead `#anchors`, missing/duplicate `<title>` or `<h1>`, missing `lang` / viewport / description, a dropped in-page CSP or referrer `<meta>`, `<img>` without `alt`, `target="_blank"` without `rel="noopener"`, wrong canonical host, encoding damage, and a `sitemap.xml` advertising a page that no longer exists |
 | `node scripts/validate-homepage.mjs` | missing TANGO artwork and showcase JSON, stale cache-busting versions, changed social links, the Latest TikTok section's link-only form, plans/FAQ voice-tier wording, the Digital Asset Links fingerprints, and the 13+ terms wording |
 | `node --test scripts/no-third-party-runtime.test.mjs` | any third-party host the browser would contact on page load — a widget script, a webfont stylesheet or font file, a preconnect — plus any in-page CSP that still *permits* one |
+| `node --test scripts/export-tango-web-assets.test.mjs` | the TANGO exporter reading or writing outside its allowed directories when the app repo's manifest asks it to (`../` traversal, a path-shaped level number, a symlink that resolves elsewhere) |
 
 Both are dependency-free (Node builtins only — no `package.json`, no install
 step, no lockfile), need no secrets and make no network calls, so the gate cannot
@@ -38,6 +39,7 @@ go red because a third party is down. Run them locally before pushing:
 node scripts/validate-links.mjs
 node scripts/validate-homepage.mjs
 node --test scripts/no-third-party-runtime.test.mjs
+node --test scripts/export-tango-web-assets.test.mjs
 ```
 
 **If a check fails, fix the site — not the check.** Do not add
