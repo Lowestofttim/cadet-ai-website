@@ -119,16 +119,17 @@
       <p class="muted">Cadet AI is for cadets <strong>aged 13 and over</strong>. <strong>Under-13s cannot create an account.</strong> When you sign up we ask your date of birth, and if you are under 13 we do <strong>not</strong> create an account for you. There is no way around this &mdash; an account cannot be created or used until your 13th birthday, <strong>even with permission from a parent or guardian</strong>. If a date of birth was entered by mistake, you can try again with the correct date after 24 hours. We do not knowingly collect personal data from children under 13; if we learn we have, we will delete it. Parents and guardians can contact us at any time to see, correct, or delete their cadet&rsquo;s data.</p>
 
       <!--
-        ADULT (CFAV) ACCOUNTS - PUBLICATION ORDER MATTERS.
-        The operator-verification wording below describes the approval path that
-        replaces self-service conversion. Do NOT publish this paragraph ahead of
-        that control: while a self-declared date of birth still converts an
-        account on its own, this sentence would be untrue of the live product,
-        which is the exact failure mode finding M-10 is about.
-        scripts/validate-policy-contract.mjs pins the wording; the control it
-        describes is the one that must ship alongside it.
+        ADULT (CFAV) ACCOUNTS - DESCRIBES THE DEPLOYED CONTROL, NOT THE PLANNED ONE.
+        Today an account becomes a CFAV account when the holder confirms a date
+        of birth of 18 or over, which the server re-checks. Finding M-06 replaces
+        that with an operator-approved verification record, but M-06 is NOT
+        deployed. Claiming "operator-verified" before it ships would publish a
+        control that does not exist - the exact contradiction M-10 removes.
+        scripts/validate-policy-contract.mjs actively BANS the stronger wording.
+        WHEN M-06 DEPLOYS: update this paragraph and flip that assertion in the
+        same change that applies the migration.
       -->
-      <p class="muted"><strong>Adults using the app.</strong> Cadet AI can also be used by adult volunteers (Cadet Force Adult Volunteers, or CFAVs) aged 18 and over. An adult account is not something you can give yourself: telling us a date of birth <strong>on its own is not enough</strong>, and an account only becomes an adult (CFAV) account once that change has been <strong>operator-verified</strong> by us against a record we hold and you cannot reach. We keep no copy of any document you show us and no date of birth. This is not paperwork for its own sake &mdash; the cadet/adult split is what keeps under-18s and adults apart everywhere in the app. Under-18 cadets and adults never interact through the app &mdash; see &ldquo;No contact between users&rdquo; below.</p>
+      <p class="muted"><strong>Adults using the app.</strong> Cadet AI can also be used by adult volunteers (Cadet Force Adult Volunteers, or CFAVs) aged <strong>18 and over</strong>. An account becomes an adult (CFAV) account when you confirm a date of birth showing you are 18 or over; we check that on our servers rather than trusting the app on your device, and the change is one-way. As with the cadet age check, <strong>we do not store your date of birth</strong> &mdash; only the result. We are strengthening this into a checked approval step, and this notice will be updated when that lands. The cadet/adult split matters because it is what keeps under-18s and adults apart everywhere in the app: under-18 cadets and adults never interact through the app &mdash; see &ldquo;No contact between users&rdquo; below.</p>
 
       <h2>2. What we collect</h2>
       <p class="muted">Only what the app needs to work:</p>

@@ -160,19 +160,32 @@ must(
 );
 
 // ═══════════════════════════════════════════════════════════════════════════
-// 4. Adult (CFAV) accounts are operator-verified
-//    A self-declared date of birth alone does not turn a cadet account into an
-//    adult one. This matters because the cadet/adult split is what keeps an
-//    under-18 and an adult off the same leaderboard.
+// 4. Adult (CFAV) accounts
+//    The cadet/adult split is what keeps an under-18 and an adult off the same
+//    leaderboard, so the policy must describe how an account becomes an adult
+//    one -- and must describe the control that is ACTUALLY DEPLOYED.
+//
+//    TODAY that is a server-checked self-declaration: continue_as_adult()
+//    converts on a date of birth the caller supplies. M-06 replaces this with an
+//    operator-approved verification record, but M-06 is NOT deployed.
+//
+//    This assertion therefore pins the honest description and BANS the stronger
+//    claim, so the policy cannot get ahead of the control. Publishing
+//    "operator-verified" while a self-declared date of birth still converts an
+//    account would be exactly the contradiction M-10 exists to remove.
+//
+//    WHEN M-06 IS DEPLOYED: flip this block -- require the operator-verification
+//    wording and drop the ban -- in the same change that applies the migration.
 // ═══════════════════════════════════════════════════════════════════════════
 must(/CFAV|Cadet Force Adult Volunteer/i, 'adult volunteer (CFAV) accounts are not described');
 must(
-  /operator-(?:verified|approved|checked)|approved by us|we (?:must )?(?:verify|approve)/i,
-  'the policy does not say adult (CFAV) status is operator-verified',
+  /\b18\b[\s\S]{0,200}(?:adult|CFAV)|(?:adult|CFAV)[\s\S]{0,200}\b18\b/i,
+  'the policy does not state the 18+ boundary for adult (CFAV) accounts',
 );
-must(
-  /(?:date of birth|age)[\s\S]{0,240}(?:on its own is not enough|is not enough on its own|is not sufficient)/i,
-  'the policy does not say a self-declared date of birth alone cannot grant adult status',
+mustNot(
+  /operator-(?:verified|approved|checked)|verified by us against a record/i,
+  'the policy claims adult (CFAV) status is operator-verified, but that control (M-06) is not deployed -- ' +
+    'a self-declared date of birth still converts an account, so this would publish a control that does not exist',
 );
 
 // ═══════════════════════════════════════════════════════════════════════════
