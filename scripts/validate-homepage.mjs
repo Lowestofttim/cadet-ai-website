@@ -17,10 +17,29 @@ const voiceSampleVersion = '20260719-launch-copy-1';
 assert.doesNotMatch(siteJs, /\u00e2|\uFFFD|\uFEFF/, 'site.js should not contain mojibake or a byte-order mark');
 assert.doesNotMatch(index, /\u00e2|\uFFFD|\uFEFF/, 'Homepage should not contain mojibake or a byte-order mark');
 assert.doesNotMatch(styles, /\u00e2|\uFFFD|\uFEFF/, 'styles.css should not contain mojibake or a byte-order mark');
+// Latest TikTok section (audit finding M-11).
+//
+// This used to assert that the page carried TikTok's creator embed and loaded
+// www.tiktok.com/embed.js. It no longer does, and the assertions below are the
+// replacement rather than a deletion: the section must still be here and must
+// still send readers to @cadet.ai, but it must do so with a committed poster
+// image and a plain link, never a widget that reports every child who opens the
+// home page back to TikTok. scripts/no-third-party-runtime.test.mjs enforces the
+// same rule site-wide; this pins the section that used to break it.
 assert.match(index, /id="latest-tiktok"/, 'Homepage should include a Latest TikTok section near the top');
-assert.match(index, /class="tiktok-embed"[\s\S]*data-embed-type="creator"/, 'Latest TikTok should embed a TikTok creator feed');
-assert.match(index, /class="tiktok-embed"[\s\S]*data-unique-id="cadet\.ai"/, 'Latest TikTok should embed the Cadet AI creator feed');
-assert.match(index, /https:\/\/www\.tiktok\.com\/embed\.js/, 'Homepage should load the official TikTok embed script');
+assert.match(index, /class="tiktok-preview"/, 'Latest TikTok should use the locally hosted preview card');
+assert.match(
+  index,
+  /<a class="tiktok-preview" href="https:\/\/www\.tiktok\.com\/@cadet\.ai"[^>]*\brel="noopener noreferrer"/,
+  'Latest TikTok preview should be a plain outbound link to @cadet.ai with rel="noopener noreferrer"',
+);
+const tiktokPosterMatch = index.match(/class="tiktok-preview"[\s\S]*?<img[^>]*\bsrc="([^"]+)"/);
+assert.ok(tiktokPosterMatch, 'Latest TikTok preview should show a poster image');
+assert.doesNotMatch(tiktokPosterMatch[1], /^(?:[a-z][a-z0-9+.-]*:)?\/\//i, 'Latest TikTok poster should be hosted on this site, not fetched from a third party');
+assert.ok(exists(tiktokPosterMatch[1]), `Latest TikTok poster ${tiktokPosterMatch[1]} should be committed to this repo`);
+assert.match(index, /Watch the newest Cadet AI clips from @cadet\.ai\./, 'Latest TikTok should keep its section copy');
+assert.doesNotMatch(index, /tiktok\.com\/embed\.js/, 'Homepage must not load the TikTok widget script (it discloses every visitor to TikTok)');
+assert.doesNotMatch(index, /class="tiktok-embed"/, 'Homepage must not carry TikTok embed markup');
 assert.match(index, /id="follow-cadet-ai"/, 'Homepage should include a follow-us social panel');
 
 const expectedSocialLinks = [

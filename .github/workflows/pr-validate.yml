@@ -65,7 +65,15 @@ jobs:
         run: node scripts/validate-links.mjs
 
       # Homepage contract: TANGO artwork and showcase JSON, cache-busting
-      # versions, social links, the TikTok embed, plans/FAQ voice-tier wording,
-      # the Digital Asset Links fingerprints and the 13+ terms wording.
+      # versions, social links, the Latest TikTok section's safe (link-only)
+      # form, plans/FAQ voice-tier wording, the Digital Asset Links fingerprints
+      # and the 13+ terms wording.
       - name: Homepage contract
         run: node scripts/validate-homepage.mjs
+
+      # No third-party runtime code (audit finding M-11). This site's visitors
+      # are children aged 13+; a widget script or a webfont fetch would disclose
+      # each one's IP, User-Agent and Referer to a third party on page load, with
+      # no consent step. Everything the browser loads must be committed here.
+      - name: No third-party runtime code
+        run: node --test scripts/no-third-party-runtime.test.mjs
