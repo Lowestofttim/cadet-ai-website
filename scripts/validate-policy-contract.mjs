@@ -319,6 +319,31 @@ if (dates.length !== 1) {
 }
 must(/Last updated: \d{1,2} \w+ \d{4}/, 'the effective date is not labelled "Last updated: <date>"');
 
+// The date must not LAG a substantive revision. Found by review: the CFAV
+// paragraph was rewritten to describe the operator-approved control that went
+// live on 2026-08-14, while the banner still read "12 August 2026" -- so a
+// reader, a parent or the ICO could not tell the policy had changed, and two
+// different controls were described under one effective date.
+//
+// `must()` above pins wording that only became true on the date below, so the
+// two are bound: the effective date can never be earlier than the most recent
+// control change this contract asserts. BUMP THIS CONSTANT in the same change
+// as any future pinned-control revision -- that is the whole point of it.
+const PINNED_CONTROL_CHANGE = new Date('2026-08-14T00:00:00Z');
+const stamped = visible.match(/Last updated: (\d{1,2} \w+ \d{4})/);
+if (stamped) {
+  const parsed = new Date(stamped[1] + ' UTC');
+  if (Number.isNaN(parsed.getTime())) {
+    errors.push(`EFFECTIVE DATE — could not parse "${stamped[1]}"`);
+  } else if (parsed < PINNED_CONTROL_CHANGE) {
+    errors.push(
+      `EFFECTIVE DATE — "Last updated: ${stamped[1]}" predates the most recent control ` +
+        'change this contract pins (2026-08-14, the operator-approved CFAV verification). ' +
+        'The policy text describes a control that did not exist on the stated date.',
+    );
+  }
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // 11. This page is the canonical policy
 //     M-10 is only closed while every other surface points here.
