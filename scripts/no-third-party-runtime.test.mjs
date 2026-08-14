@@ -33,6 +33,15 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // preconnect, a stylesheet href, a script src and a CSP allowance all count.
 const BANNED_RUNTIME_SOURCES = [
   'tiktok.com/embed.js',
+];
+
+const THIRD_PARTY_RUNTIME_HOSTS = [
+  'tiktok.com',
+  'ttwstatic.com',
+  'fonts.googleapis.com',
+  'fonts.gstatic.com',
+  'googletagmanager.com',
+  'google-analytics.com',
   'fonts.googleapis.com',
   'fonts.gstatic.com',
 ];
@@ -114,4 +123,53 @@ test('no in-page Content-Security-Policy permits a remote origin', () => {
     `In-page CSP still permits a remote origin (every asset here is committed, ` +
       `so 'self' is enough):\n  - ${offenders.join('\n  - ')}\n`,
   );
+});
+
+// ---------------------------------------------------------------------------
+// _headers was invisible to this test.
+//
+// It walked .html/.css/.js only, so the site-wide CSP was never read -- and that
+// CSP went on PERMITTING the very hosts M-11 removed (frame-src and script-src
+// www.tiktok.com + *.ttwstatic.com, style-src fonts.googleapis.com, font-src
+// fonts.gstatic.com) long after the embed and the web-font links were gone.
+// Inert only because GitHub Pages ignores the file (L-07); the moment L-07 is
+// remediated with a CDN, an unenforced-but-permissive policy becomes an
+// enforced-and-permissive one, on a site aimed at children.
+//
+// A per-page <meta> CSP has the same exposure, so both are checked.
+// ---------------------------------------------------------------------------
+test('no CSP permits a third-party runtime origin', () => {
+  const policyFiles = [];
+  const headers = path.join(root, '_headers');
+  if (fs.existsSync(headers)) policyFiles.push(headers);
+  policyFiles.push(...htmlFiles);
+
+  assert.ok(policyFiles.length > 0, 'expected at least one file carrying a CSP');
+
+  for (const file of policyFiles) {
+    const raw = fs.readFileSync(file, 'utf8');
+    // Only the directives themselves -- the explanatory comments in _headers
+    // name these hosts deliberately, to record why they were removed.
+    const policies = [
+      // Capture to end of line. An earlier version used [^\r\n"']+ to avoid
+      // colliding with the meta-tag form -- but a CSP is full of single quotes
+      // ('none', 'self'), so the match stopped dead at `default-src ` and never
+      // reached the host list. The guard passed while permitting every origin it
+      // was written to ban, and only the mutation test showed it.
+      ...raw.matchAll(/Content-Security-Policy:[ \t]*([^\r\n]+)/gi),
+      ...raw.matchAll(/http-equiv="Content-Security-Policy"[\s\S]*?content="([^"]+)"/gi),
+    ].map((m) => m[1]);
+
+    for (const policy of policies) {
+      for (const host of THIRD_PARTY_RUNTIME_HOSTS) {
+        assert.ok(
+          !policy.includes(host),
+          `${path.relative(root, file)} has a CSP permitting ${host}. ` +
+            'M-11 removed these origins from the pages; permitting them here ' +
+            'lets them come straight back the moment a header-honouring host ' +
+            'is put in front of the site.',
+        );
+      }
+    }
+  }
 });

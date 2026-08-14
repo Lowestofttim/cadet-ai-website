@@ -105,7 +105,7 @@
     <div class="wrap" style="padding:54px 22px 40px">
       <div class="eyebrow">Data protection</div>
       <h1>Privacy <span>Policy</span></h1>
-      <p class="lead" style="max-width:60ch">Last updated: 12 August 2026. We take the privacy of young people seriously. Here's exactly what we collect and why, in plain terms.</p>
+      <p class="lead" style="max-width:60ch">Last updated: 14 August 2026. We take the privacy of young people seriously. Here's exactly what we collect and why, in plain terms.</p>
       <p class="muted" style="max-width:60ch">Cadet AI is run by <strong>MONKEYZOO LTD</strong>, which is the &ldquo;data controller&rdquo; for the information described below &mdash; we decide how and why it is used, and we are who you contact about it. You can reach us at <a href="mailto:support@cadetai.co.uk">support@cadetai.co.uk</a>.</p>
     </div>
   </section>
@@ -120,16 +120,27 @@
 
       <!--
         ADULT (CFAV) ACCOUNTS - DESCRIBES THE DEPLOYED CONTROL, NOT THE PLANNED ONE.
-        Today an account becomes a CFAV account when the holder confirms a date
-        of birth of 18 or over, which the server re-checks. Finding M-06 replaces
-        that with an operator-approved verification record, but M-06 is NOT
-        deployed. Claiming "operator-verified" before it ships would publish a
-        control that does not exist - the exact contradiction M-10 removes.
-        scripts/validate-policy-contract.mjs actively BANS the stronger wording.
-        WHEN M-06 DEPLOYS: update this paragraph and flip that assertion in the
-        same change that applies the migration.
+        UPDATED 2026-08-14: M-06 is now APPLIED TO PRODUCTION, so this paragraph
+        was flipped in the same pass. continue_as_adult() no longer converts on a
+        caller-supplied date of birth; it requires an approved, unused record in
+        private.cfav_verifications and otherwise returns VERIFICATION_REQUIRED
+        (confirmed by a live synthetic probe against production on 2026-08-14:
+        a fabricated adult date of birth left the account as `cadet`). The
+        contract assertion in scripts/validate-policy-contract.mjs was flipped
+        with it, so the ban is now on the OLD self-declaration wording.
+
+        Previous state, kept for the record: an account became a CFAV account
+        when the holder confirmed a date of birth of 18 or over, which the server
+        re-checked. That is what this paragraph described while M-06 was still
+        undeployed, because claiming "operator-verified" before it shipped would
+        have published a control that did not exist - the exact contradiction
+        M-10 removes. The same trap runs the other way, which is what happened
+        here: once M-06 deployed, the cautious wording became the inaccurate one,
+        and the ban that protected it blocked the correction. A policy assertion
+        pinned to a control's deployment state has to be moved WITH that state,
+        in both directions.
       -->
-      <p class="muted"><strong>Adults using the app.</strong> Cadet AI can also be used by adult volunteers (Cadet Force Adult Volunteers, or CFAVs) aged <strong>18 and over</strong>. An account becomes an adult (CFAV) account when you confirm a date of birth showing you are 18 or over; we check that on our servers rather than trusting the app on your device, and the change is one-way. As with the cadet age check, <strong>we do not store your date of birth</strong> &mdash; only the result. We are strengthening this into a checked approval step, and this notice will be updated when that lands. The cadet/adult split matters because it is what keeps under-18s and adults apart everywhere in the app: under-18 cadets and adults never interact through the app &mdash; see &ldquo;No contact between users&rdquo; below.</p>
+      <p class="muted"><strong>Adults using the app.</strong> Cadet AI can also be used by adult volunteers (Cadet Force Adult Volunteers, or CFAVs) aged <strong>18 and over</strong>. An account becomes an adult (CFAV) account only after <strong>we approve it</strong> &mdash; you ask us, we check, and we record that approval before the account is changed. Entering a date of birth on your own no longer converts an account, and the change is one-way. We <strong>do not store your date of birth</strong> and we do not keep a copy of anything you show us &mdash; only the result of the check. The cadet/adult split matters because it is what keeps under-18s and adults apart everywhere in the app: under-18 cadets and adults never interact through the app &mdash; see &ldquo;No contact between users&rdquo; below.</p>
 
       <h2>2. What we collect</h2>
       <p class="muted">Only what the app needs to work:</p>
