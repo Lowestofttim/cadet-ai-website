@@ -165,27 +165,41 @@ must(
 //    leaderboard, so the policy must describe how an account becomes an adult
 //    one -- and must describe the control that is ACTUALLY DEPLOYED.
 //
-//    TODAY that is a server-checked self-declaration: continue_as_adult()
-//    converts on a date of birth the caller supplies. M-06 replaces this with an
-//    operator-approved verification record, but M-06 is NOT deployed.
+//    FLIPPED 2026-08-14, when M-06 was applied to production. Before that date
+//    the deployed control was a server-checked SELF-DECLARATION --
+//    continue_as_adult() converted on a date of birth the caller supplied -- so
+//    this block pinned that honest description and BANNED the stronger
+//    "operator-verified" claim, to stop the policy getting ahead of the control.
 //
-//    This assertion therefore pins the honest description and BANS the stronger
-//    claim, so the policy cannot get ahead of the control. Publishing
-//    "operator-verified" while a self-declared date of birth still converts an
-//    account would be exactly the contradiction M-10 exists to remove.
+//    M-06 is now live: continue_as_adult() requires an approved, unused record
+//    in private.cfav_verifications and otherwise returns VERIFICATION_REQUIRED.
+//    Verified by a live synthetic probe against production on 2026-08-14 -- a
+//    fabricated adult date of birth left the account as `cadet`.
 //
-//    WHEN M-06 IS DEPLOYED: flip this block -- require the operator-verification
-//    wording and drop the ban -- in the same change that applies the migration.
+//    So the assertion is inverted rather than deleted. THE BAN WAS THE PROBLEM
+//    AS MUCH AS THE WORDING: once the migration deployed, the cautious sentence
+//    became the inaccurate one and the ban actively blocked its correction. A
+//    contract pinned to a control's deployment state is only safe if it moves
+//    WITH that state, in BOTH directions -- so the ban now points at the
+//    superseded wording, and a future change that reverts M-06 has to move this
+//    block back rather than quietly leaving a false policy published.
 // ═══════════════════════════════════════════════════════════════════════════
 must(/CFAV|Cadet Force Adult Volunteer/i, 'adult volunteer (CFAV) accounts are not described');
 must(
   /\b18\b[\s\S]{0,200}(?:adult|CFAV)|(?:adult|CFAV)[\s\S]{0,200}\b18\b/i,
   'the policy does not state the 18+ boundary for adult (CFAV) accounts',
 );
+must(
+  /\bwe approve it\b|\bwe check\b[\s\S]{0,120}\brecord that approval\b|operator-(?:verified|approved|checked)/i,
+  'the policy does not say that becoming an adult (CFAV) account requires OUR approval -- ' +
+    'M-06 is deployed, so a self-declared date of birth no longer converts an account and the ' +
+    'policy must describe the approval step that actually gates it',
+);
 mustNot(
-  /operator-(?:verified|approved|checked)|verified by us against a record/i,
-  'the policy claims adult (CFAV) status is operator-verified, but that control (M-06) is not deployed -- ' +
-    'a self-declared date of birth still converts an account, so this would publish a control that does not exist',
+  /becomes an adult \(CFAV\) account when you confirm a date of birth|strengthening this into a checked approval step/i,
+  'the policy still describes the SUPERSEDED self-declaration control -- M-06 was applied to ' +
+    'production on 2026-08-14, so a caller-supplied date of birth no longer converts an account ' +
+    'and this understates the child-safety control that is actually deployed',
 );
 
 // ═══════════════════════════════════════════════════════════════════════════
