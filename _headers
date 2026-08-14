@@ -42,9 +42,11 @@
 # Making the header narrower than the homepage needs would break the embed.
 #
 # Per-page meta CSP variants actually shipped (see each file's <head>):
-#   index.html ........... baseline + TikTok creator embed
+#   index.html ........... baseline. It used to carry the TikTok creator embed
 #                          (script/style from *.ttwstatic.com, frame from
-#                          www.tiktok.com, img-src data: for embed_lib.css)
+#                          www.tiktok.com); M-11 removed the embed and its meta
+#                          CSP is now frame-src 'none' with no third-party
+#                          origins, same as the rest.
 #   app.html ............. strictest: script-src 'none', style-src 'self'
 #   404.html ............. script-src 'none' (page loads no JS)
 #   privacy / terms / delete-account ... script-src 'self' (no inline script)
@@ -58,10 +60,32 @@
 # anywhere in script-src, on any page.
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# THIRD-PARTY ORIGINS REMOVED 2026-08-14 (M-11 residual).
+#
+# M-11 removed the TikTok script and Google Fonts from the pages, but this CSP
+# still PERMITTED them: frame-src and script-src named www.tiktok.com and
+# *.ttwstatic.com, style-src named fonts.googleapis.com, font-src named
+# fonts.gstatic.com. Inert only because GitHub Pages ignores this file (L-07) --
+# which meant the moment L-07 was remediated with a CDN, the policy would have
+# re-permitted exactly the hosts M-11 was raised to remove, on a site aimed at
+# children. A control that is only safe because it is not enforced is not a
+# control.
+#
+# Verified before removing: the only remaining references to tiktok.com are
+# outbound <a href> links and JSON-LD sameAs entries, neither of which loads
+# anything or needs a CSP allowance. There is no @font-face and no fonts
+# directory -- the site uses system fonts (system-ui, -apple-system, "Segoe UI",
+# Roboto) -- so font-src is 'none'.
+#
+# scripts/no-third-party-runtime.test.mjs walked only .html/.css/.js and never
+# read this file, so nothing would have caught the drift. It now scans it.
+# ---------------------------------------------------------------------------
+
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
-  Content-Security-Policy: default-src 'none'; base-uri 'none'; object-src 'none'; frame-src https://www.tiktok.com; worker-src 'none'; manifest-src 'self'; script-src 'self' https://www.tiktok.com https://*.ttwstatic.com 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg='; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.ttwstatic.com; style-src-elem 'self' https://fonts.googleapis.com https://*.ttwstatic.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'; script-src 'self' 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; style-src-elem 'self'; style-src-attr 'unsafe-inline'; font-src 'none'; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
