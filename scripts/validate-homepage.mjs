@@ -179,7 +179,24 @@ for (const file of rootPublicHtml) {
   assert.doesNotMatch(html, /Fish Audio/i, `${file} should use provider-neutral matched voice wording`);
   assert.doesNotMatch(html, /chirp/i, `${file} should not mention legacy voice provider wording`);
   assert.doesNotMatch(html, /Coming soon to Google Play/i, `${file} should not use stale Google Play coming-soon wording`);
-  assert.doesNotMatch(html, /Coming soon\./i, `${file} should not use stale generic coming-soon CTA copy`);
+  // "Coming soon" was banned outright because the Android app had not shipped
+  // and the CTA still said so. Android HAS shipped, but iOS genuinely is
+  // coming, so a flat ban now blocks a true statement. Ban it only where the
+  // sentence does not say WHICH platform is coming — that is the stale case,
+  // and an unqualified "coming soon." next to a live Play link is exactly the
+  // copy this was written to catch.
+  // Tags are stripped first: markup inside a sentence (a <strong> around the
+  // platform name, say) would otherwise cut the sentence in half and hide the
+  // very qualifier being looked for.
+  const proseOnly = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+  const unqualifiedComingSoon = [...proseOnly.matchAll(/[^.!?]*coming soon[^.!?]*[.!?]/gi)]
+    .map((m) => m[0].trim())
+    .filter((sentence) => !/iphone|ipad|ios|app store/i.test(sentence));
+  assert.deepEqual(
+    unqualifiedComingSoon,
+    [],
+    `${file} should not use stale generic coming-soon CTA copy: ${unqualifiedComingSoon.join(' | ')}`,
+  );
   assert.match(html, /privacy\.html/, `${file} should link to Privacy Policy`);
   assert.match(html, /terms\.html/, `${file} should link to Terms of Use`);
   assert.match(html, /delete-account\.html/, `${file} should link to account deletion`);
