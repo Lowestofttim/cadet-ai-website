@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["U337JBDXS6.com.cadetai.app"],
+        "components": [
+          {
+            "/": "/auth/callback*",
+            "comment": "Supabase auth callback only. Narrow on purpose: a broader pattern would let the app claim ordinary website pages and stop them opening in the browser."
+          }
+        ]
+      }
+    ]
+  }
+}
