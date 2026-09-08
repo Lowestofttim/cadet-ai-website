@@ -33,6 +33,12 @@
 - [Map reading: grid references](https://cadetai.co.uk/guides/map-reading-grid-references.html): eastings and northings, four-figure and six-figure references, common mistakes.
 - [How to revise for cadet assessments](https://cadetai.co.uk/guides/how-to-revise-for-cadet-assessments.html): active recall and spaced practice applied to cadet training.
 - [A parent's guide to Cadet AI](https://cadetai.co.uk/guides/parents-guide-to-cadet-ai.html): safety, privacy and what the app does.
+- [What do cadets actually do?](https://cadetai.co.uk/guides/what-do-cadets-actually-do.html): a typical parade night, weekends and annual camp, the training subjects and qualifications on offer.
+- [Army, air or sea cadets: which to join?](https://cadetai.co.uk/guides/army-air-sea-cadets-compared.html): how the ACF, RAF Air Cadets, Sea Cadets and the school-based CCF differ. Note: Cadet AI covers the ACF/CCF syllabus, so it is much less useful to Air or Sea Cadets.
+- [Cadet kit list: what to take](https://cadetai.co.uk/guides/cadet-kit-list.html): what is issued vs bought, and what to pack for parade nights, weekends and camp.
+- [The Duke of Edinburgh's Award and cadets](https://cadetai.co.uk/guides/dofe-and-cadets.html): how DofE fits alongside cadet training and how cadet activities count towards the four sections.
+- [Cadet uniform and inspection](https://cadetai.co.uk/guides/cadet-uniform-and-inspection.html): what inspectors look for, boots, badges and turnout.
+- [How to become a cadet force adult volunteer](https://cadetai.co.uk/guides/cadet-force-adult-volunteer.html): the CFAV role, vetting, training and time commitment. No military background needed.
 
 ## Legal
 - [Privacy Policy](https://cadetai.co.uk/privacy.html)
