@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'none'; style-src 'self'; img-src 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- Landing page for the verified auth callback https://cadetai.co.uk/auth/callback .
+       With Cadet AI installed, iOS Universal Links and Android App Links hand this
+       URL straight to the APP and this page is never rendered. It exists for the
+       one case where that cannot happen - the app is not installed, or the link
+       was opened on a desktop - because a 404 in the middle of signing in reads
+       as "the service is broken" rather than "finish this on your phone".
+
+       Deliberately inert: script-src 'none'. The URL that reaches here carries a
+       Supabase auth code, so this page must never read it, forward it, or hand it
+       to a custom scheme - that last one is finding L-01, which the app fixed by
+       moving to verified HTTPS links. Static text and two store links only. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Finish signing in &mdash; Cadet AI</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Nearly there</h1>
+    <p>This link is meant to open in the <strong>Cadet AI app</strong>. If you are reading this, the app isn&rsquo;t installed on this device &mdash; or you opened the link on a computer.</p>
+    <p>Open the link again on the phone or tablet with Cadet AI installed, and it will sign you in automatically. Haven&rsquo;t got the app yet? It&rsquo;s free:</p>
+    <a class="btn" href="https://apps.apple.com/gb/app/id6802644162">Download on the App Store</a>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cadetai.app">Get it on Google Play</a>
+    <p>Still stuck? Email <a href="mailto:support@cadetai.co.uk">support@cadetai.co.uk</a> and we&rsquo;ll sort it out.</p>
+    <nav class="links" aria-label="Legal and support links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Use</a>
+      <a href="/delete-account.html">Account deletion</a>
+      <a href="mailto:support@cadetai.co.uk">support@cadetai.co.uk</a>
+    </nav>
+  </div>
+</body>
+</html>
