@@ -7,18 +7,21 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <!-- Handoff page for the verified App Link https://cadetai.co.uk/app :
        Android with Cadet AI installed opens the APP directly and never sees
-       this page; everyone else lands here and is sent to Google Play. -->
+       this page. Everyone else lands here and picks their store. There is no
+       meta-refresh any more: Cadet AI shipped on iOS 2026-09-08, and blindly
+       forwarding to Google Play sent iPhone users to the wrong shop. CSP here
+       is script-src 'none', so this has to be a plain choice, not JS sniffing. -->
   <meta name="robots" content="noindex">
-  <meta http-equiv="refresh" content="2;url=https://play.google.com/store/apps/details?id=com.cadetai.app">
   <title>Open Cadet AI</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/app.css">
 </head>
 <body>
   <div class="card">
-    <h1>Opening Cadet AI&hellip;</h1>
-    <p>If the app doesn't open, it isn't installed yet &mdash; grab it free on Google Play.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cadetai.app">Get Cadet AI on Google Play</a>
+    <h1>Get Cadet AI</h1>
+    <p>If the app didn&rsquo;t open, it isn&rsquo;t installed yet &mdash; it&rsquo;s free on both stores.</p>
+    <a class="btn" href="https://apps.apple.com/gb/app/id6802644162">Download on the App Store</a>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cadetai.app">Get it on Google Play</a>
     <nav class="links" aria-label="Legal and support links">
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Use</a>
