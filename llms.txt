@@ -8,7 +8,11 @@
 - Pricing: Free "Cadet" plan with 5 TANGO messages and 3 quizzes a day; Plus (£4.99/month or £44.99/year); Pro (£9.99/month or £89.99/year). Monthly Plus and Pro each include a 7-day free trial. No ads, no third-party analytics trackers, data never sold.
 - Subjects covered: Drill & Turnout, Fieldcraft & Tactics, First Aid, Navigation, Shooting, Skill at Arms, Military Knowledge, Communications & IT, Expedition & Adventurous Training, Keeping Active, Community Engagement, JCIC / CFIT.
 - TANGO: a grounded AI study assistant that sticks to cadet training and won't make things up; 20 characters (the Free plan includes 5, Plus unlocks 15, Pro unlocks all 20); on Plus and Pro each character speaks with its own matched premium voice.
-- Privacy: national and unit leaderboards are opt-in and off by default.
+- Privacy: national and unit leaderboards are opt-in and off by default, show a self-chosen nickname only, and are separated so adult volunteers and under-18 cadets never appear on the same board. There is no messaging, following, commenting or photo sharing anywhere in the app.
+- Affiliation: NOT affiliated with, endorsed by or connected to the Ministry of Defence, the British Army, the ACF, the CCF or any official cadet organisation. It is an independent study aid built by MonkeyZoo Ltd, a UK company.
+- Safety stance: for anything safety-critical or weapons-related, TANGO tells cadets to confirm with a qualified instructor rather than answering definitively.
+- Account deletion: users can delete their account and all associated data at any time from Settings in the app.
+- Support: support@cadetai.co.uk
 
 ## Pages
 - [Home](https://cadetai.co.uk/): overview of Cadet AI and TANGO.
@@ -16,7 +20,19 @@
 - [FAQ](https://cadetai.co.uk/faq.html): common questions on the app, pricing, privacy and launch.
 - [Contact](https://cadetai.co.uk/contact.html): how to reach the team (support@cadetai.co.uk).
 - [Plans & TANGO voices](https://cadetai.co.uk/plans.html): Free/Plus/Pro comparison and matched character voice samples.
-- [Guides](https://cadetai.co.uk/guides/): plain-English cadet guides (terms & acronyms, ACF vs CCF, revision, subjects, star levels, joining ages, parents’ guide).
+- [Guides](https://cadetai.co.uk/guides/): index of the plain-English cadet guides below.
+
+## Guides
+- [Cadet terms & acronyms explained](https://cadetai.co.uk/guides/cadet-terms-and-acronyms.html): glossary of ACF/CCF jargon.
+- [ACF vs CCF: what's the difference?](https://cadetai.co.uk/guides/acf-vs-ccf.html): community-based vs school-based cadets.
+- [How to join the army cadets](https://cadetai.co.uk/guides/how-to-join-the-army-cadets.html): step by step — finding a detachment or school contingent, the first parade night, costs, what to bring.
+- [What age can you join the cadets?](https://cadetai.co.uk/guides/what-age-to-join-cadets.html): typical joining ages for ACF (around 12) and CCF (often around Year 9).
+- [Cadet training subjects explained](https://cadetai.co.uk/guides/cadet-training-subjects.html): what each of the 13 syllabus subjects covers.
+- [Cadet star levels & ranks explained](https://cadetai.co.uk/guides/cadet-star-levels-and-ranks.html): progression from Basic to 4-Star, and how cadet ranks work.
+- [Cadet drill commands explained](https://cadetai.co.uk/guides/cadet-drill-commands-explained.html): cautionary vs executive commands, the common static and marching orders.
+- [Map reading: grid references](https://cadetai.co.uk/guides/map-reading-grid-references.html): eastings and northings, four-figure and six-figure references, common mistakes.
+- [How to revise for cadet assessments](https://cadetai.co.uk/guides/how-to-revise-for-cadet-assessments.html): active recall and spaced practice applied to cadet training.
+- [A parent's guide to Cadet AI](https://cadetai.co.uk/guides/parents-guide-to-cadet-ai.html): safety, privacy and what the app does.
 
 ## Legal
 - [Privacy Policy](https://cadetai.co.uk/privacy.html)
