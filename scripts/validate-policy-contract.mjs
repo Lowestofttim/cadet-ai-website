@@ -189,11 +189,31 @@ must(
   /\b18\b[\s\S]{0,200}(?:adult|CFAV)|(?:adult|CFAV)[\s\S]{0,200}\b18\b/i,
   'the policy does not state the 18+ boundary for adult (CFAV) accounts',
 );
+//    THIRD STATE, 2026-09-10. The two assertions below used to be one, and it
+//    was too coarse: it asserted "approval is required" of adult accounts in
+//    general, when only ONE of the two ways into an adult account is gated.
+//    continue_as_adult() (converting an existing cadet account) does require an
+//    approved record in private.cfav_verifications. verify_age_and_type() (a
+//    NEW sign-up) does not -- onboarding offers "I'm an adult (CFAV)" and the
+//    self-reported date of birth is enough. Verified against production.
+//
+//    The coarse assertion passed on the conversion sentence alone, so deleting
+//    the sign-up disclosure -- or going back to claiming every CFAV account is
+//    approved -- would still have reported the policy as matching the deployed
+//    controls. That is the failure this whole file exists to prevent, so the
+//    contract is split to match the system: BOTH paths must be described.
 must(
   /\bwe approve it\b|\bwe check\b[\s\S]{0,120}\brecord that approval\b|operator-(?:verified|approved|checked)/i,
-  'the policy does not say that becoming an adult (CFAV) account requires OUR approval -- ' +
-    'M-06 is deployed, so a self-declared date of birth no longer converts an account and the ' +
-    'policy must describe the approval step that actually gates it',
+  'the policy does not say that CONVERTING an existing cadet account to an adult volunteer ' +
+    'account requires OUR approval -- M-06 is deployed on continue_as_adult(), so the policy ' +
+    'must describe the approval step that actually gates that path',
+);
+must(
+  /self-declared|do not verify at sign-?up|not connected to the cadet forces/i,
+  'the policy does not disclose that the adult volunteer / adult learner choice is SELF-DECLARED ' +
+    'at sign-up -- verify_age_and_type() grants cfav from a self-reported date of birth with no ' +
+    'approval check, so a policy that describes only the gated conversion path overstates the ' +
+    'control and this file would be certifying that overstatement',
 );
 mustNot(
   /becomes an adult \(CFAV\) account when you confirm a date of birth|strengthening this into a checked approval step/i,
