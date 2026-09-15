@@ -11,6 +11,21 @@ Marketing site for the **Cadet AI** app (a study aid for UK ACF & CCF cadets,
 
 No build step. Edit the HTML/CSS and push to `main`; GitHub Pages redeploys.
 
+## Unit request confirmation
+
+`unit-request.html` is the noindex owner page opened from signed approval emails.
+Its companion module uses the token in the URL fragment to preview the request;
+only pressing Confirm sends the decision. Tokens never enter the website request
+URL, referrer, browser storage or analytics. A visit without a complete token
+makes no API request. The page's CSP permits fetch only to the app's exact
+`unit_request_alert` API endpoint; all scripts/styles remain same-origin.
+
+Acceptance emails are handled by that backend after approval, with a durable
+sent receipt and provider idempotency key. If delivery is uncertain the page
+offers an explicit retry after two minutes. After 23 hours an uncertain delivery
+requires a provider check, avoiding duplicates after the provider's 24-hour key
+retention. No background retry is claimed. Run `node --test scripts/unit-request.test.mjs`.
+
 ## ⚠️ `main` is production — the PR checks are the only gate
 
 **Pushing to `main` deploys straight to https://cadetai.co.uk.** There is no build
