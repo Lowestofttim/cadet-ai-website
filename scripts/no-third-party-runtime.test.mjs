@@ -59,7 +59,7 @@ function walk(dir, extensions, out = []) {
 const relative = (file) => path.relative(root, file).replaceAll(path.sep, '/');
 
 const htmlFiles = walk(root, ['.html']).sort();
-const assetFiles = walk(root, ['.css', '.js']).sort();
+const assetFiles = [...walk(root, ['.css', '.js']), path.join(root, 'unit-request.mjs')].sort();
 
 test('every .html file is committed with no third-party runtime source', () => {
   assert.ok(htmlFiles.length > 0, 'expected to find .html files to check');
@@ -112,6 +112,11 @@ test('no in-page Content-Security-Policy permits a remote origin', () => {
           // data: / blob: are scheme sources. Anything else names a host, and
           // on a site whose every asset is committed there is no reason for one.
           if (source.startsWith("'") || source.endsWith(':')) continue;
+          // This owner-only signed-link page calls our own approval API.
+          // Permit exactly this endpoint for fetch, never code/assets or any
+          // other page. Visiting it without a complete token makes no request.
+          if (relative(file) === 'unit-request.html' && name === 'connect-src' &&
+              source === 'https://kktwqwppyxerrsusgqsp.supabase.co/functions/v1/unit_request_alert') continue;
           offenders.push(`${relative(file)}: ${name} allows ${source}`);
         }
       }

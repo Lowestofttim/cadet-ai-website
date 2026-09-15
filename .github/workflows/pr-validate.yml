@@ -57,6 +57,9 @@ jobs:
       - name: Node version
         run: node --version
 
+      - name: Unit approval page behaviour
+        run: node --test scripts/unit-request.test.mjs
+
       # Links, asset references, anchors, page structure, the in-page CSP and
       # referrer <meta> tags (GitHub Pages cannot send them as headers, so losing
       # one silently drops the only enforcement a browser will honour), alt text,
