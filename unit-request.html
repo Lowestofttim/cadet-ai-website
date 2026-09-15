@@ -7,9 +7,9 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src https://kktwqwppyxerrsusgqsp.supabase.co/functions/v1/unit_request_alert; font-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Unit request | Cadet AI</title>
-  <link rel="stylesheet" href="unit-request.css">
+  <link rel="stylesheet" href="unit-request.css?v=2">
   <link rel="icon" href="favicon.ico">
-  <script type="module" src="unit-request.mjs"></script>
+  <script type="module" src="unit-request.mjs?v=2"></script>
 </head>
 <body>
   <main>
@@ -19,6 +19,22 @@
       <h1 id="heading">Checking your request…</h1>
       <p id="unit-name" class="unit-name"></p>
       <p id="message">Please wait while we check your email link.</p>
+      <p id="decision-reason" class="decision-reason" hidden></p>
+      <div id="reason-fields" hidden>
+        <label for="reason-code">Reason for declining</label>
+        <select id="reason-code" aria-describedby="reason-help reason-error" required>
+          <option value="">Choose a reason</option>
+          <option value="already_listed">Already listed</option>
+          <option value="name_unclear">Name incomplete or unclear</option>
+          <option value="unable_to_verify">Unable to verify the unit</option>
+          <option value="unsupported_unit">Not a supported cadet unit</option>
+          <option value="other">Other — write an explanation</option>
+        </select>
+        <label id="reason-label" for="reason-details">Extra details (optional)</label>
+        <textarea id="reason-details" rows="3" maxlength="500" aria-describedby="reason-help reason-error"></textarea>
+        <p id="reason-help" class="field-help">The reason and any details you add will be emailed to the requester. Maximum 500 characters for your explanation.</p>
+        <p id="reason-error" class="field-error" role="alert" hidden></p>
+      </div>
       <button id="confirm" type="button" hidden>Confirm approval</button>
     </section>
     <noscript>Enable JavaScript to review this request. Nothing has been changed.</noscript>

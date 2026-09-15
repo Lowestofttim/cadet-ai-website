@@ -128,3 +128,14 @@ until then, and its top-of-file comment says so.
 
 > Cadet AI is an independent study aid. It is not an official MOD, ACF, CCF or
 > Cadet Forces product and is not endorsed by them.
+
+## Decline reasons
+
+The unit-request page requires a reason before declining. Presets allow optional
+extra details; Other requires an explanation (maximum 500 characters). The API
+saves the reason with the decision and emails it to the requester. Reopened
+declines show the saved reason and can check/retry email delivery.
+
+The preview's decline_reasons capability is required before Confirm decline is
+offered, so this page can publish before the accompanying API deployment.
+HTML and CSS/JS use v=2 cache versions. Signed tokens remain in the URL fragment.

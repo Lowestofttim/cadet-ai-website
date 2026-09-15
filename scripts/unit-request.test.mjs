@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import { initUnitRequest } from '../unit-request.mjs';
 
 function page(hash = '#id=11111111-1111-4111-8111-111111111111&action=approve&exp=9999999999&t=' + 'a'.repeat(64)) {
-  const elements = Object.fromEntries(['heading','message','unit-name','confirm'].map(id => [id, {
+  const elements = Object.fromEntries(['heading','message','unit-name','confirm','reason-fields','reason-code','reason-details','reason-label','reason-error','decision-reason'].map(id => [id, {
     textContent: '', hidden: id === 'confirm', disabled: false,
-    addEventListener(_name, fn) { this.click = fn; },
+    value: '', focus() {},
+    addEventListener(name, fn) { this[name] = fn; },
   }]));
   return { elements, document: { getElementById: id => elements[id] }, location: { hash } };
 }
@@ -94,5 +95,72 @@ test('opening another email in the same tab reloads instead of retaining the old
   } finally {
     if (previous.window === undefined) delete globalThis.window; else globalThis.window = previous.window;
     if (previous.document === undefined) delete globalThis.document; else globalThis.document = previous.document;
+  }
+});
+
+const declineHash = '#id=11111111-1111-4111-8111-111111111111&action=reject&exp=9999999999&t=' + 'a'.repeat(64);
+
+test('a page deployed before the API cannot discard a decline explanation', async () => {
+  const p=page(declineHash); const modes=[];
+  await initUnitRequest({...p,fetch:async(_url,init)=>{modes.push(JSON.parse(init.body).mode);return response({ok:true,status:'pending',name:'A unit'});}});
+  assert.equal(p.elements['reason-fields'].hidden,true);
+  assert.equal(p.elements.confirm.textContent,'Check again');
+  await p.elements.confirm.click();
+  assert.deepEqual(modes,['preview','preview']);
+});
+
+test('decline requires a reason and Other needs an explanation before submitting', async () => {
+  const p = page(declineHash);
+  const calls = [];
+  await initUnitRequest({ ...p, fetch: async (_url, init) => {
+    const body = JSON.parse(init.body); calls.push(body);
+    return response({ ok: true, decline_reasons: true, name: 'A unit', status: body.mode === 'preview' ? 'pending' : 'rejected',
+      reason: body.mode === 'decide' ? 'The full name is needed.' : undefined, notification: 'sent' });
+  }});
+  assert.equal(p.elements['reason-fields'].hidden, false);
+  await p.elements.confirm.click();
+  assert.equal(calls.length, 1);
+  assert.match(p.elements['reason-error'].textContent, /choose/i);
+  p.elements['reason-code'].value = 'other';
+  await p.elements['reason-code'].change();
+  await p.elements.confirm.click();
+  assert.equal(calls.length, 1);
+  assert.match(p.elements['reason-error'].textContent, /explanation/i);
+  p.elements['reason-details'].value = 'The full name is needed.';
+  await Promise.all([p.elements.confirm.click(), p.elements.confirm.click()]);
+  assert.equal(calls.length, 2);
+  assert.equal(calls[1].reason_code, 'other');
+  assert.equal(calls[1].reason_details, 'The full name is needed.');
+  assert.equal(p.elements.heading.textContent, 'Request declined');
+  assert.match(p.elements.message.textContent, /email.*sent/i);
+  assert.equal(p.elements['reason-fields'].hidden, true);
+  assert.match(p.elements['decision-reason'].textContent, /full name/i);
+});
+
+test('preset decline reasons can include extra details, and delivery can retry after the decision', async () => {
+  const p = page(declineHash); const calls=[];
+  await initUnitRequest({ ...p, fetch: async (_url, init) => {
+    const body=JSON.parse(init.body); calls.push(body);
+    return response({ ok:true, decline_reasons: true, name:'A unit', status: body.mode==='preview' ? 'pending' : 'rejected',
+      reason:'Already listed. Search for the full name.', notification:'pending' });
+  }});
+  p.elements['reason-code'].value='already_listed';
+  p.elements['reason-details'].value='Search for the full name.';
+  await p.elements.confirm.click();
+  assert.equal(p.elements.confirm.textContent,'Retry email');
+  assert.equal(p.elements['reason-fields'].hidden,true);
+  await p.elements.confirm.click();
+  assert.equal(calls.length,3);
+  assert.equal(calls[1].reason_code,'already_listed');
+  assert.equal(calls[2].reason_code,undefined);
+});
+
+test('reopened declines show saved reasons as text and only allow email checking for reject links', async () => {
+  for(const hash of [declineHash, undefined]) {
+    const p=page(hash); let calls=0;
+    await initUnitRequest({ ...p, fetch:async()=>{calls++;return response({ok:true,status:'rejected',name:'A unit',reason:'<img src=x> Explain this.'});}});
+    assert.equal(calls,1);
+    assert.match(p.elements['decision-reason'].textContent,/<img src=x>/);
+    assert.equal(p.elements.confirm.hidden,hash===undefined);
   }
 });

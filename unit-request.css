@@ -13,7 +13,15 @@ h1 { font-size: clamp(27px, 7vw, 34px); line-height: 1.16; letter-spacing: -.025
 button { font: inherit; font-weight: 750; width: 100%; min-height: 54px; margin-top: 28px; padding: 14px; color: #fff; background: #3c502e; border: 0; border-radius: 10px; cursor: pointer; }
 button:hover { background: #2d3e22; }
 button:disabled { opacity: .6; cursor: wait; }
-button:focus-visible, a:focus-visible { outline: 3px solid #b59a4d; outline-offset: 4px; }
+button:focus-visible, a:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #b59a4d; outline-offset: 4px; }
+label { display: block; margin: 22px 0 8px; font-size: 15px; font-weight: 700; }
+select, textarea { box-sizing: border-box; width: 100%; max-width: 100%; font: inherit; font-size: 16px; color: #242b23; background: #fff; border: 1px solid #a9b39f; border-radius: 8px; padding: 12px; }
+select { min-height: 50px; }
+textarea { resize: vertical; }
+.field-help, .field-error { font-size: 13px; line-height: 1.6; margin: 10px 0 0; }
+.field-help { color: #5c6855; }
+.field-error { color: #983326; font-weight: 650; }
+.decision-reason { white-space: pre-wrap; overflow-wrap: anywhere; background: #f5f5ef; border-left: 3px solid #b59a4d; padding: 16px; font-size: 15px; line-height: 1.65; }
 [hidden] { display: none !important; }
 .help, .footer { font-size: 13px; line-height: 1.6; text-align: center; color: #63705b; }
 .help { margin-top: 26px; }
