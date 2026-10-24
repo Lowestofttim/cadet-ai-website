@@ -4,7 +4,8 @@ Marketing site for the **Cadet AI** app (a study aid for UK ACF & CCF cadets,
 13+). Static HTML/CSS, hosted on GitHub Pages.
 
 - **Live:** https://cadetai.co.uk/ (custom domain) — also at the GitHub Pages URL.
-- Pages: `index.html` (home), `features.html`, `faq.html`, `contact.html`.
+- Pages include `index.html` (home), `features.html`, `faq.html`, `contact.html`,
+  `about.html` (identity and editorial policy), and the searchable guide library.
 - `styles.css` — shared design system (olive/gold military theme, Oswald headings).
 - `site.js` — small progressive-enhancement count-up for stats.
 - Brand art in `assets/` (TANGO mascot + app icon).
@@ -42,6 +43,7 @@ deploy it triggered):
 | Check | What it catches |
 |---|---|
 | `node scripts/validate-links.mjs` | broken internal links and asset references, dead `#anchors`, missing/duplicate `<title>` or `<h1>`, missing `lang` / viewport / description, a dropped in-page CSP or referrer `<meta>`, `<img>` without `alt`, `target="_blank"` without `rel="noopener"`, wrong canonical host, encoding damage, and a `sitemap.xml` advertising a page that no longer exists |
+| `node --test scripts/search-discovery.test.mjs` | missing editorial provenance on guide articles, undiscoverable search-intent pages, stale single-platform copy, or missing sitemap and AI-readable links |
 | `node scripts/validate-homepage.mjs` | missing TANGO artwork and showcase JSON, stale cache-busting versions, changed social links, the Latest TikTok section's link-only form, plans/FAQ voice-tier wording, the Digital Asset Links fingerprints, and the 13+ terms wording |
 | `node --test scripts/no-third-party-runtime.test.mjs` | any third-party host the browser would contact on page load — a widget script, a webfont stylesheet or font file, a preconnect — plus any in-page CSP that still *permits* one |
 | `node --test scripts/export-tango-web-assets.test.mjs` | the TANGO exporter reading or writing outside its allowed directories when the app repo's manifest asks it to (`../` traversal, a path-shaped level number, a symlink that resolves elsewhere) |
@@ -53,6 +55,7 @@ go red because a third party is down. Run them locally before pushing:
 ```bash
 node scripts/validate-links.mjs
 node scripts/validate-homepage.mjs
+node --test scripts/search-discovery.test.mjs
 node --test scripts/no-third-party-runtime.test.mjs
 node --test scripts/export-tango-web-assets.test.mjs
 ```

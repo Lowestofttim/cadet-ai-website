@@ -308,6 +308,14 @@ button.chip {
 .footer-social-links .social-mark { width: 28px; height: 28px; font-size: .66rem; }
 .footer-note { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); font-size: .82rem; line-height: 1.6; }
 
+/* Editorial provenance for public guides */
+.content-review { margin: 0 0 28px; padding: 14px 16px; border-left: 3px solid var(--gold); background: rgba(194,154,74,.08); color: var(--muted); font-size: .94rem; }
+.content-review strong { color: var(--text); }
+.article-sources { max-width: 820px; margin: 0 auto; padding: 12px 22px 56px; }
+.article-sources h2 { margin-top: 0; }
+.sources-list { padding-left: 20px; }
+.sources-list li { margin: 8px 0; }
+
 /* =====================================================================
    v2 upgrade - real device screenshots, gallery, scroll animations,
    free/premium plans, neural-voice highlight. Tasteful + accessible.
