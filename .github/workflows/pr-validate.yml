@@ -67,6 +67,12 @@ jobs:
       - name: Links, structure and accessibility basics
         run: node scripts/validate-links.mjs
 
+      # Search and AI-discovery contract: install-intent pages remain discoverable,
+      # guide articles show their editorial provenance, and store availability
+      # cannot drift back to the old Android-only launch state.
+      - name: Search discovery and editorial provenance
+        run: node --test scripts/search-discovery.test.mjs
+
       # Homepage contract: TANGO artwork and showcase JSON, cache-busting
       # versions, social links, the Latest TikTok section's safe (link-only)
       # form, plans/FAQ voice-tier wording, the Digital Asset Links fingerprints

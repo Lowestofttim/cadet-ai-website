@@ -19,10 +19,13 @@
 - [Features](https://cadetai.co.uk/features.html): full feature breakdown.
 - [FAQ](https://cadetai.co.uk/faq.html): common questions on the app, pricing, privacy and launch.
 - [Contact](https://cadetai.co.uk/contact.html): how to reach the team (support@cadetai.co.uk).
+- [About and editorial policy](https://cadetai.co.uk/about.html): operator identity, independence, source checking, corrections and review policy.
 - [Plans & TANGO voices](https://cadetai.co.uk/plans.html): Free/Plus/Pro comparison and matched character voice samples.
 - [Guides](https://cadetai.co.uk/guides/): index of the plain-English cadet guides below.
 
 ## Guides
+- [Army Cadet revision app for ACF and CCF](https://cadetai.co.uk/guides/army-cadet-revision-app.html): how to choose and use a revision app, what Cadet AI covers, and its limits.
+- [Cadet Portal vs Cadet AI](https://cadetai.co.uk/guides/cadet-portal-and-cadet-ai.html): the official Army Cadets portal and the independent revision app have separate roles and accounts.
 - [Cadet terms & acronyms explained](https://cadetai.co.uk/guides/cadet-terms-and-acronyms.html): glossary of ACF/CCF jargon.
 - [ACF vs CCF: what's the difference?](https://cadetai.co.uk/guides/acf-vs-ccf.html): community-based vs school-based cadets.
 - [How to join the army cadets](https://cadetai.co.uk/guides/how-to-join-the-army-cadets.html): step by step — finding a detachment or school contingent, the first parade night, costs, what to bring.
