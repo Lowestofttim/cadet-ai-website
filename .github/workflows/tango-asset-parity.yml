@@ -27,8 +27,10 @@
 # Run it on demand from the Actions tab (Run workflow) before any release where
 # the TANGO artwork matters, and after any app-side re-export.
 #
-# No secrets: Lowestofttim/Cadet-AI is public, so the automatic GITHUB_TOKEN can
-# read it. Nothing needs to be configured for this to work.
+# Lowestofttim/Cadet-AI is private. The website repository's automatic
+# GITHUB_TOKEN cannot read another private repository, so this workflow uses a
+# dedicated read-only deploy key stored as CADET_AI_READONLY_DEPLOY_KEY. The
+# corresponding public key is attached only to the Cadet-AI repository.
 
 name: TANGO asset parity (cross-repo)
 
@@ -62,6 +64,8 @@ jobs:
           repository: Lowestofttim/Cadet-AI
           ref: main
           path: cadet-app
+          ssh-key: ${{ secrets.CADET_AI_READONLY_DEPLOY_KEY }}
+          persist-credentials: false
           sparse-checkout: assets/tango
           sparse-checkout-cone-mode: true
 
